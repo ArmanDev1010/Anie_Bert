@@ -42,15 +42,15 @@ const Navbar = () => {
         <img
           src="/src/assets/logos/white_logo_text.png"
           alt="logo"
-          className="w-[190px]"
+          className="w-[210px]"
         />
         <img
           src="/src/assets/logos/black_logo_text.png"
           alt="logo"
-          className="w-[190px] hidden"
+          className="w-[210px] hidden"
         />
         <ul className="flex items-center gap-14">
-          {["projects", "about", "contacts"].map((text, key) => (
+          {["projects", "about", "services", "contacts"].map((text, key) => (
             <li
               key={key}
               className="text-[18px] font-[500] cursor-pointer translate duration-300 hover:opacity-50"
@@ -63,7 +63,7 @@ const Navbar = () => {
           onClick={() => (showModal ? close() : open())}
           className="group bg-transparent border-[1px] border-white/50 cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-white"
         >
-          <div className="relative overflow-hidden text-center text-[16px] font-[600]">
+          <div className="pointer-events-none relative overflow-hidden text-center text-[16px] font-[600]">
             <div className="group-hover:translate-y-[-110%] transition duration-300">
               {t(`navbar.request`)}
             </div>

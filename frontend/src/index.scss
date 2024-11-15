@@ -50,6 +50,37 @@ body {
     format("truetype");
 }
 
+@font-face {
+  font-family: "Articulat";
+  font-weight: normal;
+  src: url("./fonts/articulat/articulatcf-normal.otf") format("otf");
+}
+@font-face {
+  font-family: "Articulat";
+  font-weight: medium;
+  src: url("./fonts/articulat/articulatcf-medium.otf") format("otf");
+}
+@font-face {
+  font-family: "Articulat";
+  font-weight: bold;
+  src: url("./fonts/articulat/articulatcf-bold.otf") format("otf");
+}
+@font-face {
+  font-family: "Articulat";
+  font-weight: bolder;
+  src: url("./fonts/articulat/articulatcf-extrabold.otf") format("otf");
+}
+@font-face {
+  font-family: "Articulat";
+  font-weight: semibold;
+  src: url("./fonts/articulat/articulatcf-demibold.otf") format("otf");
+}
+@font-face {
+  font-family: "Articulat";
+  font-weight: light;
+  src: url("./fonts/articulat/articulatcf-light.otf") format("otf");
+}
+
 .main-cursor {
   position: fixed;
   pointer-events: none;
@@ -153,5 +184,31 @@ body {
   .request_checked:before {
     background-color: #ffff !important;
     border: 0 !important;
+  }
+  .text_white_effect {
+    -webkit-text-fill-color: transparent;
+    background-image: radial-gradient(circle at 0% 200%, rgb(0, 0, 0), #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .glassy_bg {
+    background: rgba(255, 255, 255, 0.27);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.3px);
+    -webkit-backdrop-filter: blur(7.3px);
+  }
+  .gray_filter {
+    filter: gray;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    transition: all 0.2s ease-in-out;
+  }
+  .gray_filter:hover {
+    filter: none;
+    -webkit-filter: grayscale(0%);
+  }
+  .swiper-slide-active img {
+    filter: none;
+    -webkit-filter: grayscale(0%);
   }
 }

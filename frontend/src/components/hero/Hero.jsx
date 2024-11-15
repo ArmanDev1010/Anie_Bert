@@ -1,10 +1,11 @@
 import React from "react";
-import Navbar from "./Navbar";
+import {Navbar, BottomHero} from "../index";
 
 const Hero = () => {
   return (
-    <div className="hero relative w-full h-screen w-full">
+    <div className="hero relative">
       <Navbar />
+      <BottomHero />
     </div>
   );
 };

@@ -33,7 +33,7 @@ const Modal = ({ handleClose }) => {
   };
 
   return (
-    <div className="w-full h-full fixed z-[10] text-black !text-[#3a3e4b]">
+    <div className="w-full h-full fixed top-0 left-0 z-[10] text-black !text-[#3a3e4b]">
       <motion.div
         className="absolute top-[75px] left-[197px] w-[calc(100%-394px)] h-[calc(100vh-150px)] py-[56px] px-[123px] 
         overflow-auto bg-[#f2f2f2] shadow-[0_2px_24px_rgba(0,0,0,.04)] z-[1]"

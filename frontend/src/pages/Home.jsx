@@ -1,5 +1,5 @@
 import React from "react";
-import { CursorFollow, Hero } from "../components";
+import { BottomHero, CursorFollow, Hero } from "../components";
 
 // import { useQuery, gql } from "@apollo/client";
 
@@ -38,7 +38,6 @@ const Home = () => {
       ))} */}
       <CursorFollow />
       <Hero />
-      <div className="h-screen"></div>
     </div>
   );
 };

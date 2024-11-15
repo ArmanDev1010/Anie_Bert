@@ -10,6 +10,7 @@ export default {
       },
       fontFamily: {
         montserrat: ["Montserrateng", "sans-serif"],
+        articulat: ["Articulat", "sans-serif"],
       },
     },
     screens: {

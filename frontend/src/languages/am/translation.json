@@ -2,8 +2,15 @@
   "navbar": {
     "projects": "Projects",
     "about": "About us",
+    "services": "Services",
     "contacts": "Contacts",
     "request": "Make request",
     "send_request": "Send request"
+  },
+  "hero": {
+    "buttons": {
+      "start": "Start Project",
+      "learn": "Learn More"
+    }
   }
 }
