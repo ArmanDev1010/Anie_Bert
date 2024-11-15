@@ -9,7 +9,7 @@ export default {
         thirdly: "",
       },
       fontFamily: {
-        montserratarm: ["Montserratarm", "sans-serif"],
+        montserrat: ["Montserrateng", "sans-serif"],
       },
     },
     screens: {

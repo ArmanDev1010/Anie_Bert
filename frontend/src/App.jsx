@@ -42,7 +42,7 @@ const client = new ApolloClient({
 
 const App = () => {
   return (
-    <div className="font-montserrat">
+    <div className="font-montserrat bg-[#080808] text-white">
       <MyContext.Provider value={{}}>
         <ApolloProvider client={client}>
           <Routes>

@@ -1,3 +1,9 @@
 {
-  
+  "navbar": {
+    "projects": "Projects",
+    "about": "About us",
+    "contacts": "Contacts",
+    "request": "Make request",
+    "send_request": "Send request"
+  }
 }
