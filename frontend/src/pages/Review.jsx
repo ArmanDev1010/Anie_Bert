@@ -25,7 +25,7 @@ const Review = () => {
 
   if (loading) return <p></p>;
   if (error) return <p>error</p>;
-  console.log(data);
+  
   return (
     <div className="">
       <img src={`http://localhost:1337/${data.review.image.url}`} alt="" />

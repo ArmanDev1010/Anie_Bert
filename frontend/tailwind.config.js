@@ -15,6 +15,7 @@ export default {
     },
     screens: {
       desktopB: "1920px",
+      desktopBM: "1750px",
       desktopM: "1600px",
       desktopS: "1440px",
       desktopSS: "1280px",

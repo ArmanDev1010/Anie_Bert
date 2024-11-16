@@ -1,11 +1,15 @@
 {
   "navbar": {
+    "home": "Home",
     "projects": "Projects",
     "about": "About us",
     "services": "Services",
     "contacts": "Contacts",
     "request": "Make request",
-    "send_request": "Send request"
+    "send_request": "Send request",
+    "location": "Yerevan, Armenia",
+    "phone": "055 550123",
+    "email": "info.aniebert@gmail.com"
   },
   "hero": {
     "buttons": {

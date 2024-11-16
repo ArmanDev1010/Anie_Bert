@@ -11,6 +11,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   overscroll-behavior: none;
+  background: #080808;
 }
 
 @font-face {
@@ -99,7 +100,7 @@ body {
   transition: opacity 1.2s ease;
 }
 
-.hero {
+.navbar {
   .menu__panel::before {
     content: "";
     position: absolute;
@@ -114,7 +115,6 @@ body {
     -webkit-transition: opacity 0.5s ease;
     transition: opacity 0.5s ease;
   }
-
   .fixed_white {
     height: 85px;
     &::before {
@@ -140,6 +140,34 @@ body {
       }
     }
   }
+  .menu_btn:after,
+  .menu_btn:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 35px;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.2s ease;
+  }
+  .menu_btn:before {
+    top: 60%;
+  }
+  .menu_btn:after {
+    top: 40%;
+  }
+  .menu_btn_clicked:before {
+    transform: rotate(45deg);
+    top: 50%;
+  }
+  .menu_btn_clicked:after {
+    transform: rotate(-45deg);
+    top: 50%;
+  }
+}
+
+.modal {
   .request__close:after,
   .request__close:before {
     content: "";
@@ -185,6 +213,9 @@ body {
     background-color: #ffff !important;
     border: 0 !important;
   }
+}
+
+.hero {
   .text_white_effect {
     -webkit-text-fill-color: transparent;
     background-image: radial-gradient(circle at 0% 200%, rgb(0, 0, 0), #ffffff);
@@ -197,18 +228,11 @@ body {
     backdrop-filter: blur(7.3px);
     -webkit-backdrop-filter: blur(7.3px);
   }
-  .gray_filter {
-    filter: gray;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
-    transition: all 0.2s ease-in-out;
+  .mySwiper .swiper-slide {
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
   }
-  .gray_filter:hover {
-    filter: none;
-    -webkit-filter: grayscale(0%);
-  }
-  .swiper-slide-active img {
-    filter: none;
-    -webkit-filter: grayscale(0%);
+  .mySwiper .swiper-slide-thumb-active {
+    opacity: 1;
   }
 }

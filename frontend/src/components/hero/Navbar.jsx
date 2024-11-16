@@ -3,18 +3,19 @@ import { useTranslation } from "react-i18next";
 
 import { AnimatePresence } from "framer-motion";
 
-import Modal from "../Modal";
+import { Modal, Menu } from "../index";
 
 const Navbar = () => {
   const { t } = useTranslation();
 
   const [pos, setPos] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const close = () => setShowModal(false);
   const open = () => setShowModal(true);
 
-  if (showModal) {
+  if (showModal || showMenu) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "visible";
@@ -34,9 +35,9 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`menu__panel ${
+        className={`navbar menu__panel ${
           pos ? "fixed_white" : ""
-        } fixed top-0 left-0 w-full h-[150px] flex items-center justify-between z-[5] px-[64px]`}
+        } fixed top-0 left-0 w-full h-[150px] flex items-center justify-between z-[11] px-[64px]`}
         style={{ transition: "all .3s ease" }}
       >
         <img
@@ -49,7 +50,7 @@ const Navbar = () => {
           alt="logo"
           className="w-[210px] hidden"
         />
-        <ul className="flex items-center gap-14">
+        <ul className="max-desktopS:hidden flex items-center gap-14">
           {["projects", "about", "services", "contacts"].map((text, key) => (
             <li
               key={key}
@@ -59,6 +60,12 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+        <div
+          className={`menu_btn ${
+            showMenu ? "menu_btn_clicked" : ""
+          } cursor-pointer relative p-10 desktopS:hidden`}
+          onClick={() => setShowMenu(!showMenu)}
+        ></div>
         <button
           onClick={() => (showModal ? close() : open())}
           className="group bg-transparent border-[1px] border-white/50 cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-white"
@@ -75,6 +82,9 @@ const Navbar = () => {
       </div>
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
         {showModal && <Modal showModal={showModal} handleClose={close} />}
+      </AnimatePresence>
+      <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
+        {showMenu && <Menu showModal={showMenu} handleClose={close} />}
       </AnimatePresence>
     </>
   );
