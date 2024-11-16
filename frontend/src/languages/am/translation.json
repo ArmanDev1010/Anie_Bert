@@ -7,6 +7,7 @@
     "contacts": "Contacts",
     "request": "Make request",
     "send_request": "Send request",
+    "discover_more": "Discover more",
     "location": "Yerevan, Armenia",
     "phone": "055 550123",
     "email": "info.aniebert@gmail.com"
@@ -15,6 +16,8 @@
     "buttons": {
       "start": "Start Project",
       "learn": "Learn More"
-    }
+    },
+    "interior": "Interior Designs",
+    "architecture": "Architecture Designs"
   }
 }

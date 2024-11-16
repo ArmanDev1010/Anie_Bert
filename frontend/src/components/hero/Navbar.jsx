@@ -37,7 +37,7 @@ const Navbar = () => {
       <div
         className={`navbar menu__panel ${
           pos ? "fixed_white" : ""
-        } fixed top-0 left-0 w-full h-[150px] flex items-center justify-between z-[11] px-[64px]`}
+        } fixed top-0 left-0 w-full h-[130px] flex items-center justify-between z-[11] px-[64px]`}
         style={{ transition: "all .3s ease" }}
       >
         <img
@@ -54,7 +54,7 @@ const Navbar = () => {
           {["projects", "about", "services", "contacts"].map((text, key) => (
             <li
               key={key}
-              className="text-[18px] font-[500] cursor-pointer translate duration-300 hover:opacity-50"
+              className="text-[18px] font-[600] cursor-pointer translate duration-300 hover:opacity-50"
             >
               {t(`navbar.${text}`)}
             </li>
