@@ -37,24 +37,24 @@ const Navbar = () => {
       <div
         className={`navbar menu__panel ${
           pos ? "fixed_white" : ""
-        } fixed top-0 left-0 w-full h-[130px] flex items-center justify-between z-[11] px-[64px]`}
+        } fixed top-0 left-0 w-full h-[130px] flex items-center justify-between z-[11] px-[64px] max-desktopM:h-[110px]`}
         style={{ transition: "all .3s ease" }}
       >
-        <img
-          src="/src/assets/logos/white_logo_text.png"
-          alt="logo"
-          className="w-[210px]"
-        />
-        <img
-          src="/src/assets/logos/black_logo_text.png"
-          alt="logo"
-          className="w-[210px] hidden"
-        />
+        {["white", "black"].map((text, key) => (
+          <img
+            src={`/src/assets/logos/${text}_logo_text.png`}
+            alt="logo"
+            key={key}
+            className={`w-[210px] ${
+              text == "black" ? "hidden" : ""
+            } max-desktopM:w-[190px]`}
+          />
+        ))}
         <ul className="max-desktopS:hidden flex items-center gap-14">
           {["projects", "about", "services", "contacts"].map((text, key) => (
             <li
               key={key}
-              className="text-[18px] font-[600] cursor-pointer translate duration-300 hover:opacity-50"
+              className="text-[18px] font-[600] max-desktopM:text-[17px] cursor-pointer translate duration-300 hover:opacity-50"
             >
               {t(`navbar.${text}`)}
             </li>

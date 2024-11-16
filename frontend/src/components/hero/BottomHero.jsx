@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { BsArrowRight } from "react-icons/bs";
 import Modal from "../Modal";
 import { AnimatePresence } from "framer-motion";
-import SwiperHero from "./SwiperHero";
+import ThumbsGallery from "./ThumbsGallery";
+import { BsArrowRight } from "react-icons/bs";
 
 const BottomHero = () => {
   const { t } = useTranslation();
@@ -22,12 +22,16 @@ const BottomHero = () => {
   return (
     <>
       <div className="w-full h-screen relative">
-        <div className="w-full h-[130px]"></div>
-        <div className="w-full h-[calc(100%-170px)] flex gap-10">
-          <div className="flex flex-col w-[75%] h-full relative z-[2] py-10 px-14 rounded-[25px] overflow-hidden">
-            <div className="relative z-[1] w-fit">
-              <h1 className="text_white_effect pointer-events-none font-articulat text-[max(3vw,7.5vw)] leading-[0.9] pointer-events-none mb-[25px] pb-8">
-                Transform <br></br> your space
+        <div className="w-full h-[130px] max-desktopM:h-[110px]"></div>
+        <div className="w-full h-[calc(100%-170px)] flex gap-8 max-desktopM:h-[calc(100%-150px)]">
+          <div className="w-[75%] h-full relative z-[2] rounded-[25px] overflow-hidden bg-white">
+            <ThumbsGallery showModal={showModal} close={close} open={open} />
+            <div className="absolute z-[5] top-[30%] -translate-[35%] left-12">
+              <h1
+                className="pointer-events-none font-articulat mb-[35px] text-[75px] max-desktopM:text-[65px] 
+        leading-[1.2] pointer-events-none"
+              >
+                Transform your space
               </h1>
               <div className="flex h-[60px] gap-[30px] mb-[60px]">
                 {["start", "learn"].map((text, key) => (
@@ -64,23 +68,8 @@ const BottomHero = () => {
                 ))}
               </div>
             </div>
-            <SwiperHero />
           </div>
-          <ul className="w-[25%] h-full rounded-[25px] grid grid-rows-2 gap-[25px] overflow-hidden">
-            {["interior", "architecture"].map((text, key) => (
-              <li
-                key={key}
-                className="relative w-full h-full bg-white rounded-[25px] bg-cover bg-center bg-no-repeat"
-                style={{
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5)),url(/src/assets/swiper/services/${text}.jpg)`,
-                }}
-              >
-                <div className="flex justify-between">
-                  <p>{t(`hero.${text}`)}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <div className="w-[25%] h-full bg-white rounded-[25px]"></div>
         </div>
       </div>
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>

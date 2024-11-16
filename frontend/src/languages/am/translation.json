@@ -17,7 +17,11 @@
       "start": "Start Project",
       "learn": "Learn More"
     },
-    "interior": "Interior Designs",
-    "architecture": "Architecture Designs"
+    "swiper": {
+      "1": "Bedroom Design",
+      "2": "Kids room design",
+      "3": "Living Room Design",
+      "4": "Kitchen & Living Room"
+    }
   }
 }
