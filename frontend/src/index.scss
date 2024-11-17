@@ -125,6 +125,11 @@ body {
       rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   }
   &.fixed_white {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 64px;
+    transition: all 0.5s ease;
     height: 85px;
     &::before {
       opacity: 1 !important;

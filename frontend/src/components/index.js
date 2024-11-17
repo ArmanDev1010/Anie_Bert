@@ -6,6 +6,9 @@ import Modal from "./Modal";
 import BottomHero from "./hero/BottomHero";
 import Menu from "./hero/Menu";
 import SwiperSlides from "./hero/SwiperSlides";
+import Masterpiece from "./masterpiece/Masterpiece";
+import CenterImage from "./masterpiece/CenterImage";
+import ParallaxImages from "./masterpiece/ParallaxImages";
 
 export {
   Hero,
@@ -16,4 +19,7 @@ export {
   Menu,
   SwiperSlides,
   TiltCard,
+  Masterpiece,
+  CenterImage,
+  ParallaxImages,
 };

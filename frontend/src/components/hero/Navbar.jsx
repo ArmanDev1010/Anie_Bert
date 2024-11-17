@@ -24,7 +24,7 @@ const Navbar = () => {
   useEffect(() => {
     document.addEventListener("scroll", (e) => {
       let scrolled = document.scrollingElement.scrollTop;
-      if (scrolled >= 30) {
+      if (scrolled >= 80) {
         setPos(true);
       } else {
         setPos(false);
