@@ -14,8 +14,8 @@
   },
   "hero": {
     "buttons": {
-      "start": "Start Project",
-      "learn": "Learn More"
+      "start": "Start project",
+      "learn": "Learn more"
     },
     "swiper": {
       "1": { "room": "Bedroom Design", "type": "interior Design" },
