@@ -18,10 +18,10 @@
       "learn": "Learn More"
     },
     "swiper": {
-      "1": "Bedroom Design",
-      "2": "Kids room design",
-      "3": "Living Room Design",
-      "4": "Kitchen & Living Room"
+      "1": { "room": "Bedroom Design", "type": "interior Design" },
+      "2": { "room": "Kids room design", "type": "interior Design" },
+      "3": { "room": "Living Room Design", "type": "interior Design" },
+      "4": { "room": "Kitchen & Living Room", "type": "interior Design" }
     }
   }
 }

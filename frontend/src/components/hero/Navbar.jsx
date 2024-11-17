@@ -37,7 +37,7 @@ const Navbar = () => {
       <div
         className={`navbar menu__panel ${
           pos ? "fixed_white" : ""
-        } fixed top-0 left-0 w-full h-[130px] flex items-center justify-between z-[11] px-[64px] max-desktopM:h-[110px]`}
+        } relative w-full h-[120px] flex items-center justify-between z-[10]`}
         style={{ transition: "all .3s ease" }}
       >
         {["white", "black"].map((text, key) => (
@@ -47,10 +47,10 @@ const Navbar = () => {
             key={key}
             className={`w-[210px] ${
               text == "black" ? "hidden" : ""
-            } max-desktopM:w-[190px]`}
+            } cursor-pointer max-desktopM:w-[190px]`}
           />
         ))}
-        <ul className="max-desktopS:hidden flex items-center gap-14">
+        <ul className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 max-desktopS:hidden flex items-center gap-14">
           {["projects", "about", "services", "contacts"].map((text, key) => (
             <li
               key={key}

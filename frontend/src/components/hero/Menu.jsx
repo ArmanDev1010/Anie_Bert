@@ -11,7 +11,7 @@ const Menu = ({ handleClose }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="menu w-full h-full fixed top-0 left-0 z-[10] text-black !text-[#3a3e4b]">
+    <div className="menu w-full h-full fixed top-0 left-0 z-[9] text-black !text-[#3a3e4b]">
       <motion.div
         className="relative w-full h-full z-[1]"
         initial={{ opacity: 0 }}

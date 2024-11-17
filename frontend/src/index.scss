@@ -28,6 +28,13 @@ body {
 }
 @font-face {
   font-family: "Montserrateng";
+  font-weight: medium;
+  font-style: italic;
+  src: url("./fonts/montserrateng/static/Montserrat-MediumItalic.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: "Montserrateng";
   font-weight: bold;
   src: url("./fonts/montserrateng/static/Montserrat-Bold.ttf")
     format("truetype");
@@ -114,6 +121,8 @@ body {
     opacity: 0;
     -webkit-transition: opacity 0.5s ease;
     transition: opacity 0.5s ease;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   }
   &.fixed_white {
     height: 85px;
@@ -217,17 +226,10 @@ body {
 }
 
 .hero {
-  .glassy_bg {
-    background: rgba(255, 255, 255, 0.27);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7.3px);
-    -webkit-backdrop-filter: blur(7.3px);
-  }
-  .mySwiper .swiper-slide {
-    opacity: 0.5;
-    transition: opacity 0.2s ease;
-  }
-  .mySwiper .swiper-slide-thumb-active {
-    opacity: 1;
+  .MySwiper {
+    .autoplay-progress div {
+      --progress: 0;
+      width: var(--progress);
+    }
   }
 }
