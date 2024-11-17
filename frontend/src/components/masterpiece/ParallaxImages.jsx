@@ -23,11 +23,20 @@ const ParallaxImages = () => {
           className={text.style}
         />
       ))}
+      <div className="absolute top-[70%] left-36 text-2xl">
+        Сreating as an interior — <br></br> releasing as a masterpiece
+      </div>
+      <div className="absolute top-[60%] right-[10%] text-2xl">
+        Where creativity meets <br></br>functionality
+      </div>
+      <div className="absolute top-[80%] right-[5%] text-2xl">
+        Turning your vision into <br></br> reality
+      </div>
     </div>
   );
 };
 
-const ParallaxImg = ({ className, alt, src, start, end }) => {
+const ParallaxImg = ({ className, src, start, end }) => {
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -44,7 +53,6 @@ const ParallaxImg = ({ className, alt, src, start, end }) => {
   return (
     <motion.img
       src={src}
-      alt={alt}
       className={className}
       ref={ref}
       style={{ transform, opacity }}
