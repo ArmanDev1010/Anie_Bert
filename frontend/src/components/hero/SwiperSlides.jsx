@@ -64,7 +64,7 @@ const SwiperSlides = () => {
             ></div>
           </SwiperSlide>
         ))}
-        <div className="absolute bottom-16 right-16 z-[4] max-desktopM:bottom-10 w-[500px]">
+        <div className="absolute bottom-16 right-[64px] z-[4] max-desktopM:bottom-10 w-[450px]">
           {["room", "type"].map((text, key) => (
             <div
               key={key}

@@ -37,7 +37,7 @@ const Navbar = () => {
       <div
         className={`navbar menu__panel ${
           pos ? "fixed_white" : ""
-        } fixed top-10 left-0 px-[99px] w-full h-[120px] flex items-center justify-between z-[10]`}
+        } fixed top-0 left-0 px-[64px] w-full h-[120px] flex items-center justify-between z-[10]`}
         style={{ transition: "all .3s ease" }}
       >
         {["white", "black"].map((text, key) => (

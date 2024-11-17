@@ -20,7 +20,7 @@ const BottomHero = () => {
 
   return (
     <>
-      <div className="absolute bottom-10 left-10 z-[4]">
+      <div className="absolute bottom-10 left-[64px] z-[4]">
         <h1
           className="text_white_effect pointer-events-none font-articulat text-[max(3vw,7.5vw)] leading-[1] pointer-events-none pb-8
         max-desktopM:text-[max(3vw,7vw)]"
