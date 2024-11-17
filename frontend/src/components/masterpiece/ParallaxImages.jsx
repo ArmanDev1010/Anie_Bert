@@ -11,9 +11,9 @@ const ParallaxImages = () => {
     <div className="mx-auto max-w-5xl px-4 pt-[200px]">
       {[
         { start: -200, end: 200, style: "w-1/3" },
-        { start: 200, end: -250, style: "mx-auto w-2/3" },
+        { start: 200, end: -250, style: "mx-auto w-2/4" },
         { start: -200, end: 200, style: "ml-auto w-1/3" },
-        { start: 0, end: -500, style: "ml-24 w-5/12" },
+        { start: -100, end: -500, style: "ml-24 w-5/12" },
       ].map((text, key) => (
         <ParallaxImg
           src={`/src/assets/scroll/${key + 1}.jpg`}

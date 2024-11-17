@@ -1,5 +1,9 @@
 import React from "react";
 
+import { FiMapPin } from "react-icons/fi";
+
+import { motion } from "framer-motion";
+
 const Services = () => {
   return (
     <section id="launch-schedule" className=" px-4 py-14 bg-white text-black">
