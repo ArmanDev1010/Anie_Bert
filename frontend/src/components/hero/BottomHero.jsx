@@ -22,7 +22,7 @@ const BottomHero = () => {
     <>
       <div className="absolute bottom-10 left-[64px] z-[4]">
         <h1
-          className="text_white_effect pointer-events-none font-articulat text-[max(3vw,7.5vw)] leading-[1] pointer-events-none pb-8
+          className="text_white_effect pointer-events-none font-articulat text-[max(3vw,7.5vw)] leading-[0.9] pointer-events-none mb-12
         max-desktopM:text-[max(3vw,7vw)]"
         >
           Transform <br></br> your space

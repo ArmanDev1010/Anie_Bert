@@ -61,8 +61,8 @@ const Navbar = () => {
           ))}
         </ul>
         <div
-          className={`menu_btn ${
-            showMenu ? "menu_btn_clicked" : ""
+          className={`menu_btn ${showMenu ? "menu_btn_clicked" : ""} ${
+            pos ? "menu_btn_fixed" : ""
           } cursor-pointer relative p-10 desktopS:hidden`}
           onClick={() => setShowMenu(!showMenu)}
         ></div>

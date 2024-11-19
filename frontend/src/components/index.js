@@ -9,6 +9,7 @@ import SwiperSlides from "./hero/SwiperSlides";
 import Masterpiece from "./masterpiece/Masterpiece";
 import CenterImage from "./masterpiece/CenterImage";
 import ParallaxImages from "./masterpiece/ParallaxImages";
+import Projects from "./Projects";
 
 export {
   Hero,
@@ -22,4 +23,5 @@ export {
   Masterpiece,
   CenterImage,
   ParallaxImages,
+  Projects,
 };

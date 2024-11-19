@@ -44,12 +44,13 @@ const TiltCard = ({ element }) => {
         rotateX,
         rotateY,
       }}
-      className="w-fit"
+      className="w-full h-full"
     >
       <div
         style={{
-          transform: "translateZ(70px)",
+          transform: "translateZ(100px)",
         }}
+        className="w-full h-full"
       >
         {element}
       </div>

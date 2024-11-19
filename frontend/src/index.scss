@@ -47,7 +47,7 @@ body {
 }
 @font-face {
   font-family: "Montserrateng";
-  font-weight: semibold;
+  font-weight: 600;
   src: url("./fonts/montserrateng/static/Montserrat-SemiBold.ttf")
     format("truetype");
 }
@@ -166,6 +166,10 @@ body {
     background-color: #fff;
     transition: all 0.2s ease;
   }
+  .menu_btn_fixed:after,
+  .menu_btn_fixed:before {
+    background: black;
+  }
   .menu_btn:before {
     top: 60%;
   }
@@ -236,5 +240,14 @@ body {
       --progress: 0;
       width: var(--progress);
     }
+  }
+}
+
+.projects {
+  h2 {
+    -webkit-text-fill-color: transparent;
+    background-image: radial-gradient(circle at 220% 210%, #fff0, #000000);
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 }
