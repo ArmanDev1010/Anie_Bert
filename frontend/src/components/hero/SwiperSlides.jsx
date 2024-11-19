@@ -22,7 +22,7 @@ const SwiperSlides = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [progress, setProgress] = useState(null);
 
-  if (activeIndex == undefined || activeIndex == null || activeIndex == NaN) {
+  if (activeIndex == undefined || activeIndex == null || isNaN(activeIndex)) {
     setActiveIndex(0);
   }
 

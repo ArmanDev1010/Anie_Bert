@@ -1,6 +1,5 @@
 import React from "react";
 import { CursorFollow, Hero, Masterpiece } from "../components";
-import Services from "../components/Services";
 
 // import { useQuery, gql } from "@apollo/client";
 
@@ -40,7 +39,6 @@ const Home = () => {
       <CursorFollow />
       <Hero />
       <Masterpiece />
-      <Services />
     </div>
   );
 };
