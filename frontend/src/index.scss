@@ -130,7 +130,7 @@ body {
     left: 0;
     padding: 0 64px;
     transition: all 0.5s ease;
-    height: 85px;
+    height: 80px;
     &::before {
       opacity: 1 !important;
     }
@@ -249,5 +249,19 @@ body {
     background-image: radial-gradient(circle at 220% 210%, #fff0, #000000);
     -webkit-background-clip: text;
     background-clip: text;
+  }
+}
+
+.random {
+  .social__tag {
+    font-weight: 700;
+    z-index: 10000;
+    font-size: 5vw;
+    color: transparent;
+    -webkit-text-stroke: 1px #fff;
+    text-stroke: 1px #fff;
+    text-shadow: none;
+    -webkit-transition: color 0.5s ease;
+    transition: color 0.5s ease;
   }
 }

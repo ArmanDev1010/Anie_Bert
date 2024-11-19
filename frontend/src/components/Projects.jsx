@@ -178,8 +178,10 @@ const Projects = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="absolute overflow-hidden pointer-events-none text-white overflow-hidden max-desktopM:text-2xl
-          top-1/2 left-1/2 z-[1] -translate-y-1/2 -translate-x-1/2 w-full text-center text-3xl font-semibold">
+          <div
+            className="absolute overflow-hidden pointer-events-none text-white overflow-hidden max-desktopM:text-2xl
+          top-1/2 left-1/2 z-[1] -translate-y-1/2 -translate-x-1/2 w-full text-center text-3xl font-semibold"
+          >
             <div className="group-hover:translate-y-[-110%] transition duration-300">
               See other projects
             </div>

@@ -126,13 +126,13 @@ const Modal = ({ handleClose }) => {
                         className="text-sm opacity-50 pointer-events-none transition-transform absolute right-3"
                       />
                     </div>
-                  ) : text == "Your comment" ? (
+                  ) : text.place == "Your comment" ? (
                     <textarea
                       {...register(text.clean, {
                         required: false,
                       })}
                       typeof="textarea"
-                      placeholder={text}
+                      placeholder={text.place}
                       className="w-full h-full outline-none resize-none min-h-[28px]"
                       style={{
                         borderBottom: "1px solid hsla(0, 0%, 83.9%, .3)",
