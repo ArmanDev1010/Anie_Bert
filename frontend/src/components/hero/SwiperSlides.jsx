@@ -11,8 +11,6 @@ import "swiper/css/thumbs";
 import { Autoplay, FreeMode, Thumbs } from "swiper/modules";
 import { useTranslation } from "react-i18next";
 
-import { GoArrowDown } from "react-icons/go";
-
 import { motion } from "framer-motion";
 
 import { TiltCard } from "../index";
@@ -110,10 +108,34 @@ const SwiperSlides = () => {
                 >
                   <div className="relative overflow-hidden">
                     <div className="group-hover:translate-y-[-110%] transition duration-300">
-                      <GoArrowDown className="rotate-[-135deg]" />
+                      <svg
+                        stroke="white"
+                        fill="white"
+                        strokeWidth="0"
+                        viewBox="0 0 24 24"
+                        className="pointer-events-none relative z-10 rotate-45 text-7xl text-black transition-all duration-700 ease-out group-hover:rotate-90"
+                        height="0.6em"
+                        width="0.6em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
+                      </svg>
                     </div>
                     <div className="text-black translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
-                      <GoArrowDown className="rotate-[-135deg]" />
+                      <svg
+                        stroke="black"
+                        fill="black"
+                        strokeWidth="0"
+                        viewBox="0 0 24 24"
+                        className="pointer-events-none relative z-10 rotate-45 text-7xl text-black transition-all duration-700 ease-out group-hover:rotate-90"
+                        height="0.6em"
+                        width="0.6em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
+                      </svg>
                     </div>
                   </div>
                 </div>
