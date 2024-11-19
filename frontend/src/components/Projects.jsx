@@ -38,11 +38,11 @@ const Projects = () => {
               visible: { opacity: 1, x: 0 },
               hidden: { opacity: 0, x: -100 },
             }}
-            className="text-[65px] font-semibold pointer-events-none mb-3 max-desktopM:text-[59px]"
+            className="text-[65px] font-[700] uppercase pointer-events-none mb-3 max-desktopM:text-[59px]"
           >
             Our Projects
           </motion.h2>
-          <p className="w-[35rem] text-[#78787d] text-[18px]">
+          <p className="w-[35rem] text-[#78787d] text-[17px]">
             We released more than 20+ commercial and private projects all around
             Armenia, providing our clients with custom solutions in stylish,
             functional, and well-thought-out designs.
@@ -117,7 +117,7 @@ const Projects = () => {
             centeredSlides={false}
             spaceBetween={30}
             loop={true}
-            speed={800}
+            speed={600}
             ref={sliderRef}
             modules={[Autoplay]}
             className="relative w-full h-full cursor-grab py-2 px-2"

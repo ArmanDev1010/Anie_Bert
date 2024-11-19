@@ -11,6 +11,7 @@ import CenterImage from "./masterpiece/CenterImage";
 import ParallaxImages from "./masterpiece/ParallaxImages";
 import Projects from "./Projects";
 import Random from "./Random";
+import Contact from "./Contact";
 
 export {
   Hero,
@@ -26,4 +27,5 @@ export {
   ParallaxImages,
   Projects,
   Random,
+  Contact,
 };

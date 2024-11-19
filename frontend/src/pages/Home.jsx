@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Contact,
   CursorFollow,
   Hero,
   Masterpiece,
@@ -47,6 +48,7 @@ const Home = () => {
       <Masterpiece />
       <Projects />
       <Random />
+      <Contact />
     </div>
   );
 };

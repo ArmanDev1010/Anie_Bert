@@ -26,9 +26,9 @@ const Random = () => {
   }
 
   return (
-    <div className="random relative h-[720px] w-full bg-[#080808] max-desktopM:h-[600px]">
+    <div className="random relative h-[720px] w-full bg-[#080808] max-desktopM:h-[650px]">
       <div className="">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[3] overflow-y-hidden max-desktopM:top-[45%]">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[3] overflow-y-hidden">
           <motion.h1
             initial="hidden"
             whileInView="visible"
@@ -41,7 +41,7 @@ const Random = () => {
               visible: { y: 0 },
               hidden: { y: 110 },
             }}
-            className="social__tag font-articulat cursor-pointer w-fit text-center hover:text-white max-desktopM:!text-[6vw]"
+            className="social__tag font-articulat cursor-pointer w-fit text-center hover:text-white max-desktopM:!text-[5.5vw]"
           >
             @aniebert_design
           </motion.h1>
@@ -132,10 +132,6 @@ const Random = () => {
             </motion.button>
           </div>
         </div>
-        <div
-          className="absolute top-0 left-0 w-full h-full pointer-events-none bg-cover bg-no-repeat opacity-20 z-[0]"
-          style={{ backgroundImage: "url(/src/assets/square-grid.png)" }}
-        ></div>
       </div>
       <MouseImageTrail
         renderImageBuffer={220}
