@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import Modal from "../Modal";
 import { AnimatePresence } from "framer-motion";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { motion } from "framer-motion";
 
 const BottomHero = () => {
   const { t } = useTranslation();
@@ -21,13 +22,37 @@ const BottomHero = () => {
   return (
     <>
       <div className="absolute bottom-10 left-[64px] z-[4]">
-        <h1
-          className="text_white_effect pointer-events-none font-articulat text-[max(3vw,7.5vw)] leading-[0.9] pointer-events-none mb-12
-        max-desktopM:text-[max(3vw,7vw)]"
+        <motion.h1
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{
+            ease: "easeIn",
+            y: { duration: 0.5, delay: 1.2 },
+            opacity: { delay: 1.2 },
+          }}
+          variants={{
+            visible: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: 60 },
+          }}
+          className="text_white_effect pointer-events-none font-articulat text-[max(3vw,5.5vw)] leading-[1.1] pointer-events-none mb-10
+        max-desktopM:text-[max(3vw,5.3vw)] max-desktopM:mb-8"
         >
-          Transform <br></br> your space
-        </h1>
-        <button
+          Building Visions & <br></br>Creating Reality
+        </motion.h1>
+        <motion.button
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{
+            ease: "easeIn",
+            y: { duration: 0.5, delay: 1.5 },
+            opacity: { delay: 1.5 },
+          }}
+          variants={{
+            visible: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: 60 },
+          }}
           className="group relative w-fit bg-transparent transition-shadow duration-300 hover:shadow-[0_0_80px_rgba(255,255,255,.10)]"
           onClick={() => (showModal ? close() : open())}
         >
@@ -50,7 +75,7 @@ const BottomHero = () => {
             </div>
             <img src="/src/assets/subtract.png" className="w-full h-full" />
           </div>
-        </button>
+        </motion.button>
       </div>
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
         {showModal && <Modal showModal={showModal} handleClose={close} />}

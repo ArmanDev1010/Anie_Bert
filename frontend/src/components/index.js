@@ -10,7 +10,7 @@ import Masterpiece from "./masterpiece/Masterpiece";
 import CenterImage from "./masterpiece/CenterImage";
 import ParallaxImages from "./masterpiece/ParallaxImages";
 import Projects from "./Projects";
-import Random from "./Random";
+import Random from "./random/Random";
 import Contact from "./Contact";
 
 export {

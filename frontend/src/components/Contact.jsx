@@ -3,6 +3,28 @@ import { useTranslation } from "react-i18next";
 import { IoLocationSharp } from "react-icons/io5";
 import Modal from "./Modal";
 import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { ease: "linear", delayChildren: 1, staggerChildren: 0.15 },
+  },
+};
+
+const item = {
+  hidden: {
+    y: 20,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.35 },
+  },
+};
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -22,15 +44,51 @@ const Contact = () => {
     <>
       <div className="bg-white relative w-full pt-[85px] pb-[185px] px-[210px] text-black">
         <div className="pointer-events-none mb-[63px]">
-          <p className="uppercase text-5xl font-[700] mb-5">Contact us</p>
-          <p className="max-w-[390px] text-gray-700">
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{
+              ease: "easeIn",
+              y: { duration: 0.5, delay: 0.4 },
+              opacity: { delay: 0.4 },
+            }}
+            variants={{
+              visible: { opacity: 1, y: 0 },
+              hidden: { opacity: 0, y: 60 },
+            }}
+            className="uppercase text-5xl font-[700] mb-5"
+          >
+            Contact us
+          </motion.p>
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{
+              ease: "easeIn",
+              y: { duration: 0.5, delay: 0.7 },
+              opacity: { delay: 0.7 },
+            }}
+            variants={{
+              visible: { opacity: 1, y: 0 },
+              hidden: { opacity: 0, y: 60 },
+            }}
+            className="max-w-[390px] text-gray-700"
+          >
             For cooperation or if you have any questions for us.
             info.aniebert@gmail.com
-          </p>
+          </motion.p>
         </div>
-        <ul className="flex gap-28 items-center mb-[63px]">
+        <motion.ul
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex gap-28 items-center mb-[63px]"
+        >
           {["socials", "location", "phone", "email"].map((text, key) => (
-            <li key={key} className="">
+            <motion.li key={key} variants={item} className="">
               {text == "socials" ? (
                 <ul className="flex gap-5">
                   {["fb", "In", "be", "pi"].map((text, key) => (
@@ -55,28 +113,50 @@ const Contact = () => {
                   {t(`navbar.${text}`)}
                 </p>
               )}
-            </li>
+            </motion.li>
           ))}
-        </ul>
-        <button
-          onClick={() => (showModal ? close() : open())}
-          className="group bg-transparent border-[1px] border-black cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-black"
+        </motion.ul>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{
+            ease: "easeIn",
+            y: { duration: 0.5, delay: 1.7 },
+            opacity: { delay: 1.7 },
+          }}
+          variants={{
+            visible: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: 40 },
+          }}
         >
-          <div className="pointer-events-none relative overflow-hidden text-center text-[16px] font-[600]">
-            <div className="group-hover:translate-y-[-110%] transition duration-300">
-              Send us a message
+          <button
+            onClick={() => (showModal ? close() : open())}
+            className="group bg-transparent border-[1px] border-black cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-black"
+          >
+            <div className="pointer-events-none relative overflow-hidden text-center text-[16px] font-[600]">
+              <div className="group-hover:translate-y-[-110%] transition duration-300">
+                Send us a message
+              </div>
+              <div className="text-white translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
+                Send us a message
+              </div>
             </div>
-            <div className="text-white translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
-              Send us a message
-            </div>
-          </div>
-        </button>
+          </button>
+        </motion.div>
         <div className="absolute bottom-1 left-0 w-full h-[60px] flex justify-between items-center px-[64px] pb-[29px]">
           <p className="text-[14px] pointer-events-none">
             © Copyright 2024. All rights reserved
           </p>
-          <p className="cursor-pointer">
-            Designed by <span className="font-semibold">Arman Manukyan</span>
+          <p className="pointer-events-none">
+            Designed by`{" "}
+            <a
+              href="https://armanmanukyan.am"
+              target="_blank"
+              className="font-semibold pointer-events-auto"
+            >
+              Arman Manukyan
+            </a>
           </p>
         </div>
         <div

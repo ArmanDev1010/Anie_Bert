@@ -26,24 +26,39 @@
   },
   "projects": {
     "1": {
-      "title": "Master Bedroom with Classic Details",
+      "title": "Bedroom with Classic Details ",
       "project": "Paronyanan 42",
       "area": "21 sq./m"
     },
     "2": {
+      "title": "Bathroom Design",
+      "project": "Paronyanan 42",
+      "area": "2.2 sq./m"
+    },
+    "3": {
       "title": "Master Bathroom Design",
       "project": "Paronyanan 42",
       "area": "8.4 sq./m"
     },
-    "3": {
+    "4": {
+      "title": "Gourmet 38",
+      "project": "",
+      "area": ""
+    },
+    "5": {
+      "title": "Besement’s Bathroom",
+      "project": "Alikhanyan 5 ",
+      "area": ""
+    },
+    "6": {
       "title": "Dining / Kitchen Design",
       "project": "",
       "area": "37/7 sq./m"
     },
-    "4": {
-      "title": "Kids room design",
+    "7": {
+      "title": "Kids Room Design",
       "project": "",
-      "area": "12 sq./m"
+      "area": "12.9 sq./m"
     }
   }
 }
