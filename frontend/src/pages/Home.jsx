@@ -5,7 +5,6 @@ import {
   Hero,
   Masterpiece,
   Projects,
-  Random,
 } from "../components";
 
 // import { useQuery, gql } from "@apollo/client";
@@ -47,7 +46,6 @@ const Home = () => {
       <Hero />
       <Masterpiece />
       <Projects />
-      <Random />
       <Contact />
     </div>
   );

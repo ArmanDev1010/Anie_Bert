@@ -103,7 +103,7 @@ const SwiperSlides = () => {
             <TiltCard
               element={
                 <div
-                  className="bg-black rounded-full text-4xl p-[24px] w-fit cursor-pointer 
+                  className="bg-secondary rounded-full text-4xl p-[24px] w-fit cursor-pointer 
                 group transition duration-200 ease hover:bg-white"
                 >
                   <div className="relative overflow-hidden">
@@ -122,7 +122,7 @@ const SwiperSlides = () => {
                         <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
                       </svg>
                     </div>
-                    <div className="text-black translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
+                    <div className="text-secondary translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
                       <svg
                         stroke="black"
                         fill="black"

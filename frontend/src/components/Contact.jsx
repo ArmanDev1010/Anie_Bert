@@ -132,7 +132,7 @@ const Contact = () => {
         >
           <button
             onClick={() => (showModal ? close() : open())}
-            className="group bg-transparent border-[1px] border-black cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-black"
+            className="group bg-transparent border-[1px] border-black cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-secondary"
           >
             <div className="pointer-events-none relative overflow-hidden text-center text-[16px] font-[600]">
               <div className="group-hover:translate-y-[-110%] transition duration-300">
@@ -153,7 +153,7 @@ const Contact = () => {
             <a
               href="https://armanmanukyan.am"
               target="_blank"
-              className="font-semibold pointer-events-auto"
+              className="font-semibold pointer-events-auto transition-opacity duration-200 hover:opacity-70"
             >
               Arman Manukyan
             </a>

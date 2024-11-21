@@ -68,13 +68,13 @@ const Navbar = () => {
         ></div>
         <button
           onClick={() => (showModal ? close() : open())}
-          className="group bg-transparent border-[1px] border-white/50 cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-white"
+          className="group border-[1px] border-white/50 cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-secondary"
         >
           <div className="pointer-events-none relative overflow-hidden text-center text-[16px] font-[600]">
             <div className="group-hover:translate-y-[-110%] transition duration-300">
               {t(`navbar.request`)}
             </div>
-            <div className="text-black translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
+            <div className="translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
               {t(`navbar.request`)}
             </div>
           </div>

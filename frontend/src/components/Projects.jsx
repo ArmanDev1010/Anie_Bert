@@ -48,41 +48,39 @@ const Project = () => {
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["15%", "-75%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["10%", "-75%"]);
 
   return (
     <div ref={targetRef} className="relative z-[3] h-[300vh]">
       <div className="sticky top-0 flex h-[100vh] items-center overflow-hidden pt-[80px]">
         <motion.ul style={{ x }} className="flex gap-8">
-          {["1", "2", "3", "4", "5", "6", "7", "8"].map((text, key) => (
+          {["1", "2", "3", "4", "5", "swiper"].map((text, key) => (
             <div
-              className="group bg-[#080808] relative w-[450px] h-[550px] overflow-hidden cursor-pointer 
+              className="group bg-[#080808] relative w-[650px] h-[550px] overflow-hidden cursor-pointer 
               bg-cover bg-center bg-no-repeat text-white transition duration-300 hover:-translate-y-5 max-desktopM:w-[400px] max-desktopM:h-[500px]"
               key={key}
               style={
-                text !== "8"
+                text !== "swiper"
                   ? {
-                      backgroundImage: `url(/src/assets/trail/${text}.jpg)`,
+                      backgroundImage: `url(/src/assets/projects/${text}.jpg)`,
                     }
                   : null
               }
             >
-              {text !== "8" ? (
+              {text !== "swiper" ? (
                 <>
-                  <div className="absolute bottom-0 z-[1] px-7 pb-5 w-full translate-y-[110%] group-hover:translate-y-[0%] transition duration-300">
-                    <p className="text-3xl font-semibold capitalize mb-4 max-desktopM:text-2xl">
-                      {t(`projects.${text}.title`)}
-                    </p>
-                    <div className="flex justify-between text-gray-300">
-                      <p>{t(`projects.${text}.project`)}</p>
-                      <p>{t(`projects.${text}.area`)}</p>
+                  <div
+                    className="text-[2.5vw] absolute w-full z-[1] text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                  font-semibold capitalize mb-4 overflow-hidden"
+                  >
+                    <div className="group-hover:translate-y-[-110%] transition duration-500">
+                      {t(`projects.${text}`)}
+                    </div>
+                    <div className="translate-y-[110%] group-hover:translate-y-[0%] transition duration-500 absolute top-0 bottom-0 left-0 right-0">
+                      {t(`projects.${text}`)}
                     </div>
                   </div>
-                  <div className=""></div>
-                  <div
-                    className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent opacity-0 
-  group-hover:opacity-80 transition-opacity duration-300"
-                  ></div>
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent opacity-80"></div>
                 </>
               ) : (
                 <>
@@ -111,8 +109,8 @@ const Project = () => {
                     ))}
                   </Swiper>
                   <div
-                    className="absolute overflow-hidden pointer-events-none text-white overflow-hidden max-desktopM:text-2xl
-          top-1/2 left-1/2 z-[1] -translate-y-1/2 -translate-x-1/2 w-full text-center text-3xl font-semibold"
+                    className="text-[2.5vw] absolute font-semibold text-center  overflow-hidden pointer-events-none text-white overflow-hidden 
+                    top-1/2 left-1/2 z-[1] -translate-y-1/2 -translate-x-1/2 w-full"
                   >
                     <div className="group-hover:translate-y-[-110%] transition duration-300">
                       See other projects

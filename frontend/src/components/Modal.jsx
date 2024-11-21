@@ -190,7 +190,7 @@ const Modal = ({ handleClose }) => {
               <button
                 disabled={isSubmitting}
                 type="submit"
-                className="group bg-black text-white border-[1px] border-black cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-white"
+                className="group bg-secondary text-white border-[1px] border-secondary cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-white"
               >
                 <div className="relative overflow-hidden text-center text-[16px] font-[600]">
                   <div className="group-hover:translate-y-[-110%] transition duration-300">

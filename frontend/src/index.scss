@@ -6,12 +6,16 @@
   scroll-behavior: smooth;
 }
 
+$primary__color: "#ffff";
+$secondary__color: "#071C39";
+$thirdly__color: "#000223";
+
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   overscroll-behavior: none;
-  background: #080808;
+  background: #000223;
 }
 
 @font-face {
@@ -148,7 +152,7 @@ body {
       color: black;
       border-color: black;
       &:hover {
-        background: black;
+        background: $secondary__color;
         div div:nth-child(2) {
           color: white !important;
         }
@@ -224,7 +228,7 @@ body {
     -webkit-box-sizing: initial;
     box-sizing: initial;
     border: 1px solid #fff;
-    background-color: #1d1f26 !important;
+    background-color: #261d1d !important;
     -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
