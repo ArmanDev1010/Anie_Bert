@@ -49,7 +49,7 @@ const RoundedButton = ({ children, ...attributes }) => {
         {children}
         <div
           ref={circle}
-          className="bg-[#253280] w-full h-[150%] absolute rounded-[50%] top-[100%]"
+          className="bg-secondary w-full h-[150%] absolute rounded-[50%] top-[100%]"
         ></div>
       </div>
     </Magnetic>

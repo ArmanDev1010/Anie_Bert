@@ -9,27 +9,7 @@ import {
   Services,
 } from "../components";
 
-// import { useQuery, gql } from "@apollo/client";
-
-// const REVIEWS = gql`
-//   query GetReviews {
-//     reviews {
-//       title
-//       body
-//       rating
-//       documentId
-//       image {
-//         url
-//       }
-//     }
-//   }
-// `;
-
 const Home = () => {
-  // const { loading, error, data } = useQuery(REVIEWS);
-
-  // if (loading) return <p></p>;
-  // if (error) return <p>error</p>;
 
   return (
     <div className="relative bg-white text-black">
@@ -46,11 +26,11 @@ const Home = () => {
       ))} */}
       <CursorFollow />
       <Hero />
-      <Masterpiece />
+      {/* <Masterpiece />
       <About />
       <Services />
       <Projects />
-      <Contact />
+      <Contact /> */}
     </div>
   );
 };

@@ -9,15 +9,12 @@ import "swiper/css/thumbs";
 
 // import required modules
 import { Autoplay, FreeMode, Thumbs } from "swiper/modules";
-import { useTranslation } from "react-i18next";
 
 import { motion } from "framer-motion";
 
 import { TiltCard } from "../index";
 
-const SwiperSlides = () => {
-  const { t } = useTranslation();
-
+const SwiperSlides = ({ data }) => {
   const [swiper, setSwiper] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [progress, setProgress] = useState(null);
@@ -51,13 +48,13 @@ const SwiperSlides = () => {
         modules={[Autoplay, FreeMode, Thumbs]}
         className="MySwiper relative w-full h-full"
       >
-        {["1", "2", "3", "4"].map((text, key) => (
+        {data.map((hero, key) => (
           <SwiperSlide key={key}>
             <div
               className="w-full h-full bg-center bg-no-repeat bg-cover"
               style={{
                 backgroundImage: `
-          linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.5)),url(/src/assets/swiper/${text}.jpg)`,
+          linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.5)),url(http://localhost:1337/${hero.image.url})`,
               }}
             ></div>
           </SwiperSlide>
@@ -90,12 +87,30 @@ const SwiperSlides = () => {
                   }
                   className="mb-5 font-medium italic"
                 >
-                  {t(`hero.swiper.${activeIndex + 1}.room`)}
+                  {data[activeIndex]?.type_of_room}
                 </motion.div>
               ) : (
-                <div className="text-gray-200">
-                  {t(`hero.swiper.${activeIndex + 1}.type`)}
-                </div>
+                <motion.div
+                  key={activeIndex}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false }}
+                  transition={{
+                    ease: "easeIn",
+                    y: { duration: 0.4, delay: 0.7 },
+                    opacity: { delay: 0.7 },
+                  }}
+                  variants={{
+                    visible: { opacity: 1, y: 0 },
+                    hidden: { opacity: 0, y: 35 },
+                  }}
+                  animate={
+                    progress?.toFixed(1) == "0.3" ? "visisble" : "hidden"
+                  }
+                  className="text-gray-200"
+                >
+                  {data[activeIndex]?.type_of_project}
+                </motion.div>
               )}
             </div>
           ))}
