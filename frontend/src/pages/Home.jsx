@@ -1,10 +1,12 @@
 import React from "react";
 import {
+  About,
   Contact,
   CursorFollow,
   Hero,
   Masterpiece,
   Projects,
+  Services,
 } from "../components";
 
 // import { useQuery, gql } from "@apollo/client";
@@ -45,6 +47,7 @@ const Home = () => {
       <CursorFollow />
       <Hero />
       <Masterpiece />
+      <Services />
       <Projects />
       <Contact />
     </div>

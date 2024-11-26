@@ -35,7 +35,7 @@ const BottomHero = () => {
             visible: { opacity: 1, y: 0 },
             hidden: { opacity: 0, y: 60 },
           }}
-          className="text_white_effect pointer-events-none font-articulat text-[max(3vw,5.5vw)] leading-[1.1] pointer-events-none mb-10
+          className="pointer-events-none font-articulat text-[max(3vw,5.5vw)] leading-[1.1] pointer-events-none mb-10
         max-desktopM:text-[max(3vw,5.3vw)] max-desktopM:mb-8"
         >
           Building Visions & <br></br>Creating Reality
