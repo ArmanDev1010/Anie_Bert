@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IoLocationSharp } from "react-icons/io5";
-import Modal from "./Modal";
+import Modal from "./reusable/Modal";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 

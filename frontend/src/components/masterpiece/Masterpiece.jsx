@@ -6,7 +6,7 @@ const SECTION_HEIGHT = 1700;
 
 const Masterpiece = () => {
   return (
-    <div className="relative bg-thirdly">
+    <div className="relative bg-thirdly text-white">
       <div
         style={{ height: `calc(${SECTION_HEIGHT}px + 100vh)` }}
         className="relative w-full"

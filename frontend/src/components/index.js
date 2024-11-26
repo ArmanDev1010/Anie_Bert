@@ -1,8 +1,8 @@
 import Hero from "./hero/Hero";
 import Navbar from "./hero/Navbar";
 import CursorFollow from "./CursorFollow";
-import TiltCard from "./TiltCard";
-import Modal from "./Modal";
+import TiltCard from "./reusable/TiltCard";
+import Modal from "./reusable/Modal";
 import BottomHero from "./hero/BottomHero";
 import Menu from "./hero/Menu";
 import SwiperSlides from "./hero/SwiperSlides";
@@ -13,6 +13,7 @@ import Projects from "./Projects";
 import Contact from "./Contact";
 import Services from "./Services";
 import About from "./About";
+import RoundedButton from "./reusable/RoundedButton";
 
 export {
   Hero,
@@ -30,4 +31,5 @@ export {
   Contact,
   Services,
   About,
+  RoundedButton,
 };

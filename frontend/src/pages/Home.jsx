@@ -32,7 +32,7 @@ const Home = () => {
   // if (error) return <p>error</p>;
 
   return (
-    <div className="relative">
+    <div className="relative bg-white text-black">
       {/* {data.reviews.map((review) => (
         <div key={review.documentId} className="">
           <div className="font-bold text-xl">{review.rating}</div>
@@ -47,6 +47,7 @@ const Home = () => {
       <CursorFollow />
       <Hero />
       <Masterpiece />
+      <About />
       <Services />
       <Projects />
       <Contact />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import Modal from "../Modal";
+import Modal from "../reusable/Modal";
 import { AnimatePresence } from "framer-motion";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { motion } from "framer-motion";
