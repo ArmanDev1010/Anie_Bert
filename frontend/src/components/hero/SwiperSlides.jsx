@@ -87,7 +87,7 @@ const SwiperSlides = ({ data }) => {
                   }
                   className="mb-5 font-medium italic"
                 >
-                  {data[activeIndex]?.type_of_room}
+                  {data[activeIndex]?.project_address}
                 </motion.div>
               ) : (
                 <motion.div
@@ -109,7 +109,7 @@ const SwiperSlides = ({ data }) => {
                   }
                   className="text-gray-200"
                 >
-                  {data[activeIndex]?.type_of_project}
+                  {data[activeIndex]?.type}
                 </motion.div>
               )}
             </div>

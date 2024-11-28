@@ -6,17 +6,17 @@ import {
   useTransform,
 } from "framer-motion";
 
-const ParallaxImages = () => {
+const ParallaxImages = ({ data }) => {
   return (
     <div className="mx-auto max-w-5xl px-4 pt-[200px]">
       {[
-        { start: -200, end: 200, style: "w-1/3" },
-        { start: 200, end: -250, style: "mx-auto w-2/4" },
-        { start: -200, end: 200, style: "ml-auto w-1/3" },
-        { start: -100, end: -500, style: "ml-24 w-5/12" },
+        { start: -200, end: 200, style: "w-1/3", url: data[0].url },
+        { start: 200, end: -250, style: "mx-auto w-2/4", url: data[1].url },
+        { start: -200, end: 200, style: "ml-auto w-1/3", url: data[2].url },
+        { start: -100, end: -500, style: "ml-24 w-5/12", url: data[3].url },
       ].map((text, key) => (
         <ParallaxImg
-          src={`/src/assets/scroll/${key + 1}.jpg`}
+          src={`http://localhost:1337/${text.url}`}
           key={key}
           start={text.start}
           end={text.end}

@@ -6,7 +6,7 @@ import {
   useTransform,
 } from "framer-motion";
 
-const CenterImage = ({ SECTION_HEIGHT }) => {
+const CenterImage = ({ SECTION_HEIGHT, data }) => {
   const { scrollY } = useScroll();
 
   const clip1 = useTransform(scrollY, [0, 1500], [25, 0]);
@@ -32,7 +32,7 @@ const CenterImage = ({ SECTION_HEIGHT }) => {
         clipPath,
         backgroundSize,
         opacity,
-        backgroundImage: "url(/src/assets/scroll/center__main.jpg)",
+        backgroundImage: `url(http://localhost:1337/${data})`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}

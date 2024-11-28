@@ -6,8 +6,8 @@ import { useQuery, gql } from "@apollo/client";
 const HEROES = gql`
   query GetHeros {
     heroes {
-      type_of_room
-      type_of_project
+      project_address
+      type
       documentId
       image {
         url
@@ -27,7 +27,7 @@ const Hero = () => {
       <div className="relative w-full h-full px-[64px] overflow-hidden">
         <Navbar />
         <BottomHero />
-        <SwiperSlides data={data.heroes} />
+        <SwiperSlides data={data?.heroes} />
       </div>
     </div>
   );

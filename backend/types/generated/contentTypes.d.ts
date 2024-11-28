@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiHeroHero extends Struct.CollectionTypeSchema {
   collectionName: 'heroes';
   info: {
+    description: '';
     displayName: 'Hero';
     pluralName: 'heroes';
     singularName: 'hero';
@@ -379,61 +380,71 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     image: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'> &
-      Schema.Attribute.Private;
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'>;
+    project_address: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
-    type_of_project: Schema.Attribute.String & Schema.Attribute.Required;
-    type_of_room: Schema.Attribute.String & Schema.Attribute.Required;
+    type: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiReviewReview extends Struct.CollectionTypeSchema {
-  collectionName: 'reviews';
+export interface ApiScrollScroll extends Struct.CollectionTypeSchema {
+  collectionName: 'scrolls';
   info: {
     description: '';
-    displayName: 'review';
-    pluralName: 'reviews';
-    singularName: 'review';
+    displayName: 'Scroll';
+    pluralName: 'scrolls';
+    singularName: 'scroll';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    body: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images' | 'files'> &
+    images: Schema.Attribute.Media<'images' | 'files', true> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::review.review'
+      'api::scroll.scroll'
     > &
       Schema.Attribute.Private;
+    main_image: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    rating: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          max: 10;
-          min: 1;
-        },
-        number
-      >;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -950,7 +961,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::hero.hero': ApiHeroHero;
-      'api::review.review': ApiReviewReview;
+      'api::scroll.scroll': ApiScrollScroll;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
