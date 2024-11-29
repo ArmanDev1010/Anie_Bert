@@ -10,6 +10,18 @@ $primary__color: "#ffff";
 $secondary__color: "#071C39";
 $thirdly__color: "#000223";
 
+$desktopB: "1920px";
+$desktopBM: "1750px";
+$desktopM: "1600px";
+$desktopS: "1440px";
+$desktopSS: "1280px";
+$tabletB: "1080px";
+$tabletM: "900px";
+$tabletS: "700px";
+$mobileB: "550px";
+$mobileM: "400px";
+$mobileS: "360px";
+
 body {
   padding: 0;
   margin: 0;
@@ -248,11 +260,39 @@ body {
 }
 
 .projects {
-  h2 {
-    -webkit-text-fill-color: transparent;
-    background-image: radial-gradient(circle at 220% 210%, #fff0, #000000);
-    -webkit-background-clip: text;
-    background-clip: text;
+  .project {
+    background: #080808;
+    position: relative;
+    width: 650px;
+    height: 550px;
+    overflow: hidden;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    transition: transform 0.3s;
+    & > div:nth-child(1) {
+      font-size: 2.5vw;
+      position: absolute;
+      font-weight: 600;
+      text-align: center;
+      overflow: hidden;
+      pointer-events: none;
+      color: white;
+      top: 50%;
+      left: 50%;
+      z-index: 5;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+    &:hover {
+      transform: translateY(-20px);
+    }
+    @media screen and (max-width: $desktopM) {
+      width: 600px;
+      height: 500px;
+    }
   }
 }
 

@@ -48,7 +48,7 @@
         }
       }
     },
-    "order": {
+    "hero_order": {
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -65,6 +65,19 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "project_thumbnail": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }

@@ -5,11 +5,9 @@ import { useQuery, gql } from "@apollo/client";
 
 const HEROES = gql`
   query GetHeroes {
-    heroes(filters: { is_hero: { eq: true } }) {
+    heroes(filters: { is_hero: { eq: true } }, sort: "hero_order") {
       project_address
       type
-      order
-      documentId
       image {
         url
       }
