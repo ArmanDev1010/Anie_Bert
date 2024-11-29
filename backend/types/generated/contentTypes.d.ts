@@ -373,7 +373,7 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
   collectionName: 'heroes';
   info: {
     description: '';
-    displayName: 'Hero';
+    displayName: 'Projects';
     pluralName: 'heroes';
     singularName: 'hero';
   };
@@ -396,8 +396,22 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
+    is_hero: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'>;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     project_address: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{

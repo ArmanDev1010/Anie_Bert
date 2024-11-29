@@ -17,6 +17,7 @@ import { TiltCard } from "../index";
 const SwiperSlides = ({ data }) => {
   const [swiper, setSwiper] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [swiperLength, setSwiperLength] = useState(null);
   const [progress, setProgress] = useState(null);
 
   if (activeIndex == undefined || activeIndex == null || isNaN(activeIndex)) {
@@ -32,6 +33,11 @@ const SwiperSlides = ({ data }) => {
     setProgress(progress);
   };
 
+  const swiperData = (swiper) => {
+    setSwiperLength(swiper?.slides.length);
+    setActiveIndex(swiper?.realIndex);
+  };
+
   return (
     <div className="absolute z-[3] top-0 left-0 w-full h-full">
       <Swiper
@@ -41,7 +47,7 @@ const SwiperSlides = ({ data }) => {
           disableOnInteraction: false,
         }}
         onSwiper={setSwiper}
-        onSlideChange={() => setActiveIndex(swiper?.realIndex)}
+        onSlideChange={() => swiperData(swiper)}
         speed={900}
         loop={true}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
@@ -163,7 +169,7 @@ const SwiperSlides = ({ data }) => {
           <div className="autoplay-progress w-[250px] h-[1px] bg-[#afb0b2]">
             <div ref={progressCircle} className="h-full bg-white"></div>
           </div>
-          <p>{activeIndex + 1 !== 4 ? activeIndex + 2 : 1}</p>
+          <p>{activeIndex + 1 !== swiperLength ? activeIndex + 2 : 1}</p>
         </div>
       </Swiper>
     </div>
