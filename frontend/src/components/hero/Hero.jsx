@@ -8,6 +8,7 @@ const HEROES = gql`
     heroes(filters: { is_hero: { eq: true } }, sort: "hero_order") {
       project_address
       type
+      documentId
       image {
         url
       }
@@ -26,7 +27,7 @@ const Hero = () => {
       <div className="relative w-full h-full px-[64px] overflow-hidden">
         <Navbar />
         <BottomHero />
-        <SwiperSlides data={data?.heroes} />
+        <SwiperSlides data={data.heroes} />
       </div>
     </div>
   );

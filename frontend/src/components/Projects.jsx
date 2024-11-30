@@ -11,11 +11,13 @@ import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 
 import { useQuery, gql } from "@apollo/client";
+import { Link } from "react-router-dom";
 
 const PROJECTS = gql`
   query GetProjects {
     heroes(filters: { show_inside_home: { eq: true } }, sort: "project_order") {
       project_address
+      documentId
       image {
         url
       }
@@ -31,8 +33,6 @@ const Projects = () => {
 
   if (loading) return <p></p>;
   if (error) return <p>error</p>;
-
-  console.log(data);
 
   return (
     <div className="projects relative bg-white text-black">
@@ -78,27 +78,28 @@ const Project = ({ data }) => {
       <div className="sticky top-0 flex h-[100vh] items-center overflow-hidden pt-[80px]">
         <motion.ul style={{ x }} className="flex gap-8">
           {data.map((text, key) => (
-            <div
-              className="group project"
-              key={key}
-              style={{
-                backgroundImage: `url(http://localhost:1337/${
-                  text.project_thumbnail?.url
-                    ? text.project_thumbnail?.url
-                    : text.image?.url
-                })`,
-              }}
-            >
-              <div className="">
-                <div className="group-hover:translate-y-[-110%] transition duration-500">
-                  {text.project_address}
+            <Link to={`project/${text.documentId}`} key={key}>
+              <div
+                className="group project"
+                style={{
+                  backgroundImage: `url(http://localhost:1337/${
+                    text.project_thumbnail?.url
+                      ? text.project_thumbnail?.url
+                      : text.image?.url
+                  })`,
+                }}
+              >
+                <div className="">
+                  <div className="group-hover:translate-y-[-110%] transition duration-500">
+                    {text.project_address}
+                  </div>
+                  <div className="translate-y-[110%] group-hover:translate-y-[0%] transition duration-500 absolute top-0 bottom-0 left-0 right-0">
+                    {text.project_address}
+                  </div>
                 </div>
-                <div className="translate-y-[110%] group-hover:translate-y-[0%] transition duration-500 absolute top-0 bottom-0 left-0 right-0">
-                  {text.project_address}
-                </div>
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent opacity-80"></div>
               </div>
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent opacity-80"></div>
-            </div>
+            </Link>
           ))}
           <div className="group project">
             <div>

@@ -2,7 +2,6 @@ import React from "react";
 import {
   About,
   Contact,
-  CursorFollow,
   Hero,
   Masterpiece,
   Projects,
@@ -13,7 +12,6 @@ const Home = () => {
 
   return (
     <div className="relative bg-white text-black">
-      <CursorFollow />
       <Hero />
       <Masterpiece />
       <About />

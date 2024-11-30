@@ -9,10 +9,11 @@ import { translationAM, translationEN, translationRU } from "./languages";
 
 import { MyContext } from "./context/MyContext";
 
-import { Home } from "./pages/index";
-import Review from "./pages/Review";
+import { Home, Project } from "./pages/index";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
+import { CursorFollow } from "./components";
 
 const resources = {
   am: {
@@ -43,11 +44,12 @@ const client = new ApolloClient({
 const App = () => {
   return (
     <div className="font-montserrat bg-[#080808] text-white">
+      <CursorFollow />
       <MyContext.Provider value={{}}>
         <ApolloProvider client={client}>
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/review/:documentId" element={<Review />} />
+            <Route path="/project/:documentId" element={<Project />} />
           </Routes>
         </ApolloProvider>
       </MyContext.Provider>

@@ -13,12 +13,14 @@ import { Autoplay, FreeMode, Thumbs } from "swiper/modules";
 import { motion } from "framer-motion";
 
 import { TiltCard } from "../index";
+import { Link } from "react-router-dom";
 
 const SwiperSlides = ({ data }) => {
   const [swiper, setSwiper] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [swiperLength, setSwiperLength] = useState(null);
   const [progress, setProgress] = useState(null);
+  const [activeId, setActiveId] = useState(null);
 
   if (activeIndex == undefined || activeIndex == null || isNaN(activeIndex)) {
     setActiveIndex(0);
@@ -37,6 +39,10 @@ const SwiperSlides = ({ data }) => {
     setSwiperLength(swiper?.slides.length);
     setActiveIndex(swiper?.realIndex);
   };
+
+  useEffect(() => {
+    setActiveId(data[activeIndex].documentId);
+  }, [activeIndex]);
 
   return (
     <div className="absolute z-[3] top-0 left-0 w-full h-full">
@@ -120,49 +126,51 @@ const SwiperSlides = ({ data }) => {
               )}
             </div>
           ))}
-          <div className="w-fit relative">
-            <TiltCard
-              element={
-                <div
-                  className="bg-secondary rounded-full text-4xl p-[24px] w-fit cursor-pointer 
+          <Link to={`project/${activeId}`}>
+            <div className="w-fit relative">
+              <TiltCard
+                element={
+                  <div
+                    className="bg-secondary rounded-full text-4xl p-[24px] w-fit cursor-pointer 
                 group transition duration-200 ease hover:bg-white"
-                >
-                  <div className="relative overflow-hidden">
-                    <div className="group-hover:translate-y-[-110%] transition duration-300">
-                      <svg
-                        stroke="white"
-                        fill="white"
-                        strokeWidth="0"
-                        viewBox="0 0 24 24"
-                        className="pointer-events-none relative z-10 rotate-45 text-7xl text-black transition-all duration-700 ease-out group-hover:rotate-90"
-                        height="0.6em"
-                        width="0.6em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path fill="none" d="M0 0h24v24H0V0z"></path>
-                        <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
-                      </svg>
-                    </div>
-                    <div className="text-secondary translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
-                      <svg
-                        stroke="black"
-                        fill="black"
-                        strokeWidth="0"
-                        viewBox="0 0 24 24"
-                        className="pointer-events-none relative z-10 rotate-45 text-7xl text-black transition-all duration-700 ease-out group-hover:rotate-90"
-                        height="0.6em"
-                        width="0.6em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path fill="none" d="M0 0h24v24H0V0z"></path>
-                        <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
-                      </svg>
+                  >
+                    <div className="relative overflow-hidden">
+                      <div className="group-hover:translate-y-[-110%] transition duration-300">
+                        <svg
+                          stroke="white"
+                          fill="white"
+                          strokeWidth="0"
+                          viewBox="0 0 24 24"
+                          className="pointer-events-none relative z-10 rotate-45 text-7xl text-black transition-all duration-700 ease-out group-hover:rotate-90"
+                          height="0.6em"
+                          width="0.6em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                          <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
+                        </svg>
+                      </div>
+                      <div className="text-secondary translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
+                        <svg
+                          stroke="black"
+                          fill="black"
+                          strokeWidth="0"
+                          viewBox="0 0 24 24"
+                          className="pointer-events-none relative z-10 rotate-45 text-7xl text-black transition-all duration-700 ease-out group-hover:rotate-90"
+                          height="0.6em"
+                          width="0.6em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                          <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
+                        </svg>
+                      </div>
                     </div>
                   </div>
-                </div>
-              }
-            />
-          </div>
+                }
+              />
+            </div>
+          </Link>
         </div>
         <div className="absolute right-[216px] top-1/2 -translate-y-1/2 z-[10] flex items-center gap-4 font-semibold pointer-events-none">
           <p>{activeIndex + 1}</p>
