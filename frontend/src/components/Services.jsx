@@ -96,7 +96,7 @@ const Services = () => {
 
   return (
     <div
-      className="flex items-center px-[200px] pt-[40px] flex-col bg-white text-black"
+      className="flex items-center px-[200px] pt-[40px] flex-col bg-white text-black max-desktopM:px-[150px]"
       onMouseMove={(e) => {
         moveItems(e.clientX, e.clientY);
       }}
@@ -114,9 +114,9 @@ const Services = () => {
                 manageModal(false, index, e.clientX, e.clientY);
               }}
               className="group flex w-full justify-between items-center py-[50px] px-[100px] border-t-[1px] border-t-[rgb(201,201,201)] cursor-pointer transition-all duration-200
-              last:border-b-[1px] last:border-b-[rgb(201,201,201)] hover:opacity-50"
+              last:border-b-[1px] last:border-b-[rgb(201,201,201)] hover:opacity-50 max-desktopM:px-[70px]"
             >
-              <h2 className="text-[45px] m-0 font-semibold text-[#222] transition-all duration-[0.4s] group-hover:-translate-x-[10px]">
+              <h2 className="text-[45px] m-0 font-semibold text-[#222] transition-all duration-[0.4s] group-hover:-translate-x-[10px] max-desktopM:text-[40px]">
                 {service.title}
               </h2>
               <p className="transition-all duration-[0.4s] font-medium group-hover:translate-x-[10px]">
