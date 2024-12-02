@@ -4,8 +4,9 @@ import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
 
 import { Modal, Menu } from "../index";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ invert_colors }) => {
   const { t } = useTranslation();
 
   const [pos, setPos] = useState(false);
@@ -35,21 +36,23 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`navbar menu__panel ${
-          pos ? "fixed_white" : ""
+        className={`navbar menu__panel ${pos ? "fixed_white" : ""} ${
+          invert_colors && !showMenu && !pos ? "invert_color" : ""
         } fixed top-0 left-0 px-[64px] w-full h-[120px] flex items-center justify-between z-[10]`}
         style={{ transition: "all .3s ease" }}
       >
-        {["white", "black"].map((text, key) => (
-          <img
-            src={`/src/assets/logos/${text}_logo_text.png`}
-            alt="logo"
-            key={key}
-            className={`w-[210px] ${
-              text == "black" ? "hidden" : ""
-            } cursor-pointer max-desktopM:w-[190px]`}
-          />
-        ))}
+        <Link to={"/"}>
+          {["white", "black"].map((text, key) => (
+            <img
+              src={`/src/assets/logos/${text}_logo_text.png`}
+              alt="logo"
+              key={key}
+              className={`w-[210px] ${
+                text == "black" ? "hidden" : ""
+              } cursor-pointer max-desktopM:w-[190px]`}
+            />
+          ))}
+        </Link>
         <ul className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 max-desktopS:hidden flex items-center gap-14">
           {["projects", "about", "services", "contacts"].map((text, key) => (
             <li
@@ -68,7 +71,9 @@ const Navbar = () => {
         ></div>
         <button
           onClick={() => (showModal ? close() : open())}
-          className="group border-[1px] border-white/50 cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-secondary"
+          className={`group ${
+            showMenu && invert_colors && !pos ? "text-white" : ""
+          } border-[1px] border-white/50 cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-secondary`}
         >
           <div className="pointer-events-none relative overflow-hidden text-center text-[16px] font-[600]">
             <div className="group-hover:translate-y-[-110%] transition duration-300">

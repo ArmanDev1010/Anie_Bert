@@ -200,6 +200,42 @@ body {
     transform: rotate(-45deg);
     top: 50%;
   }
+  &.invert_color {
+    img:nth-child(1) {
+      display: none;
+    }
+    img:nth-child(2) {
+      display: block;
+    }
+    li {
+      color: black;
+      font-weight: 600;
+    }
+    button {
+      color: black;
+      border-color: black;
+      &:hover {
+        background: $secondary__color;
+        div div:nth-child(2) {
+          color: white !important;
+        }
+      }
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #eeee;
+      height: 2px;
+      width: 90%;
+    }
+    .menu_btn:after,
+    .menu_btn:before {
+      background-color: #000000;
+    }
+  }
 }
 
 .modal {
