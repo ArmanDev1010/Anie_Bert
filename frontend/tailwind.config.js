@@ -5,8 +5,8 @@ export default {
     extend: {
       colors: {
         primary: "#ffff",
-        secondary: "#071C39",
-        thirdly: "#000223"
+        secondary: "#36454f",
+        thirdly: "#334152"
       },
       fontFamily: {
         montserrat: ["Montserrateng", "sans-serif"],

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_image_images",
+  "info": {
+    "displayName": "image"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "kitchen",
+        "bathroom",
+        "bedroom",
+        "living room",
+        "kids room"
+      ]
+    }
+  }
+}

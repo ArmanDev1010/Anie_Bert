@@ -98,20 +98,6 @@
       "default": false,
       "required": true
     },
-    "images": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
-    },
     "location": {
       "pluginOptions": {
         "i18n": {
@@ -135,6 +121,17 @@
         }
       },
       "type": "string"
+    },
+    "images": {
+      "displayName": "image",
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "image.image"
     }
   }
 }

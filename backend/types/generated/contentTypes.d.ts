@@ -408,7 +408,7 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
-    images: Schema.Attribute.Media<'images' | 'files', true> &
+    images: Schema.Attribute.Component<'image.image', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
