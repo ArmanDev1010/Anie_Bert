@@ -58,8 +58,6 @@ const TheProject = ({ data, images }) => {
   const [filteredItems, setFilteredItems] = useState(images);
   const [items, setItems] = useState([]);
 
-  console.log("living_room".replace(/_/g, " "));
-
   useEffect(() => {
     const filtered_arr = images.filter(
       (value, index, self) =>

@@ -2,7 +2,7 @@ import React from "react";
 
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { IoLocationSharp } from "react-icons/io5";
 
@@ -19,19 +19,20 @@ const Menu = ({ handleClose }) => {
         exit={{ opacity: 0 }}
       >
         <ul className="absolute left-[211px] top-[calc(50%+10px)] -translate-y-1/2 flex flex-col gap-[34px]">
-          {["home", "projects", "about", "services", "contacts"].map(
+          {["home", "project", "about", "services", "contact"].map(
             (text, key) => (
-              <li
-                key={key}
-                className={`${
-                  location.pathname == text ||
-                  (location.pathname == "/" && text == "home")
-                    ? "text-white"
-                    : "text-gray-500"
-                } text-[32px] font-[600] cursor-pointer translate duration-300 hover:opacity-50`}
-              >
-                {t(`navbar.${text}`)}
-              </li>
+              <Link to={text == "home" ? "/" : text} key={key}>
+                <li
+                  className={`${
+                    location.pathname.split("/")[1] == text ||
+                    (location.pathname == "/" && text == "home")
+                      ? "text-white"
+                      : "text-gray-500"
+                  } text-[32px] font-[600] cursor-pointer translate duration-300 hover:opacity-50`}
+                >
+                  {t(`navbar.${text}`)}
+                </li>
+              </Link>
             )
           )}
         </ul>
