@@ -56,8 +56,19 @@ const Project = () => {
 const TheProject = ({ data, images }) => {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [filteredItems, setFilteredItems] = useState(images);
+  const [items, setItems] = useState([]);
 
-  let filters = ["bedroom", "bathroom", "living room", "kitchen"];
+  console.log("living_room".replace(/_/g, " "));
+
+  useEffect(() => {
+    const filtered_arr = images.filter(
+      (value, index, self) =>
+        index === self.findIndex((t) => t.category === value.category)
+    );
+    setItems(filtered_arr.map((a) => a.category));
+  }, []);
+
+  let filters = items;
 
   const handleFilterButtonClick = (selectedCategory) => {
     if (selectedFilters.includes(selectedCategory)) {
@@ -150,7 +161,7 @@ const TheProject = ({ data, images }) => {
               selectedFilters?.includes(text) ? "bg-thirdly text-white" : ""
             }`}
           >
-            {text}
+            {text.replace(/_/g, " ")}
           </button>
         ))}
       </div>
