@@ -345,3 +345,79 @@ body {
     transition: color 0.5s ease;
   }
 }
+
+.zoom__parallax {
+  .el {
+    &:nth-of-type(2) {
+      .imageContainer {
+        top: -30vh;
+        left: 5vw;
+        width: 35vw;
+        height: 30vh;
+      }
+    }
+    &:nth-of-type(3) {
+      .imageContainer {
+        top: -10vh;
+        left: -25vw;
+        width: 20vw;
+        height: 45vh;
+      }
+    }
+    &:nth-of-type(4) {
+      .imageContainer {
+        left: 27.5vw;
+        width: 25vw;
+        height: 25vh;
+      }
+    }
+    &:nth-of-type(5) {
+      .imageContainer {
+        top: 27.5vh;
+        left: 5vw;
+        width: 20vw;
+        height: 25vh;
+      }
+    }
+    &:nth-of-type(6) {
+      .imageContainer {
+        top: 27.5vh;
+        left: -22.5vw;
+        width: 30vw;
+        height: 25vh;
+      }
+    }
+    &:nth-of-type(7) {
+      .imageContainer {
+        top: 22.5vh;
+        left: 25vw;
+        width: 15vw;
+        height: 15vh;
+      }
+    }
+  }
+}
+
+.parallax__scroll {
+  .imageContainer {
+    &:nth-of-type(1) {
+      height: 60vh;
+      width: 50vh;
+      z-index: 1;
+    }
+    &:nth-of-type(2) {
+      left: 55vw;
+      top: 15vh;
+      height: 40vh;
+      width: 30vh;
+      z-index: 2;
+    }
+    &:nth-of-type(3) {
+      left: 27.5vw;
+      top: 40vh;
+      height: 25vh;
+      width: 20vh;
+      z-index: 3;
+    }
+  }
+}

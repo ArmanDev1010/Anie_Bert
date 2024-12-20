@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { AnimatePresence } from "framer-motion";
 
-import { Modal, Menu } from "../index";
+import { Modal, Menu } from "../../index";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ invert_colors }) => {
@@ -55,12 +55,11 @@ const Navbar = ({ invert_colors }) => {
         </Link>
         <ul className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 max-desktopS:hidden flex items-center gap-14">
           {["projects", "about", "services", "contacts"].map((text, key) => (
-            <li
-              key={key}
-              className="text-[18px] font-[600] max-desktopM:text-[17px] cursor-pointer translate duration-300 hover:opacity-50"
-            >
-              {t(`navbar.${text}`)}
-            </li>
+            <Link to={`../${text}`} key={key}>
+              <li className="text-[18px] font-[600] max-desktopM:text-[17px] cursor-pointer translate duration-300 hover:opacity-50">
+                {t(`navbar.${text}`)}
+              </li>
+            </Link>
           ))}
         </ul>
         <div

@@ -6,6 +6,8 @@ import { Link, useLocation } from "react-router-dom";
 
 import { IoLocationSharp } from "react-icons/io5";
 
+import { Socials } from "../../";
+
 const Menu = ({ handleClose }) => {
   let location = useLocation();
   const { t } = useTranslation();
@@ -19,7 +21,7 @@ const Menu = ({ handleClose }) => {
         exit={{ opacity: 0 }}
       >
         <ul className="absolute left-[211px] top-[calc(50%+10px)] -translate-y-1/2 flex flex-col gap-[34px]">
-          {["home", "project", "about", "services", "contact"].map(
+          {["home", "projects", "about", "services"].map(
             (text, key) => (
               <Link to={text == "home" ? "/" : text} key={key}>
                 <li
@@ -41,16 +43,7 @@ const Menu = ({ handleClose }) => {
             {["socials", "location", "phone", "email"].map((text, key) => (
               <li key={key} className="">
                 {text == "socials" ? (
-                  <ul className="flex gap-5">
-                    {["fb", "In", "be", "pi"].map((text, key) => (
-                      <li
-                        key={key}
-                        className="capitalize font-[600] text-[18px] cursor-pointer transition-opacity duration-200 hover:opacity-70"
-                      >
-                        {text}
-                      </li>
-                    ))}
-                  </ul>
+                  <Socials />
                 ) : text == "location" ? (
                   <div
                     className="rounded-full py-1.5 px-5 border border-white cursor-pointer flex items-center gap-3 font-[500]

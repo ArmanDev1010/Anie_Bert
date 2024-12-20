@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IoLocationSharp } from "react-icons/io5";
-import Modal from "./reusable/Modal";
+import { Modal, Socials } from "./";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 
@@ -90,16 +90,7 @@ const Contact = () => {
           {["socials", "location", "phone", "email"].map((text, key) => (
             <motion.li key={key} variants={item} className="">
               {text == "socials" ? (
-                <ul className="flex gap-5">
-                  {["fb", "In", "be", "pi"].map((text, key) => (
-                    <li
-                      key={key}
-                      className="capitalize font-[600] text-[18px] cursor-pointer transition-opacity duration-200 hover:opacity-70"
-                    >
-                      {text}
-                    </li>
-                  ))}
-                </ul>
+                <Socials />
               ) : text == "location" ? (
                 <div
                   className="rounded-full py-1.5 px-5 border border-white cursor-pointer flex items-center gap-3 font-[500]

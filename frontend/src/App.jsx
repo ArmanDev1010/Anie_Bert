@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
@@ -9,11 +9,12 @@ import { translationAM, translationEN, translationRU } from "./languages";
 
 import { MyContext } from "./context/MyContext";
 
-import { Home, Project } from "./pages/index";
+import { Home, Project, About, Projects } from "./pages/index";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 import { CursorFollow } from "./components";
+import { AnimatePresence } from "framer-motion";
 
 const resources = {
   am: {
@@ -42,15 +43,21 @@ const client = new ApolloClient({
 });
 
 const App = () => {
+  const location = useLocation();
+
   return (
     <div className="font-montserrat bg-[#080808] text-white">
       <CursorFollow />
       <MyContext.Provider value={{}}>
         <ApolloProvider client={client}>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/project/:documentId" element={<Project />} />
-          </Routes>
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/projects" element={<Projects />} />
+              <Route exact path="/about" element={<About />} />
+              <Route path="/project/:documentId" element={<Project />} />
+            </Routes>
+          </AnimatePresence>
         </ApolloProvider>
       </MyContext.Provider>
     </div>

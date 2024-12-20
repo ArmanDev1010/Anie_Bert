@@ -2,7 +2,7 @@ import React from "react";
 
 import { motion } from "framer-motion";
 
-import RoundedButton from "./reusable/RoundedButton";
+import { RoundedButton } from "./";
 
 const slideUp = {
   initial: {
