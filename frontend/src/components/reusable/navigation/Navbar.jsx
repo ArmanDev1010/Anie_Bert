@@ -25,7 +25,7 @@ const Navbar = ({ invert_colors }) => {
   useEffect(() => {
     document.addEventListener("scroll", (e) => {
       let scrolled = document.scrollingElement.scrollTop;
-      if (scrolled >= 30) {
+      if (scrolled >= 20) {
         setPos(true);
       } else {
         setPos(false);

@@ -13,10 +13,13 @@ import Masterpiece from "./masterpiece/Masterpiece";
 import CenterImage from "./masterpiece/CenterImage";
 import ParallaxImages from "./masterpiece/ParallaxImages";
 
+// About
+import About from "./About";
+import Intro from "./about/Intro";
+
 import Projects from "./Projects";
 import Contact from "./Contact";
 import Services from "./Services";
-import About from "./About";
 
 import CursorFollow from "./CursorFollow";
 
@@ -47,4 +50,5 @@ export {
   RoundedButton,
   Magnetic,
   Socials,
+  Intro,
 };

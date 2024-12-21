@@ -6,7 +6,7 @@ export default {
       colors: {
         primary: "#ffff",
         secondary: "#36454f",
-        thirdly: "#334152"
+        thirdly: "#334152",
       },
       fontFamily: {
         montserrat: ["Montserrateng", "sans-serif"],
