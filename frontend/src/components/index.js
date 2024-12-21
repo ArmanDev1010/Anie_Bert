@@ -14,8 +14,9 @@ import CenterImage from "./masterpiece/CenterImage";
 import ParallaxImages from "./masterpiece/ParallaxImages";
 
 // About
-import About from "./About";
+import About from "./about/About";
 import Intro from "./about/Intro";
+import Description from "./about/Description";
 
 import Projects from "./Projects";
 import Contact from "./Contact";
@@ -51,4 +52,5 @@ export {
   Magnetic,
   Socials,
   Intro,
+  Description,
 };
