@@ -18,7 +18,7 @@ const PROJECTS = gql`
     heroes(filters: { show_inside_home: { eq: true } }, sort: "project_order") {
       project_address
       documentId
-      image {
+      image {z
         url
       }
       project_thumbnail {

@@ -5,9 +5,10 @@ import { useQuery, gql } from "@apollo/client";
 
 const TEAM = gql`
   query GetTeam {
-    teams {
+    teams(sort: "order") {
       name
       role
+      social_media_link
       photo {
         url
       }
@@ -36,7 +37,7 @@ const Team = () => {
         <ul className="grid grid-cols-3 gap-7">
           {team.map((text, key) => (
             <li key={key} className="group relative pb-2">
-              <Link to={``}>
+              <Link to={text.social_media_link}>
                 <div
                   className="h-[30vw] relative wrap overflow-hidden mb-5 bg-cover bg-center bg-no-repeat group-hover:rounded-[20px] transition-[cubic-bezier(.165,.84,.44,1)] duration-[0.6s]"
                   style={{
@@ -52,6 +53,10 @@ const Team = () => {
           ))}
         </ul>
       </div>
+      <div
+        className="absolute top-0 left-0 w-full h-full pointer-events-none bg-cover bg-no-repeat opacity-20 z-[0]"
+        style={{ backgroundImage: "url(/src/assets/line-grid.png)" }}
+      ></div>
     </div>
   );
 };

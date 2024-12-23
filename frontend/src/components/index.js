@@ -15,7 +15,7 @@ import ParallaxImages from "./masterpiece/ParallaxImages";
 
 // About
 import About from "./about/About";
-import Intro from "./about/Intro";
+import SmoothParallax from "./about/SmoothParallax";
 import Description from "./about/Description";
 import ParallaxScroll from "./about/ParallaxScroll";
 import Team from "./about/Team";
@@ -53,8 +53,8 @@ export {
   RoundedButton,
   Magnetic,
   Socials,
-  Intro,
   Description,
   Team,
   ParallaxScroll,
+  SmoothParallax,
 };

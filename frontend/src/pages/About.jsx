@@ -2,9 +2,9 @@ import React from "react";
 import {
   Contact,
   Description,
-  Intro,
   Navbar,
   ParallaxScroll,
+  SmoothParallax,
   Team,
 } from "../components";
 
@@ -30,10 +30,9 @@ const About = () => {
   if (error) return <p>error</p>;
 
   return (
-    <div className="about relative bg-white text-black">
-      <Navbar invert_colors={true} />
-      <Intro />
-      <div className="h-[130vh]"></div>
+    <div className="about relative bg-white">
+      <Navbar />
+      <SmoothParallax />
       <Description />
       <ParallaxScroll />
       <Team />
