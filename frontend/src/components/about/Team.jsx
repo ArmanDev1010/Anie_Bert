@@ -27,6 +27,10 @@ const Team = () => {
           ))}
         </ul>
       </div>
+      <div
+        className="absolute top-0 left-0 w-full h-full pointer-events-none bg-cover bg-no-repeat opacity-40 z-[0]"
+        style={{ backgroundImage: "url(/src/assets/grid-squares.png)" }}
+      ></div>
     </div>
   );
 };

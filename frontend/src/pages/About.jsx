@@ -4,8 +4,8 @@ import {
   Description,
   Intro,
   Navbar,
+  ParallaxScroll,
   Team,
-  ZoomParallax,
 } from "../components";
 
 import { useQuery, gql } from "@apollo/client";
@@ -35,6 +35,7 @@ const About = () => {
       <Intro />
       <div className="h-[130vh]"></div>
       <Description />
+      <ParallaxScroll />
       <Team />
       <Contact />
     </div>
