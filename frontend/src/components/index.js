@@ -18,6 +18,7 @@ import About from "./about/About";
 import Intro from "./about/Intro";
 import Description from "./about/Description";
 import ZoomParallax from "./about/ZoomParallax";
+import Team from "./about/Team";
 
 import Projects from "./Projects";
 import Contact from "./Contact";
@@ -55,4 +56,5 @@ export {
   Intro,
   Description,
   ZoomParallax,
+  Team,
 };

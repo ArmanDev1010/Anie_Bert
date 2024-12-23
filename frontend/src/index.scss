@@ -396,4 +396,35 @@ body {
       }
     }
   }
+  .team {
+    .group::after {
+      background-color: #ffffff;
+      bottom: 0;
+      content: "";
+      height: 0.0694444444vw;
+      left: 0;
+      position: absolute;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
+      width: 100%;
+      will-change: transform;
+    }
+    .group:hover::after {
+      transform: scaleX(100%);
+    }
+    .wrap::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: inherit;
+      transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .group:hover .wrap::before {
+      transform: scale(1.05);
+    }
+  }
 }

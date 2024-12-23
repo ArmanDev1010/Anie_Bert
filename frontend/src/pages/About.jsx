@@ -4,6 +4,7 @@ import {
   Description,
   Intro,
   Navbar,
+  Team,
   ZoomParallax,
 } from "../components";
 
@@ -34,7 +35,7 @@ const About = () => {
       <Intro />
       <div className="h-[130vh]"></div>
       <Description />
-      <ZoomParallax />
+      <Team />
       <Contact />
     </div>
   );
