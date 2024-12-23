@@ -12,7 +12,7 @@ const phrases = [
 
 const Description = () => {
   return (
-    <div className="relative text-black text-[2.7vw] font-articulat uppercase mt-[38vw] ml-[5vw]">
+    <div className="relative text-black text-[2.7vw] font-articulat uppercase my-[50px] ml-[5vw]">
       {phrases.map((phrase, index) => {
         return <Phrase key={index}>{phrase}</Phrase>;
       })}

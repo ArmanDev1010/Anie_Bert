@@ -17,6 +17,7 @@ import ParallaxImages from "./masterpiece/ParallaxImages";
 import About from "./about/About";
 import Intro from "./about/Intro";
 import Description from "./about/Description";
+import ZoomParallax from "./about/ZoomParallax";
 
 import Projects from "./Projects";
 import Contact from "./Contact";
@@ -53,4 +54,5 @@ export {
   Socials,
   Intro,
   Description,
+  ZoomParallax,
 };

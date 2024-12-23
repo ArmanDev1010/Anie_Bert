@@ -1,6 +1,11 @@
-import React, { useRef } from "react";
-import { Contact, Description, Intro, Navbar } from "../components";
-import { useScroll, useTransform, motion } from "framer-motion";
+import React from "react";
+import {
+  Contact,
+  Description,
+  Intro,
+  Navbar,
+  ZoomParallax,
+} from "../components";
 
 import { useQuery, gql } from "@apollo/client";
 
@@ -24,10 +29,13 @@ const About = () => {
   if (error) return <p>error</p>;
 
   return (
-    <div className="relative bg-white text-black">
+    <div className="about relative bg-white text-black">
+      <Navbar invert_colors={true} />
       <Intro />
+      <div className="h-[130vh]"></div>
       <Description />
-      <div className="h-screen"></div>
+      <ZoomParallax />
+      <Contact />
     </div>
   );
 };

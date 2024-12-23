@@ -28,7 +28,7 @@ const Intro = () => {
   }, []);
 
   return (
-    <div className="relative w-full flex justify-center">
+    <div className="absolute top-0 w-full flex justify-center">
       <div
         className="w-full h-[130vh] absolute brightness-[70%]"
         ref={background}
