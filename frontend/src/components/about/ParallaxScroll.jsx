@@ -11,34 +11,34 @@ const ParallaxScroll = () => {
   const md = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const lg = useTransform(scrollYProgress, [0, 1], [0, -250]);
 
-  const images = [
-    {
-      src: "",
-      y: 0,
-    },
-    {
-      src: "",
-      y: lg,
-    },
-    {
-      src: "",
-      y: md,
-    },
-  ];
-
   return (
     <div ref={container} className="parallax_scroll mt-[10vh] min-h-[75vh]">
       <div className="flex w-full justify-center relative mt-[5vh]">
-        {images.map(({ src, y }, i) => {
+        {[
+          {
+            src: "1",
+            y: 0,
+          },
+          {
+            src: "4",
+            y: lg,
+          },
+          {
+            src: "8",
+            y: md,
+          },
+        ].map(({ src, y }, key) => {
           return (
             <motion.div
               style={{ y }}
-              key={`i_${i}`}
+              key={key}
               className="imageContainer absolute"
             >
               <div
                 className="w-full h-full bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: "url(/src/assets/1.jpg)" }}
+                style={{
+                  backgroundImage: `url(/src/assets/about_images/${src}.jpg)`,
+                }}
               ></div>
             </motion.div>
           );

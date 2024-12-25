@@ -17,12 +17,26 @@
   },
   "attributes": {
     "name": {
+      "type": "string",
+      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
+      }
+    },
+    "photo": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
       },
-      "type": "string",
       "required": true
     },
     "role": {
@@ -33,20 +47,6 @@
       },
       "type": "string",
       "required": true
-    },
-    "photo": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
     },
     "social_media_link": {
       "pluginOptions": {

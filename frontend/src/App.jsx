@@ -14,7 +14,6 @@ import { Home, Project, About, Projects } from "./pages/index";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 import { CursorFollow } from "./components";
-import { AnimatePresence } from "framer-motion";
 
 const resources = {
   am: {
@@ -50,14 +49,12 @@ const App = () => {
       <CursorFollow />
       <MyContext.Provider value={{}}>
         <ApolloProvider client={client}>
-          <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/projects" element={<Projects />} />
-              <Route exact path="/about" element={<About />} />
-              <Route path="/project/:documentId" element={<Project />} />
-            </Routes>
-          </AnimatePresence>
+          <Routes location={location} key={location.pathname}>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/projects" element={<Projects />} />
+            <Route exact path="/about" element={<About />} />
+            <Route path="/project/:documentId" element={<Project />} />
+          </Routes>
         </ApolloProvider>
       </MyContext.Provider>
     </div>

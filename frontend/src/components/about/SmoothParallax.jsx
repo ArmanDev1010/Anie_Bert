@@ -1,21 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
-
-import Lenis from "@studio-freight/lenis";
 import { useTransform, useScroll, motion } from "framer-motion";
+import { useQuery, gql } from "@apollo/client";
 
 const images = [
   "1.jpg",
   "2.jpg",
-  "1.jpg",
-  "2.jpg",
-  "1.jpg",
-  "2.jpg",
-  "1.jpg",
-  "2.jpg",
-  "1.jpg",
-  "2.jpg",
-  "1.jpg",
-  "2.jpg",
+  "3.jpg",
+  "4.jpg",
+  "5.jpg",
+  "6.jpg",
+  "7.jpg",
+  "8.jpg",
+  "9.jpg",
+  "10.jpg",
+  "11.jpg",
+  "12.jpg",
 ];
 
 const SmoothParallax = () => {
@@ -33,19 +32,12 @@ const SmoothParallax = () => {
   const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3]);
 
   useEffect(() => {
-    const lenis = new Lenis();
-
-    const raf = (time) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-
     const resize = () => {
       setDimension({ width: window.innerWidth, height: window.innerHeight });
     };
 
     window.addEventListener("resize", resize);
-    requestAnimationFrame(raf);
+
     resize();
 
     return () => {
@@ -89,7 +81,7 @@ const Column = ({ images, y }) => {
           >
             <div
               className="w-full h-full bg-cover bg-center bg-no-repeat bg-white"
-              style={{ backgroundImage: `url(/src/assets/${src})` }}
+              style={{ backgroundImage: `url(/src/assets/about_images/${src})` }}
             />
           </div>
         );
