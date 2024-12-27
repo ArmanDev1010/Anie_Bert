@@ -54,7 +54,7 @@ const Project = () => {
 };
 
 const TheProject = ({ data, images }) => {
-  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [selectedFilters, setSelectedFilters] = useState(["all"]);
   const [filteredItems, setFilteredItems] = useState(images);
   const [items, setItems] = useState([]);
 
@@ -70,8 +70,7 @@ const TheProject = ({ data, images }) => {
 
   const handleFilterButtonClick = (selectedCategory) => {
     if (selectedFilters.includes(selectedCategory)) {
-      let filters = selectedFilters.filter((el) => el !== selectedCategory);
-      setSelectedFilters(filters);
+      setSelectedFilters(["all"]);
     } else {
       setSelectedFilters([selectedCategory]);
     }
@@ -82,7 +81,7 @@ const TheProject = ({ data, images }) => {
   }, [selectedFilters]);
 
   const filterItems = () => {
-    if (selectedFilters.length > 0) {
+    if (selectedFilters.length > 0 && selectedFilters[0] !== "all") {
       let tempItems = selectedFilters.map((selectedCategory) => {
         let temp = images.filter(
           (images) => images.category === selectedCategory
@@ -128,7 +127,7 @@ const TheProject = ({ data, images }) => {
             visible: { opacity: 1, y: 0 },
             hidden: { opacity: 0, y: 60 },
           }}
-          className="pointer-events-none font-articulat text-[max(3vw,5.5vw)] leading-[1.1] pointer-events-none
+          className="pointer-events-none font-articulat text-[max(3vw,5.5vw)] text-secondary leading-[1.1] pointer-events-none
     max-desktopM:text-[max(3vw,5.2vw)]"
         >
           {data.project_address}
@@ -151,7 +150,7 @@ const TheProject = ({ data, images }) => {
         </ul>
       </div>
       <div className="flex gap-5 mb-10">
-        {filters.map((text, key) => (
+        {["all", ...filters].map((text, key) => (
           <button
             onClick={() => handleFilterButtonClick(text)}
             key={key}

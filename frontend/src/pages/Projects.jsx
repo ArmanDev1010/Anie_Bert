@@ -1,6 +1,6 @@
-import React from "react";
-import { Navbar, Contact } from "../components";
-import { useSpring, motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { Navbar, Contact, ImageSlideshow } from "../components";
+import { motion } from "framer-motion";
 import { useQuery, gql } from "@apollo/client";
 import { Link } from "react-router-dom";
 
@@ -11,6 +11,13 @@ const PROJECTS = gql`
       documentId
       image {
         url
+      }
+      type
+      year
+      images {
+        image {
+          url
+        }
       }
     }
   }
@@ -26,77 +33,154 @@ const Projects = () => {
     <div className="relative bg-white text-black">
       <Navbar invert_colors={true} />
       <div className="w-full h-[120px] mb-[30px]"></div>
-      <ScrollImages data={data.heroes} />
+      <ProjectsSection projects={data.heroes} />
       <Contact />
     </div>
   );
 };
 
-const ScrollImages = ({ data }) => {
-  const spring = {
-    stiffness: 150,
-    damping: 15,
-    mass: 0.1,
+const ProjectsSection = ({ projects }) => {
+  const [selectedFilters, setSelectedFilters] = useState(["all"]);
+  const [items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(projects);
+
+  useEffect(() => {
+    const filtered_arr = projects.filter(
+      (value, index, self) =>
+        index === self.findIndex((t) => t.type === value.type)
+    );
+    setItems(filtered_arr.map((a) => a.type));
+  }, []);
+
+  let filters = items;
+
+  const handleFilterButtonClick = (selectedCategory) => {
+    if (selectedFilters.includes(selectedCategory)) {
+      setSelectedFilters(["all"]);
+    } else {
+      setSelectedFilters([selectedCategory]);
+    }
   };
 
-  const mousePosition = {
-    x: useSpring(0, spring),
-    y: useSpring(0, spring),
-  };
+  useEffect(() => {
+    filterItems();
+  }, [selectedFilters]);
 
-  const mouseMove = (e) => {
-    const { clientX, clientY } = e;
-    const targetX = clientX - (window.innerWidth / 2) * 0.25;
-    const targetY = clientY - (window.innerWidth / 2) * 0.3;
-    mousePosition.x.set(targetX);
-    mousePosition.y.set(targetY);
-  };
-
-  return (
-    <div onMouseMove={mouseMove} className="">
-      {data.map((text, key) => {
-        return (
-          <Link key={key} to={`../project/${text.documentId}`}>
-            <Gallery mousePosition={mousePosition} text={text} />
-          </Link>
+  const filterItems = () => {
+    if (selectedFilters.length > 0 && selectedFilters[0] !== "all") {
+      let tempItems = selectedFilters.map((selectedCategory) => {
+        let temp = projects.filter(
+          (images) => images.type === selectedCategory
         );
-      })}
-    </div>
-  );
-};
+        return temp;
+      });
+      setFilteredItems(tempItems.flat());
+    } else {
+      setFilteredItems([...projects]);
+    }
+  };
 
-const Gallery = ({ mousePosition, text }) => {
-  const { x, y } = mousePosition;
+  const cleanText = (e) => {
+    return e.replace(/_/g, " ");
+  };
 
   return (
-    <div className="relative group [clip-path:polygon(0_0,0_100%,100%_100%,_100%_0)]">
-      <div className="w-full h-full relative flex flex-col">
-        <div
-          className="w-full h-[700px] bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(http://localhost:1337/${text.image.url})`,
+    <div className="relative projects mb-[70px]">
+      <div className="pt-[20px] pb-10 px-[64px] border-b border-secondary mb-10">
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{
+            ease: "easeIn",
+            y: { duration: 0.5, delay: 0.5 },
+            opacity: { delay: 0.5 },
           }}
-        />
-      </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] text-7xl text-black overflow-hidden">
-        <div className="group-hover:translate-y-[-110%] transition duration-500">
-          {text.project_address}
+          variants={{
+            visible: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: 60 },
+          }}
+          className="pointer-events-none font-articulat text-secondary uppercase text-[max(3vw,5.5vw)] leading-[1.1] 
+        pointer-events-none mb-[50px] max-desktopM:text-[max(3vw,5.2vw)]"
+        >
+          Projects
+        </motion.p>
+        <div className="flex items-center justify-between">
+          <div className="flex gap-5">
+            {["all", ...filters].map((text, key) => (
+              <button
+                onClick={() => handleFilterButtonClick(text)}
+                key={key}
+                className={`group border border-gray-500 text-lg py-2 px-5 rounded-[10px] capitalize transition duration-[0.2s] hover:opacity-70 ${
+                  selectedFilters?.includes(text) ? "bg-thirdly text-white" : ""
+                }`}
+              >
+                {text.replace(/_/g, " ")}
+              </button>
+            ))}
+          </div>
+          <p className="text-xl italic pointer-events-none">
+            ({filteredItems.length}) Projects
+          </p>
         </div>
-        <div className="translate-y-[110%] group-hover:translate-y-[0%] transition duration-500 absolute top-0 bottom-0 left-0 right-0">
-          {text.project_address}
-        </div>
       </div>
-      <motion.div
-        className="h-[30vw] w-[25vw] fixed top-0 rounded-[1.5vw] overflow-hidden"
-        style={{ x, y }}
+      <motion.ul
+        key={selectedFilters}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{
+          ease: "easeIn",
+          y: { duration: 0.5, delay: 0.7 },
+          opacity: { delay: 0.7 },
+        }}
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 60 },
+        }}
+        className="grid grid-cols-2 gap-[3.25rem_1rem] px-[64px]"
       >
-        <div
-          className="w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(http://localhost:1337/${text.image.url})`,
-          }}
-        ></div>
-      </motion.div>
+        {filteredItems.map((text, key) => (
+          <Link to={`/project/${text.documentId}`} key={key}>
+            <li className="w-full">
+              <div className="relative bg-gray-500 w-full h-[576px] mb-[0.7rem]">
+                <ImageSlideshow
+                  main_image={text}
+                  images={text.images.slice(0, 5)}
+                  defaultImageIndex={0}
+                  element={
+                    <>
+                      <div className="tb_gradient"></div>
+                      <div className="absolute flex gap-[1rem] top-[1rem] left-[1rem] text-sm font-[600]">
+                        {["type", "year"].map((type, key) =>
+                          (type == "year" && text.year !== null) ||
+                          (type == "type" && text.type !== null) ? (
+                            <div
+                              className="rounded-[4px] text-white p-[0.4rem_0.5rem_0.3rem] uppercase"
+                              style={{
+                                backgroundColor: "hsla(0,0%,100%,.1)",
+                                backdropFilter: "blur(4px)",
+                              }}
+                              key={key}
+                            >
+                              {type == "type"
+                                ? cleanText(text.type)
+                                : text.year}
+                            </div>
+                          ) : null
+                        )}
+                      </div>
+                    </>
+                  }
+                />
+              </div>
+              <p className="font-articulat text-[3.5rem] font-[500] text-secondary tracking-[1px]">
+                {text.project_address}
+              </p>
+            </li>
+          </Link>
+        ))}
+      </motion.ul>
     </div>
   );
 };

@@ -25,15 +25,6 @@
         }
       }
     },
-    "type": {
-      "type": "string",
-      "required": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -132,6 +123,19 @@
         }
       },
       "component": "image.image"
+    },
+    "type": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "residential",
+        "commercial / retail",
+        "Interior"
+      ]
     }
   }
 }

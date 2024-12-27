@@ -35,7 +35,7 @@ const Projects = () => {
   if (error) return <p>error</p>;
 
   return (
-    <div className="projects relative bg-white text-black">
+    <div className="projects_section relative bg-white text-black">
       <div className="absolute w-fit top-14 left-[64px] font-semibold uppercase text-7xl text-left max-desktopM:relative max-desktopM:text-6xl">
         <motion.p
           initial="hidden"

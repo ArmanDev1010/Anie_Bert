@@ -20,7 +20,10 @@ import Description from "./about/Description";
 import ParallaxScroll from "./about/ParallaxScroll";
 import Team from "./about/Team";
 
-import Projects from "./Projects";
+// Projects
+import Projects from "./project/Projects";
+import ImageSlideshow from "./project/ImageSlideshow";
+
 import Contact from "./Contact";
 import Services from "./Services";
 
@@ -57,4 +60,5 @@ export {
   Team,
   ParallaxScroll,
   SmoothParallax,
+  ImageSlideshow
 };

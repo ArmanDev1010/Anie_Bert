@@ -458,11 +458,12 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<false>;
-    type: Schema.Attribute.String &
-      Schema.Attribute.Required &
+    type: Schema.Attribute.Enumeration<
+      ['residential', 'commercial / retail', 'Interior']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     updatedAt: Schema.Attribute.DateTime;
