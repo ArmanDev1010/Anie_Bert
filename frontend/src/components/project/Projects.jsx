@@ -101,40 +101,42 @@ const Project = ({ data }) => {
               </div>
             </Link>
           ))}
-          <div className="group project">
-            <div>
-              <div className="group-hover:translate-y-[-110%] transition duration-500">
-                See other projects
+          <Link to={"/projects"}>
+            <div className="group project">
+              <div>
+                <div className="group-hover:translate-y-[-110%] transition duration-500">
+                  See other projects
+                </div>
+                <div className="translate-y-[110%] group-hover:translate-y-[0%] transition duration-500 absolute top-0 bottom-0 left-0 right-0">
+                  See other projects
+                </div>
               </div>
-              <div className="translate-y-[110%] group-hover:translate-y-[0%] transition duration-500 absolute top-0 bottom-0 left-0 right-0">
-                See other projects
-              </div>
+              <Swiper
+                slidesPerView={1}
+                autoplay={{
+                  delay: 500,
+                  disableOnInteraction: true,
+                }}
+                speed={10}
+                loop={true}
+                modules={[Autoplay]}
+                className="relative w-full h-full"
+              >
+                {["1", "2", "3", "4"].map((text, key) => (
+                  <SwiperSlide key={key}>
+                    <div
+                      className="bg-[#080808] w-full h-full bg-cover bg-center bg-no-repeat cursor-pointer"
+                      style={{
+                        backgroundImage: `url(/src/assets/swiper/${text}.jpg)`,
+                      }}
+                    >
+                      <div className="absolute top-0 left-0 w-full h-full bg-black to-transparent opacity-60"></div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
-            <Swiper
-              slidesPerView={1}
-              autoplay={{
-                delay: 500,
-                disableOnInteraction: true,
-              }}
-              speed={10}
-              loop={true}
-              modules={[Autoplay]}
-              className="relative w-full h-full"
-            >
-              {["1", "2", "3", "4"].map((text, key) => (
-                <SwiperSlide key={key}>
-                  <div
-                    className="bg-[#080808] w-full h-full bg-cover bg-center bg-no-repeat cursor-pointer"
-                    style={{
-                      backgroundImage: `url(/src/assets/swiper/${text}.jpg)`,
-                    }}
-                  >
-                    <div className="absolute top-0 left-0 w-full h-full bg-black to-transparent opacity-60"></div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+          </Link>
         </motion.ul>
       </div>
     </div>

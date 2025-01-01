@@ -9,7 +9,14 @@ import { translationAM, translationEN, translationRU } from "./languages";
 
 import { MyContext } from "./context/MyContext";
 
-import { Home, Project, About, Projects } from "./pages/index";
+import {
+  Home,
+  Project,
+  About,
+  Projects,
+  Services,
+  ContactPage,
+} from "./pages/index";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
@@ -54,6 +61,8 @@ const App = () => {
             <Route exact path="/projects" element={<Projects />} />
             <Route exact path="/about" element={<About />} />
             <Route path="/project/:documentId" element={<Project />} />
+            <Route exact path="/contacts" element={<ContactPage />} />
+            <Route exact path="/services" element={<Services />} />
           </Routes>
         </ApolloProvider>
       </MyContext.Provider>

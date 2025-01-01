@@ -4,6 +4,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { Modal, Socials } from "./";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -26,7 +27,7 @@ const item = {
   },
 };
 
-const Contact = () => {
+const Contact = ({ is_contact_page }) => {
   const { t } = useTranslation();
 
   const [showModal, setShowModal] = useState(false);
@@ -42,8 +43,18 @@ const Contact = () => {
 
   return (
     <>
-      <div className="bg-white relative w-full pt-[85px] pb-[185px] px-[210px] text-black">
-        <div className="pointer-events-none mb-[63px]">
+      <div
+        className="bg-white relative w-full pt-[85px] pb-[185px] px-[210px] text-black"
+        style={
+          is_contact_page
+            ? { background: "transparent", color: "white", height: "100%" }
+            : null
+        }
+      >
+        <div
+          className="pointer-events-none mb-[63px]"
+          style={is_contact_page && { marginBottom: "100px" }}
+        >
           <motion.p
             initial="hidden"
             whileInView="visible"
@@ -57,7 +68,7 @@ const Contact = () => {
               visible: { opacity: 1, y: 0 },
               hidden: { opacity: 0, y: 60 },
             }}
-            className="uppercase text-5xl font-[700] mb-5"
+            className="uppercase text-5xl font-[700] mb-10"
           >
             Contact us
           </motion.p>
@@ -75,9 +86,18 @@ const Contact = () => {
               hidden: { opacity: 0, y: 60 },
             }}
             className="max-w-[390px] text-gray-700"
+            style={
+              is_contact_page && {
+                color: "white",
+                maxWidth: "500px",
+                letterSpacing: "1px",
+                lineHeight: "1.7",
+              }
+            }
           >
-            For cooperation or if you have any questions for us.
-            info.aniebert@gmail.com
+            {is_contact_page
+              ? "For cooperation, advertising, suppliers, contractors proposals, and just if you have any questions for us. info.aniebert@gmail.com"
+              : "For cooperation or if you have any questions for us."}
           </motion.p>
         </div>
         <motion.ul
@@ -86,23 +106,34 @@ const Contact = () => {
           whileInView="visible"
           viewport={{ once: true }}
           className="flex gap-28 items-center mb-[63px]"
+          style={is_contact_page && { marginBottom: "100px" }}
         >
           {["socials", "location", "phone", "email"].map((text, key) => (
             <motion.li key={key} variants={item} className="">
               {text == "socials" ? (
                 <Socials />
               ) : text == "location" ? (
-                <div
-                  className="rounded-full py-1.5 px-5 border border-white cursor-pointer flex items-center gap-3 font-[500]
+                <Link to={"https://maps.app.goo.gl/ZcfcTCohGbfCG16D9"}>
+                  <div
+                    className="rounded-full py-1.5 px-5 border border-white cursor-pointer flex items-center gap-3 font-[500]
                     transition-text duration-300 hover:text-gray-500"
-                >
-                  <IoLocationSharp className="text-[17px]" />
-                  <span className="capitalize">Davit 54 of Sasuntsi</span>
-                </div>
+                  >
+                    <IoLocationSharp className="text-[17px]" />
+                    <span className="capitalize">Davit 54 of Sasuntsi</span>
+                  </div>
+                </Link>
               ) : (
-                <p className="font-[600] tracking-[1px] text-[15px] cursor-pointer transition-opacity duration-200 hover:opacity-70">
-                  {t(`navbar.${text}`)}
-                </p>
+                <Link
+                  to={
+                    text == "phone"
+                      ? "tel:+374 55 550123"
+                      : "mailto:info.aniebert@gmail.com"
+                  }
+                >
+                  <p className="font-[600] tracking-[1px] text-[15px] cursor-pointer transition-opacity duration-200 hover:opacity-70">
+                    {t(`navbar.${text}`)}
+                  </p>
+                </Link>
               )}
             </motion.li>
           ))}
@@ -124,13 +155,23 @@ const Contact = () => {
           <button
             onClick={() => (showModal ? close() : open())}
             className="group bg-transparent border-[1px] border-black cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-secondary"
+            style={
+              is_contact_page && {
+                borderColor: "white",
+                background: "white",
+                color: "black",
+              }
+            }
           >
             <div className="pointer-events-none relative overflow-hidden text-center text-[16px] font-[600]">
               <div className="group-hover:translate-y-[-110%] transition duration-300">
-                Send us a message
+                {is_contact_page ? "Get in touch" : "Send us a message"}
               </div>
-              <div className="text-white translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
-                Send us a message
+              <div
+                className="text-white translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0"
+                style={is_contact_page && { color: "black" }}
+              >
+                {is_contact_page ? "Get in touch" : "Send us a message"}
               </div>
             </div>
           </button>

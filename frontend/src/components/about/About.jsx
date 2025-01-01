@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import { RoundedButton } from "..";
+import { Link } from "react-router-dom";
 
 const slideUp = {
   initial: {
@@ -75,9 +76,13 @@ const About = () => {
             </motion.p>
           </div>
           <div data-scroll data-scroll-speed={0.1}>
-            <RoundedButton className="w-[180px] h-[180px] bg-[#222] text-white rounded-[50%] relative flex items-center justify-center cursor-pointer">
-              <p className="m-0 text-lg font-medium relative z-[1]">About us</p>
-            </RoundedButton>
+            <Link to={"/about"}>
+              <RoundedButton className="w-[180px] h-[180px] bg-[#222] text-white rounded-[50%] relative flex items-center justify-center cursor-pointer">
+                <p className="m-0 text-lg font-medium relative z-[1]">
+                  About us
+                </p>
+              </RoundedButton>
+            </Link>
           </div>
         </div>
       </div>

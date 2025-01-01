@@ -21,7 +21,7 @@ const Menu = ({ handleClose }) => {
         exit={{ opacity: 0 }}
       >
         <ul className="absolute left-[211px] top-[calc(50%+10px)] -translate-y-1/2 flex flex-col gap-[34px]">
-          {["home", "projects", "about", "services"].map(
+          {["home", "projects", "about", "services", "contacts"].map(
             (text, key) => (
               <Link to={text == "home" ? "/" : `/${text}`} key={key}>
                 <li
