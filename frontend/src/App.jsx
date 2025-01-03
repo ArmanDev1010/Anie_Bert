@@ -64,7 +64,7 @@ const App = () => {
             <Route path="/project/:documentId" element={<Project />} />
             <Route exact path="/contacts" element={<ContactPage />} />
             <Route exact path="/services" element={<Services />} />
-            <Route exact path="/services/:text" element={<Service />} />
+            <Route exact path="/services/:service" element={<Service />} />
           </Routes>
         </ApolloProvider>
       </MyContext.Provider>

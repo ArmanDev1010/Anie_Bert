@@ -187,10 +187,50 @@ const Services = () => {
 const FixedTitle = ({ activeSection }) => {
   const { t } = useTranslation();
 
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    resizeText();
+
+    window.addEventListener("resize", resizeText);
+
+    return () => {
+      window.removeEventListener("resize", resizeText);
+    };
+  }, [activeSection]);
+
+  const resizeText = () => {
+    const container = containerRef.current;
+    const text = textRef.current;
+
+    if (!container || !text) {
+      return;
+    }
+
+    const containerWidth = container.offsetWidth;
+    let min = 1;
+    let max = 2500;
+
+    while (min <= max) {
+      const mid = Math.floor((min + max) / 2);
+      text.style.fontSize = mid + "px";
+
+      if (text.offsetWidth <= containerWidth) {
+        min = mid + 1;
+      } else {
+        max = mid - 1;
+      }
+    }
+
+    text.style.fontSize = max - 10 + "px";
+  };
+
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2] text-[#d9d9d9] w-full text-center mix-blend-difference pointer-events-none">
       <p className="font-sometimestimes text-[3vw]">{activeSection + 1} / 3</p>
-      <div className="overflow-y-hidden">
+
+      {/* <div className="overflow-y-hidden">
         <motion.h1
           key={activeSection}
           initial={{ y: 200 }}
@@ -201,7 +241,32 @@ const FixedTitle = ({ activeSection }) => {
             stiffness: 100,
             damping: 20,
           }}
-          className="font-sometimestimes text-[16vw] leading-[1] mt-[1rem] mb-[3rem]"
+          className="font-sometimestimes leading-[1] mt-[1rem] mb-[3rem]"
+        >
+          {t(
+            `services.${
+              ["interior", "architecture", "commercial"][activeSection]
+            }`
+          )}
+        </motion.h1>
+      </div> */}
+
+      <div
+        className="flex w-full items-center overflow-hidden"
+        ref={containerRef}
+      >
+        <motion.h1
+          className="font-sometimestimes mt-[1rem] mb-[3rem] mx-auto whitespace-nowrap text-center leading-[1]"
+          ref={textRef}
+          key={activeSection}
+          initial={{ y: 200 }}
+          animate={{ y: 0 }}
+          exit={{ y: 200 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+          }}
         >
           {t(
             `services.${
@@ -210,6 +275,7 @@ const FixedTitle = ({ activeSection }) => {
           )}
         </motion.h1>
       </div>
+
       <Link
         to={`./${["interior", "architecture", "commercial"][activeSection]}`}
       >
