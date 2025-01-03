@@ -144,40 +144,42 @@ const Services = () => {
   }, []);
 
   return (
-    <div
-      className="relative bg-white text-black h-screen overflow-y-scroll snap-y snap-mandatory"
-      ref={scrollContainerRef}
-    >
+    <>
       <Navbar fixed_active={true} />
-      <FixedTitle activeSection={activeSection} />
-      <div className="">
-        {["interior", "architecture", "commercial"].map((text, key) => (
-          <div
-            className="h-screen snap-start relative w-full bg-white text-white"
-            key={key}
-          ></div>
-        ))}
+      <div
+        className="relative bg-white text-black h-screen overflow-y-scroll snap-y snap-mandatory"
+        ref={scrollContainerRef}
+      >
+        <FixedTitle activeSection={activeSection} />
+        <div className="">
+          {["interior", "architecture", "commercial"].map((text, key) => (
+            <div
+              className="h-screen snap-start relative w-full bg-white text-white"
+              key={key}
+            ></div>
+          ))}
+        </div>
+        <div className="">
+          {images.map((img, index) => (
+            <div
+              key={index}
+              style={{
+                position: "absolute",
+                left: `clamp(0%, ${img.left}, calc(100% - ${img.width}))`,
+                top: img.top,
+                width: img.width,
+                height: img.height,
+                backgroundImage: `url(/src/assets/about_images/${img.src}.jpg)`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                zIndex: 1,
+              }}
+            />
+          ))}
+        </div>
       </div>
-      <div className="">
-        {images.map((img, index) => (
-          <div
-            key={index}
-            style={{
-              position: "absolute",
-              left: `clamp(0%, ${img.left}, calc(100% - ${img.width}))`,
-              top: img.top,
-              width: img.width,
-              height: img.height,
-              backgroundImage: `url(/src/assets/about_images/${img.src}.jpg)`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              zIndex: 1,
-            }}
-          />
-        ))}
-      </div>
-    </div>
+    </>
   );
 };
 
