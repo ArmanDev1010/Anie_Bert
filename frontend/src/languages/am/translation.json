@@ -30,5 +30,10 @@
     "3": "Mesrop Mashtots 38",
     "4": "Leningradyan 31/30",
     "5": "Zover Aragatsotn"
+  },
+  "services": {
+    "interior": "Interior Design",
+    "architecture": "Architecture",
+    "commercial": "Commercial"
   }
 }

@@ -46,9 +46,11 @@ const Contact = ({ is_contact_page }) => {
       <div
         className="bg-white relative w-full pt-[85px] pb-[185px] px-[210px] text-black"
         style={
-          is_contact_page
-            ? { background: "transparent", color: "white", height: "100%" }
-            : null
+          is_contact_page && {
+            background: "transparent",
+            color: "white",
+            height: "100%",
+          }
         }
       >
         <div
@@ -85,7 +87,7 @@ const Contact = ({ is_contact_page }) => {
               visible: { opacity: 1, y: 0 },
               hidden: { opacity: 0, y: 60 },
             }}
-            className="max-w-[390px] text-gray-700"
+            className="max-w-[370px] text-gray-700"
             style={
               is_contact_page && {
                 color: "white",

@@ -77,7 +77,7 @@ const ImageSlideshow = ({ main_image, images, defaultImageIndex, element }) => {
             } h-[0.25rem] w-[0.25rem] bg-white opacity-50 rounded-full`}
             style={{
               transition:
-                "opacity .3s cubic-bezier(.24,1,.52,1), transform .3s cubic-bezier(.24,1,.52,1);",
+                "opacity .3s cubic-bezier(.24,1,.52,1), transform .3s cubic-bezier(.24,1,.52,1)",
             }}
           />
         ))}

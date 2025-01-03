@@ -6,7 +6,7 @@ import { AnimatePresence } from "framer-motion";
 import { Modal, Menu } from "../../index";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ invert_colors }) => {
+const Navbar = ({ invert_colors, fixed_active }) => {
   const { t } = useTranslation();
 
   const [pos, setPos] = useState(false);
@@ -25,7 +25,7 @@ const Navbar = ({ invert_colors }) => {
   useEffect(() => {
     document.addEventListener("scroll", (e) => {
       let scrolled = document.scrollingElement.scrollTop;
-      if (scrolled >= 20) {
+      if (scrolled >= 5) {
         setPos(true);
       } else {
         setPos(false);
@@ -36,7 +36,7 @@ const Navbar = ({ invert_colors }) => {
   return (
     <>
       <div
-        className={`navbar menu__panel ${pos ? "fixed_white" : ""} ${
+        className={`navbar menu__panel ${pos || fixed_active ? "fixed_white" : ""} ${
           invert_colors && !showMenu && !pos ? "invert_color" : ""
         } fixed top-0 left-0 px-[64px] w-full h-[120px] flex items-center justify-between z-[10]`}
         style={{ transition: "all .3s ease" }}

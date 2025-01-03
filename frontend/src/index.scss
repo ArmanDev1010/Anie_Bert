@@ -26,7 +26,6 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  overscroll-behavior: none;
   background: white;
 }
 
@@ -105,6 +104,17 @@ body {
   src: url("./fonts/articulat/articulatcf-light.otf") format("otf");
 }
 
+@font-face {
+  font-family: "Sometimestimes";
+  src: url("./fonts/sometimestimes/Sometimes\ Times.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Sometimestimes";
+  font-style: italic;
+  src: url("./fonts/sometimestimes/Sometimes\ Times\ Italic.ttf")
+    format("truetype");
+}
+
 .main-cursor {
   position: fixed;
   pointer-events: none;
@@ -145,6 +155,7 @@ body {
     top: 0;
     left: 0;
     padding: 0 64px;
+    width: 100%;
     transition: all 0.5s ease;
     height: 80px;
     &::before {

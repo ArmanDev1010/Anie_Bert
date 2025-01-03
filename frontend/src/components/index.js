@@ -60,5 +60,5 @@ export {
   Team,
   ParallaxScroll,
   SmoothParallax,
-  ImageSlideshow
+  ImageSlideshow,
 };
