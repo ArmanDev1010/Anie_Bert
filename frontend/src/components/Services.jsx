@@ -1,23 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const services = [
   {
-    title: "Interior Design",
+    title: "interior",
     color: "#000000",
   },
   {
-    title: "Architecture",
+    title: "architecture",
     color: "#8C8C8C",
   },
   {
-    title: "Commercial Design",
+    title: "commercial",
     color: "#EFE8D3",
-  },
-  {
-    title: "Remodeling",
-    color: "#706D63",
   },
 ];
 
@@ -38,6 +36,8 @@ const scaleAnimation = {
 };
 
 const Services = () => {
+  const { t } = useTranslation();
+
   const [modal, setModal] = useState({ active: false, index: 0 });
   const { active, index } = modal;
   const modalContainer = useRef(null);
@@ -104,37 +104,39 @@ const Services = () => {
       <div className="w-full flex flex-col items-center justify-center mb-[100px]">
         {services.map((service, index) => {
           return (
-            <div
-              index={index}
-              key={index}
-              onMouseEnter={(e) => {
-                manageModal(true, index, e.clientX, e.clientY);
-              }}
-              onMouseLeave={(e) => {
-                manageModal(false, index, e.clientX, e.clientY);
-              }}
-              className="group flex w-full justify-between items-center py-[50px] px-[100px] border-t-[1px] border-t-[rgb(201,201,201)] cursor-pointer transition-all duration-200
+            <Link to={`/services/${service.title}`} className="w-full">
+              <div
+                index={index}
+                key={index}
+                onMouseEnter={(e) => {
+                  manageModal(true, index, e.clientX, e.clientY);
+                }}
+                onMouseLeave={(e) => {
+                  manageModal(false, index, e.clientX, e.clientY);
+                }}
+                className="group flex w-full justify-between items-center py-[50px] px-[100px] border-t-[1px] border-t-[rgb(201,201,201)] cursor-pointer transition-all duration-200
               last:border-b-[1px] last:border-b-[rgb(201,201,201)] hover:opacity-50 max-desktopM:px-[70px]"
-            >
-              <h2 className="text-[45px] m-0 font-semibold text-[#222] transition-all duration-[0.4s] group-hover:-translate-x-[10px] max-desktopM:text-[40px]">
-                {service.title}
-              </h2>
-              <p className="transition-all duration-[0.4s] font-medium group-hover:translate-x-[10px]">
-                <svg
-                  stroke="black"
-                  fill="black"
-                  strokeWidth="0"
-                  viewBox="0 0 24 24"
-                  className="pointer-events-none relative z-1 rotate-45 text-7xl text-black transition-all duration-[0.4s] ease-out group-hover:rotate-90"
-                  height="0.6em"
-                  width="0.6em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path fill="none" d="M0 0h24v24H0V0z"></path>
-                  <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
-                </svg>
-              </p>
-            </div>
+              >
+                <h2 className="text-[45px] m-0 font-semibold text-[#222] transition-all duration-[0.4s] group-hover:-translate-x-[10px] max-desktopM:text-[40px]">
+                  {t(`services.${service.title}`)}
+                </h2>
+                <p className="transition-all duration-[0.4s] font-medium group-hover:translate-x-[10px]">
+                  <svg
+                    stroke="black"
+                    fill="black"
+                    strokeWidth="0"
+                    viewBox="0 0 24 24"
+                    className="pointer-events-none relative z-1 rotate-45 text-7xl text-black transition-all duration-[0.4s] ease-out group-hover:rotate-90"
+                    height="0.6em"
+                    width="0.6em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
+                  </svg>
+                </p>
+              </div>
+            </Link>
           );
         })}
       </div>

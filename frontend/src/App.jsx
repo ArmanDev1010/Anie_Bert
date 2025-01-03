@@ -16,6 +16,7 @@ import {
   Projects,
   Services,
   ContactPage,
+  Service,
 } from "./pages/index";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
@@ -63,6 +64,7 @@ const App = () => {
             <Route path="/project/:documentId" element={<Project />} />
             <Route exact path="/contacts" element={<ContactPage />} />
             <Route exact path="/services" element={<Services />} />
+            <Route exact path="/services/:text" element={<Service />} />
           </Routes>
         </ApolloProvider>
       </MyContext.Provider>

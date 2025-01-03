@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Navbar } from "../components";
 import Lenis from "@studio-freight/lenis";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const images = [
   {
@@ -209,18 +210,23 @@ const FixedTitle = ({ activeSection }) => {
           )}
         </motion.h1>
       </div>
-      <p
-        className="relative text-[1.3rem] uppercase font-[600] cursor-pointer w-fit !pointer-events-auto
+      <Link
+        to={`./${["interior", "architecture", "commercial"][activeSection]}`}
+      >
+        <p
+          className="relative text-[1.3rem] uppercase font-[600] cursor-pointer w-fit !pointer-events-auto
             inline-block pl-4 ml-[1px] text-lg cursor-pointer font-[500] hover:pl-[64px]
             before:content-[''] before:block before:absolute before:top-1/2 before:left-0 before:h-[1px] before:w-[8px] before:-translate-y-1/2 before:bg-white
             after:content-[''] after:block after:absolute after:top-1/2 after:left-[calc(100%+9px)] after:h-[1px] after:w-[56px] after:-translate-y-1/2 after:bg-white
             hover:after:w-[8px] hover:before:w-[56px] before:transition-[width_0.5s_ease] before:duration-[0.5s] after:transition-[width_0.5s_ease] after:duration-[0.5s]"
-        style={{
-          transition: "padding-left .5s ease, right .5s ease, opacity .5s ease",
-        }}
-      >
-        Click to Explore
-      </p>
+          style={{
+            transition:
+              "padding-left .5s ease, right .5s ease, opacity .5s ease",
+          }}
+        >
+          Click to Explore
+        </p>
+      </Link>
     </div>
   );
 };

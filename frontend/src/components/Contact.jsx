@@ -87,7 +87,7 @@ const Contact = ({ is_contact_page }) => {
               visible: { opacity: 1, y: 0 },
               hidden: { opacity: 0, y: 60 },
             }}
-            className="max-w-[370px] text-gray-700"
+            className="max-w-[400px] text-gray-700"
             style={
               is_contact_page && {
                 color: "white",
@@ -99,7 +99,7 @@ const Contact = ({ is_contact_page }) => {
           >
             {is_contact_page
               ? "For cooperation, advertising, suppliers, contractors proposals, and just if you have any questions for us. info.aniebert@gmail.com"
-              : "For cooperation or if you have any questions for us."}
+              : "For cooperation or if you have any questions for us. info.aniebert@gmail.com"}
           </motion.p>
         </div>
         <motion.ul
