@@ -229,28 +229,6 @@ const FixedTitle = ({ activeSection }) => {
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2] text-[#d9d9d9] w-full text-center mix-blend-difference pointer-events-none">
       <p className="font-sometimestimes text-[3vw]">{activeSection + 1} / 3</p>
-
-      {/* <div className="overflow-y-hidden">
-        <motion.h1
-          key={activeSection}
-          initial={{ y: 200 }}
-          animate={{ y: 0 }}
-          exit={{ y: 200 }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 20,
-          }}
-          className="font-sometimestimes leading-[1] mt-[1rem] mb-[3rem]"
-        >
-          {t(
-            `services.${
-              ["interior", "architecture", "commercial"][activeSection]
-            }`
-          )}
-        </motion.h1>
-      </div> */}
-
       <div
         className="flex w-full items-center overflow-hidden"
         ref={containerRef}
@@ -275,7 +253,6 @@ const FixedTitle = ({ activeSection }) => {
           )}
         </motion.h1>
       </div>
-
       <Link
         to={`./${["interior", "architecture", "commercial"][activeSection]}`}
       >

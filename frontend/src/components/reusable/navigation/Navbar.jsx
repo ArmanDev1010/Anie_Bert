@@ -38,7 +38,7 @@ const Navbar = ({ invert_colors, fixed_active }) => {
       <div
         className={`navbar menu__panel ${pos || fixed_active ? "fixed_white" : ""} ${
           invert_colors && !showMenu && !pos ? "invert_color" : ""
-        } fixed top-0 left-0 px-[64px] w-full h-[120px] flex items-center justify-between z-[10]`}
+        } fixed top-0 left-0 px-[64px] w-full h-[120px] flex items-center justify-between z-[4]`}
         style={{ transition: "all .3s ease" }}
       >
         <Link to={"/"}>

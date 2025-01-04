@@ -158,6 +158,7 @@ body {
     width: 100%;
     transition: all 0.5s ease;
     height: 80px;
+    z-index: 10;
     &::before {
       opacity: 1 !important;
     }
