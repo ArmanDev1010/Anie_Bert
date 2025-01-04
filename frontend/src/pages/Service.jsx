@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Navbar } from "../components";
+import { Contact, Navbar, ParallaxScroll } from "../components";
 
 const Service = () => {
   const { service } = useParams();
@@ -9,8 +9,9 @@ const Service = () => {
     <div className="bg-white text-black">
       <Navbar invert_colors={true} />
       <div className="w-full h-[120px] mb-[30px]"></div>
-      <div className="px-[64px]">
-        <div className="font-sometimestimes text-[80px] leading-[1.2] pointer-events-none">
+
+      <div className="relative">
+        <div className="font-sometimestimes text-[80px] leading-[1.2] pointer-events-none px-[64px]">
           We design
           <HoverImage num={1} />
           interiors equipped
@@ -20,8 +21,9 @@ const Service = () => {
           into a functional and beautiful environment.
           <HoverImage num={4} />
         </div>
+        <ParallaxScroll service_page={true} />
+        <Contact />
       </div>
-      <div className="h-screen"></div>
     </div>
   );
 };
@@ -33,7 +35,7 @@ const HoverImage = ({ num }) => {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120px] h-[53px] hover:w-[280px] hover:h-[208px]"
         style={{
           transition:
-            "width .4s cubic-bezier(.32,.04,.08,1), height .4s cubic-bezier(.32,.04,.08,1), border-width .4s cubic-bezier(.32,.04,.08,1)",
+            "width .4s cubic-bezier(.32,.04,.08,1), height .4s cubic-bezier(.32,.04,.08,1)",
         }}
       >
         <img

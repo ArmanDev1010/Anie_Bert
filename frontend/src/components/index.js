@@ -17,7 +17,7 @@ import ParallaxImages from "./masterpiece/ParallaxImages";
 import About from "./about/About";
 import SmoothParallax from "./about/SmoothParallax";
 import Description from "./about/Description";
-import ParallaxScroll from "./about/ParallaxScroll";
+import ParallaxScroll from "./reusable/ParallaxScroll";
 import Team from "./about/Team";
 
 // Projects
