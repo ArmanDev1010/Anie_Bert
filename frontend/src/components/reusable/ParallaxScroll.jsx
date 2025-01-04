@@ -41,7 +41,10 @@ const ParallaxScroll = ({ service_page }) => {
       ];
 
   return (
-    <div ref={container} className="parallax_scroll mt-[10vh] min-h-[75vh]">
+    <div
+      ref={container}
+      className="parallax_scroll relative mt-[10vh] min-h-[75vh]"
+    >
       <div
         className={`flex w-full justify-center relative mt-[5vh] ${
           service_page && "service_page"
@@ -64,6 +67,19 @@ const ParallaxScroll = ({ service_page }) => {
           );
         })}
       </div>
+      {service_page && (
+        <div className="">
+          <p className="absolute top-0 left-[64px] w-[300px] text-[15px] text-gray-600">
+            By selecting color schemes, materials, furniture and decor our
+            designs create a cohesive and harmonious design scheme, a memorable
+            ambience and optimize the use of space.
+          </p>
+          <p className="absolute bottom-0 text-right right-[64px] w-[300px] text-[15px] text-gray-600">
+            Each of our designs are influenced by creating environments that
+            stand out and connect with people.
+          </p>
+        </div>
+      )}
     </div>
   );
 };
