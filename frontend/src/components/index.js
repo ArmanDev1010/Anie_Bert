@@ -25,7 +25,7 @@ import Projects from "./project/Projects";
 import ImageSlideshow from "./project/ImageSlideshow";
 
 import Contact from "./Contact";
-import Services from "./Services";
+import Services from "./service/Services";
 
 import CursorFollow from "./CursorFollow";
 

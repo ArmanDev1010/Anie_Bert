@@ -13,8 +13,6 @@ const ParallaxScroll = ({ service, service_page, images }) => {
   const md = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const lg = useTransform(scrollYProgress, [0, 1], [0, -250]);
 
-  console.log(images)
-
   const images_array = service_page
     ? [
         {

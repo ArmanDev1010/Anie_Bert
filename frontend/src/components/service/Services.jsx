@@ -2,19 +2,25 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { useQuery, gql } from "@apollo/client";
+
+const SERVICES = gql`
+  query GetServices {
+    services(sort: "order") {
+      title
+      service
+    }
+  }
+`;
 
 const services = [
   {
-    title: "interior",
     color: "#000000",
   },
   {
-    title: "architecture",
     color: "#8C8C8C",
   },
   {
-    title: "commercial",
     color: "#EFE8D3",
   },
 ];
@@ -36,8 +42,6 @@ const scaleAnimation = {
 };
 
 const Services = () => {
-  const { t } = useTranslation();
-
   const [modal, setModal] = useState({ active: false, index: 0 });
   const { active, index } = modal;
   const modalContainer = useRef(null);
@@ -79,7 +83,7 @@ const Services = () => {
       duration: 0.45,
       ease: "power3",
     });
-  }, []);
+  });
 
   const moveItems = (x, y) => {
     xMoveContainer.current(x);
@@ -94,6 +98,11 @@ const Services = () => {
     setModal({ active, index });
   };
 
+  const { loading, error, data } = useQuery(SERVICES);
+
+  if (loading) return <p></p>;
+  if (error) return <p>error</p>;
+
   return (
     <div
       className="flex items-center px-[200px] pt-[40px] flex-col bg-white text-black max-desktopM:px-[150px]"
@@ -102,10 +111,10 @@ const Services = () => {
       }}
     >
       <div className="w-full flex flex-col items-center justify-center mb-[100px]">
-        {services.map((service, index) => {
+        {data.services?.map((service, index) => {
           return (
             <Link
-              to={`/services/${service.title}`}
+              to={`/services/${service.service}`}
               key={index}
               className="w-full"
             >
@@ -121,7 +130,7 @@ const Services = () => {
               last:border-b-[1px] last:border-b-[rgb(201,201,201)] hover:opacity-50 max-desktopM:px-[70px]"
               >
                 <h2 className="text-[45px] m-0 font-semibold text-[#222] transition-all duration-[0.4s] group-hover:-translate-x-[10px] max-desktopM:text-[40px]">
-                  {t(`services.${service.title}`)}
+                  {service.title}
                 </h2>
                 <p className="transition-all duration-[0.4s] font-medium group-hover:translate-x-[10px]">
                   <svg
@@ -155,8 +164,8 @@ const Services = () => {
             style={{ top: index * -100 + "%" }}
             className="h-full w-full relative transition-top duration-[0.5s] ease-[cubic-bezier(0.76,0,0.24,1)]"
           >
-            {services.map((service, index) => {
-              const { color } = service;
+            {data.services?.map((service, index) => {
+              const { color } = services[index];
               return (
                 <div
                   className="h-full w-full flex items-center justify-center"
