@@ -132,9 +132,9 @@
       },
       "type": "enumeration",
       "enum": [
-        "residential",
-        "commercial / retail",
-        "Interior"
+        "interior",
+        "architecture",
+        "commercial"
       ]
     }
   }

@@ -37,6 +37,10 @@
         "2": "functional",
         "3": "aesthetically pleasing",
         "4": "and innovative spaces."
+      },
+      "parallax_texts": {
+        "top": "By choosing appropriate structural forms, materials, and spatial arrangements, our architectural designs establish a unified and resonant aesthetic, craft an enduring atmosphere, and maximize the functionality and efficiency of the built environment.",
+        "bottom": "Each of our designs are influenced by creating environments that stand out and connect with people."
       }
     },
     "commercial": {
@@ -45,6 +49,10 @@
         "2": "ordinary spaces into",
         "3": "extraordinary, efficient",
         "4": "and visually stunning workplaces."
+      },
+      "parallax_texts": {
+        "top": "By integrating brand identity, functional layout, materials, and visual elements, our commercial designs forge a consistent and engaging aesthetic, foster a distinctive atmosphere, and enhance both customer experience and operational efficiency.",
+        "bottom": "Each of our designs are influenced by creating environments that stand out and connect with people."
       }
     }
   }

@@ -459,7 +459,7 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
       }> &
       Schema.Attribute.DefaultTo<false>;
     type: Schema.Attribute.Enumeration<
-      ['residential', 'commercial / retail', 'Interior']
+      ['interior', 'architecture', 'commercial']
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
