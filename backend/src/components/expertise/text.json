@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_expertise_texts",
+  "info": {
+    "displayName": "text",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  }
+}

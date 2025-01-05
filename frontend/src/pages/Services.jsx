@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Navbar } from "../components";
 import Lenis from "@studio-freight/lenis";
-import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+
+import { useQuery, gql } from "@apollo/client";
 
 const images = [
   {
@@ -49,29 +50,17 @@ const images = [
     width: "30vw",
     height: "200px",
   },
-
-  {
-    src: "7",
-    left: "80%",
-    top: "200%",
-    width: "12vw",
-    height: "350px",
-  },
-  {
-    src: "8",
-    left: "5%",
-    top: "260%",
-    width: "32vw",
-    height: "250px",
-  },
-  {
-    src: "9",
-    left: "10%",
-    top: "210%",
-    width: "12vw",
-    height: "150px",
-  },
 ];
+
+const SERVICES = gql`
+  query GetServices {
+    services {
+      title
+      service
+      documentId
+    }
+  }
+`;
 
 const Services = () => {
   const scrollContainerRef = useRef(null);
@@ -144,6 +133,11 @@ const Services = () => {
     };
   }, []);
 
+  const { loading, error, data } = useQuery(SERVICES);
+
+  if (loading) return <p></p>;
+  if (error) return <p>error</p>;
+
   return (
     <>
       <Navbar fixed_active={true} />
@@ -151,9 +145,9 @@ const Services = () => {
         className="relative bg-white text-black h-screen overflow-y-scroll snap-y snap-mandatory"
         ref={scrollContainerRef}
       >
-        <FixedTitle activeSection={activeSection} />
+        <FixedTitle services={data.services} activeSection={activeSection} />
         <div className="">
-          {["interior", "architecture", "commercial"].map((text, key) => (
+          {data.services?.map((text, key) => (
             <div
               className="h-screen snap-start relative w-full bg-white text-white"
               key={key}
@@ -184,9 +178,7 @@ const Services = () => {
   );
 };
 
-const FixedTitle = ({ activeSection }) => {
-  const { t } = useTranslation();
-
+const FixedTitle = ({ services, activeSection }) => {
   const containerRef = useRef(null);
   const textRef = useRef(null);
 
@@ -228,7 +220,9 @@ const FixedTitle = ({ activeSection }) => {
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2] text-[#d9d9d9] w-full text-center mix-blend-difference pointer-events-none">
-      <p className="font-sometimestimes text-[3vw]">{activeSection + 1} / 3</p>
+      <p className="font-sometimestimes text-[3vw]">
+        {activeSection + 1} / {services.length}
+      </p>
       <div
         className="flex w-full items-center overflow-hidden"
         ref={containerRef}
@@ -246,16 +240,10 @@ const FixedTitle = ({ activeSection }) => {
             damping: 20,
           }}
         >
-          {t(
-            `services.${
-              ["interior", "architecture", "commercial"][activeSection]
-            }`
-          )}
+          {services[activeSection].title}
         </motion.h1>
       </div>
-      <Link
-        to={`./${["interior", "architecture", "commercial"][activeSection]}`}
-      >
+      <Link to={`./${services[activeSection].service}`}>
         <p
           className="relative text-[1.3rem] uppercase font-[600] cursor-pointer w-fit !pointer-events-auto
             inline-block pl-4 ml-[1px] text-lg cursor-pointer font-[500] hover:pl-[64px]

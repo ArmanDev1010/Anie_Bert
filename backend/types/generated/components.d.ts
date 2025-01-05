@@ -1,5 +1,16 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ExpertiseText extends Struct.ComponentSchema {
+  collectionName: 'components_expertise_texts';
+  info: {
+    description: '';
+    displayName: 'text';
+  };
+  attributes: {
+    text: Schema.Attribute.String;
+  };
+}
+
 export interface ImageImage extends Struct.ComponentSchema {
   collectionName: 'components_image_images';
   info: {
@@ -25,6 +36,7 @@ export interface ImageImageAndCategory extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'expertise.text': ExpertiseText;
       'image.image': ImageImage;
       'image.image-and-category': ImageImageAndCategory;
     }

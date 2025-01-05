@@ -32,6 +32,7 @@ const PROJECT = gql`
 
 const Project = () => {
   const { documentId } = useParams();
+  console.log(documentId)
   const { loading, error, data } = useQuery(PROJECT, {
     variables: { documentId: documentId },
   });

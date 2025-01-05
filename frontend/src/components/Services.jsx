@@ -104,10 +104,13 @@ const Services = () => {
       <div className="w-full flex flex-col items-center justify-center mb-[100px]">
         {services.map((service, index) => {
           return (
-            <Link to={`/services/${service.title}`} className="w-full">
+            <Link
+              to={`/services/${service.title}`}
+              key={index}
+              className="w-full"
+            >
               <div
                 index={index}
-                key={index}
                 onMouseEnter={(e) => {
                   manageModal(true, index, e.clientX, e.clientY);
                 }}
