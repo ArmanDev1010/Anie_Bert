@@ -1,5 +1,5 @@
 import React from "react";
-import { Contact, Navbar, ParallaxScroll } from "../components";
+import { Contact, Navbar, ParallaxScroll, Works } from "../components";
 
 import { useQuery, gql } from "@apollo/client";
 import { useParams } from "react-router-dom";
@@ -55,6 +55,7 @@ const Service = () => {
           images={service_.parallax_images}
         />
         <Expertise data={service_.expertise} />
+        <Works />
         <Contact />
       </div>
     </div>

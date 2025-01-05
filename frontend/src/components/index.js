@@ -24,9 +24,11 @@ import Team from "./about/Team";
 import Projects from "./project/Projects";
 import ImageSlideshow from "./project/ImageSlideshow";
 
-import Contact from "./Contact";
+// Services
 import Services from "./service/Services";
+import Works from "./service/Works";
 
+import Contact from "./Contact";
 import CursorFollow from "./CursorFollow";
 
 // Effects
@@ -61,4 +63,5 @@ export {
   ParallaxScroll,
   SmoothParallax,
   ImageSlideshow,
+  Works,
 };
