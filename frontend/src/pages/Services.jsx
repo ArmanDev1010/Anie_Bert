@@ -50,14 +50,35 @@ const images = [
     width: "30vw",
     height: "200px",
   },
+
+  {
+    src: "7",
+    left: "80%",
+    top: "200%",
+    width: "12vw",
+    height: "350px",
+  },
+  {
+    src: "8",
+    left: "5%",
+    top: "260%",
+    width: "18vw",
+    height: "250px",
+  },
+  {
+    src: "9",
+    left: "20%",
+    top: "214%",
+    width: "12vw",
+    height: "180px",
+  },
 ];
 
 const SERVICES = gql`
   query GetServices {
-    services {
+    services(sort: "order") {
       title
       service
-      documentId
     }
   }
 `;
@@ -131,7 +152,7 @@ const Services = () => {
       );
       observer.disconnect();
     };
-  }, []);
+  });
 
   const { loading, error, data } = useQuery(SERVICES);
 

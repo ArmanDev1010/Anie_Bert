@@ -16,24 +16,36 @@
     "buttons": {
       "start": "Start project",
       "learn": "Learn more"
-    },
-    "swiper": {
-      "1": { "room": "Bedroom Design", "type": "interior Design" },
-      "2": { "room": "Kids room design", "type": "interior Design" },
-      "3": { "room": "Living Room Design", "type": "interior Design" },
-      "4": { "room": "Kitchen & Living Room", "type": "interior Design" }
     }
   },
-  "projects": {
-    "1": "Paronyanan 42",
-    "2": "Alikhanyan 5",
-    "3": "Mesrop Mashtots 38",
-    "4": "Leningradyan 31/30",
-    "5": "Zover Aragatsotn"
-  },
   "services": {
-    "interior": "Interior Design",
-    "architecture": "Architecture",
-    "commercial": "Commercial"
+    "interior": {
+      "top_text": {
+        "1": "We design",
+        "2": "interiors equipped",
+        "3": "to transform any space",
+        "4": "into a functional and beautiful environment."
+      },
+      "parallax_texts": {
+        "top": "By selecting color schemes, materials, furniture and decor our designs create a cohesive and harmonious design scheme, a memorable ambience and optimize the use of space.",
+        "bottom": "Each of our designs are influenced by creating environments that stand out and connect with people."
+      }
+    },
+    "architecture": {
+      "top_text": {
+        "1": "We create",
+        "2": "functional",
+        "3": "aesthetically pleasing",
+        "4": "and innovative spaces."
+      }
+    },
+    "commercial": {
+      "top_text": {
+        "1": "We turn",
+        "2": "ordinary spaces into",
+        "3": "extraordinary, efficient",
+        "4": "and visually stunning workplaces."
+      }
+    }
   }
 }

@@ -1,7 +1,10 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-const ParallaxScroll = ({ service_page }) => {
+const ParallaxScroll = ({ service, service_page, images }) => {
+  const { t } = useTranslation();
+
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -10,18 +13,20 @@ const ParallaxScroll = ({ service_page }) => {
   const md = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const lg = useTransform(scrollYProgress, [0, 1], [0, -250]);
 
+  console.log(images)
+
   const images_array = service_page
     ? [
         {
-          src: "2",
+          src: images[0].url,
           y: 0,
         },
         {
-          src: "5",
+          src: images[1].url,
           y: lg,
         },
         {
-          src: "10",
+          src: images[2].url,
           y: md,
         },
       ]
@@ -60,7 +65,11 @@ const ParallaxScroll = ({ service_page }) => {
               <div
                 className="w-full h-full bg-cover bg-center bg-no-repeat"
                 style={{
-                  backgroundImage: `url(/src/assets/about_images/${src}.jpg)`,
+                  backgroundImage: `url(${
+                    service_page
+                      ? `http://localhost:1337/${src}`
+                      : `/src/assets/about_images/${src}.jpg`
+                  })`,
                 }}
               ></div>
             </motion.div>
@@ -68,15 +77,12 @@ const ParallaxScroll = ({ service_page }) => {
         })}
       </div>
       {service_page && (
-        <div className="">
-          <p className="absolute top-0 left-[64px] w-[300px] text-[15px] text-gray-600">
-            By selecting color schemes, materials, furniture and decor our
-            designs create a cohesive and harmonious design scheme, a memorable
-            ambience and optimize the use of space.
+        <div className="pointer-events-none text-[15px] text-gray-600">
+          <p className="absolute top-0 left-[64px] w-[300px]">
+            {t(`services.${service.toLowerCase()}.parallax_texts.top`)}
           </p>
-          <p className="absolute bottom-0 text-right right-[64px] w-[300px] text-[15px] text-gray-600">
-            Each of our designs are influenced by creating environments that
-            stand out and connect with people.
+          <p className="absolute bottom-0 text-right right-[64px] w-[300px]">
+            {t(`services.${service.toLowerCase()}.parallax_texts.bottom`)}
           </p>
         </div>
       )}

@@ -3,6 +3,7 @@ import { Contact, Navbar, ParallaxScroll } from "../components";
 
 import { useQuery, gql } from "@apollo/client";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const SERVICE = gql`
   query GetServices($service: String!) {
@@ -11,12 +12,19 @@ const SERVICE = gql`
         text
       }
       service
-      documentId
+      text_images {
+        url
+      }
+      parallax_images {
+        url
+      }
     }
   }
 `;
 
 const Service = () => {
+  const { t } = useTranslation();
+
   const { service } = useParams();
   const { loading, error, data } = useQuery(SERVICE, {
     variables: { service: service },
@@ -25,7 +33,7 @@ const Service = () => {
   if (loading) return <p></p>;
   if (error) return <p>error</p>;
 
-  console.log(data);
+  const service_ = data.services[0];
 
   return (
     <div className="bg-white text-black">
@@ -33,25 +41,27 @@ const Service = () => {
       <div className="w-full h-[120px] mb-[30px]"></div>
 
       <div className="relative">
-        <div className="font-sometimestimes text-[80px] leading-[1.2] pointer-events-none px-[64px]">
-          We design
-          <HoverImage num={1} />
-          interiors equipped
-          <HoverImage num={2} />
-          to transform any space
-          <HoverImage num={3} />
-          into a functional and beautiful environment.
-          <HoverImage num={4} />
+        <div className="font-sometimestimes text-[5vw] leading-[1.2] pointer-events-none px-[64px]">
+          {["", "", "", ""].map((text, key) => (
+            <span key={key}>
+              {t(`services.${service.toLowerCase()}.top_text.${key + 1}`)}
+              <HoverImage src={service_.text_images[key].url} />
+            </span>
+          ))}
         </div>
-        <ParallaxScroll service_page={true} />
-        <Expertise />
+        <ParallaxScroll
+          service={service}
+          service_page={true}
+          images={service_.parallax_images}
+        />
+        <Expertise data={service_.expertise} />
         <Contact />
       </div>
     </div>
   );
 };
 
-const Expertise = () => {
+const Expertise = ({ data }) => {
   return (
     <div className="my-[50px] px-[64px]">
       <p className="uppercase text-5xl font-[600] border-b-[1px] border-b-black pb-5 w-full pointer-events-none">
@@ -59,14 +69,14 @@ const Expertise = () => {
       </p>
       <div className="flex flex-col items-end">
         <ul className="w-[70%] pointer-events-none">
-          {["", "", "", "", "", "", ""].map((text, key) => (
+          {data.map((text, key) => (
             <li
               key={key}
               className="py-4
             border-t-[1px] border-t-black first:border-t-0"
             >
               <span>0{key + 1}</span>
-              <span className="ml-16">Finish, Lighting, Furniture Plans</span>
+              <span className="ml-16">{text.text}</span>
             </li>
           ))}
         </ul>
@@ -75,9 +85,9 @@ const Expertise = () => {
   );
 };
 
-const HoverImage = ({ num }) => {
+const HoverImage = ({ src }) => {
   return (
-    <div className="relative inline-block mx-[40px] z-[1] w-[120px] h-[53px] hover:z-[5] pointer-events-auto">
+    <div className="relative inline-block mx-[40px] z-[1] aspect-video w-[120px] h-[53px] hover:z-[5] pointer-events-auto">
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120px] h-[53px] hover:w-[280px] hover:h-[208px]"
         style={{
@@ -85,10 +95,10 @@ const HoverImage = ({ num }) => {
             "width .4s cubic-bezier(.32,.04,.08,1), height .4s cubic-bezier(.32,.04,.08,1)",
         }}
       >
-        <img
-          src={`/src/assets/swiper/${num}.jpg`}
-          className="w-full h-full bg-secondary object-fit"
-        />
+        <div
+          className="w-full h-full bg-secondary bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(http://localhost:1337/${src})` }}
+        ></div>
       </div>
     </div>
   );
