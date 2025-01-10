@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { IoIosArrowDown } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
 
 const Modal = ({ handleClose }) => {
   const { t } = useTranslation();
@@ -23,11 +24,37 @@ const Modal = ({ handleClose }) => {
 
   const onSubmit = async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      throw new Error();
+      const serviceID = "service_lk8k0rh";
+      const templateID = "template_l1k50wi";
+      const userID = "k6fROXlY1FLRa-z7f";
+
+      let templateParams = {
+        to_email: "info@aniebert.com",
+        name: data.name,
+        surname: data.surname,
+        phone: data.phone,
+        city: data.city,
+        mail: data.mail,
+        type: data.type,
+        comment: data.comment,
+        checkmark: data.checkmark,
+      };
+
+      // Send the email
+      let result = await emailjs.send(
+        serviceID,
+        templateID,
+        templateParams,
+        userID
+      );
+      console.log("Email sent successfully:", result.text);
+
+      // Optionally, you can show a success message to the user here
+      alert("Request sent successfully!");
     } catch (error) {
+      console.error("Failed to send email:", error);
       setError("root", {
-        message: "This email is already taken",
+        message: "There was an error sending your request. Please try again.",
       });
     }
   };

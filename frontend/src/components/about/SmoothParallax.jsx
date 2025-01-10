@@ -62,7 +62,7 @@ const SmoothParallax = () => {
       >
         The World of Anie Bert
       </h1>
-      <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
     </div>
   );
 };
