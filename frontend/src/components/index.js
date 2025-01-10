@@ -39,6 +39,8 @@ import Magnetic from "./reusable/hover_effects/Magnetic";
 // Components
 import Socials from "./reusable/Socials";
 
+import LanguageSwitcherWithArrow from "./LanguageSwitcherWithArrow";
+
 export {
   Hero,
   Navbar,
@@ -64,4 +66,5 @@ export {
   SmoothParallax,
   ImageSlideshow,
   Works,
+  LanguageSwitcherWithArrow,
 };

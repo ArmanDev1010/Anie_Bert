@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { AnimatePresence } from "framer-motion";
 
-import { Modal, Menu } from "../../index";
+import { Modal, Menu, LanguageSwitcherWithArrow } from "../../index";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ invert_colors, fixed_active }) => {
@@ -63,6 +63,11 @@ const Navbar = ({ invert_colors, fixed_active }) => {
               </li>
             </Link>
           ))}
+          <LanguageSwitcherWithArrow
+            pos={pos}
+            invert_colors={invert_colors}
+            fixed_active={fixed_active}
+          />
         </ul>
         <div
           className={`menu_btn ${showMenu ? "menu_btn_clicked" : ""} ${
