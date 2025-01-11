@@ -79,8 +79,8 @@ const SwiperSlides = ({ data }) => {
             <div
               key={key}
               className={`${
-                text == "room" ? "text-5xl max-desktopM:text-4xl" : "text-3xl"
-              } pointer-events-none capitalize overflow-hidden text-right`}
+                text == "room" ? "text-6xl max-desktopM:text-5xl" : "text-3xl"
+              } pointer-events-none overflow-hidden text-right`}
             >
               {text == "room" ? (
                 <motion.div
@@ -100,7 +100,7 @@ const SwiperSlides = ({ data }) => {
                   animate={
                     progress?.toFixed(1) == "0.2" ? "visisble" : "hidden"
                   }
-                  className="mb-5 font-medium italic"
+                  className="mb-3 font-medium italic capitalize leading-[1.2]"
                 >
                   {data[activeIndex]?.project_address}
                 </motion.div>

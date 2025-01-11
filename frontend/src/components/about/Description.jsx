@@ -6,13 +6,7 @@ import { useTranslation } from "react-i18next";
 const Description = () => {
   const { t } = useTranslation();
 
-  const phrases = [
-    "Anie Bert is an architecture and interior",
-    "design studio founded by Anie Bert in 2021",
-    "Completing 15+ residential and commercial projects",
-    "The studio focuses on creating functional",
-    "aesthetically pleasing spaces.",
-  ].map((text, key) => {
+  const phrases = ["", "", "", "", ""].map((text, key) => {
     return t(`about.page.description.${key + 1}`);
   });
 

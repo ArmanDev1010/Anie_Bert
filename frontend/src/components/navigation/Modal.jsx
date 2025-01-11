@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 import { IoIosArrowDown } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
@@ -18,6 +18,7 @@ const Modal = ({ handleClose }) => {
   const [isClick, setIsClick] = useState(false);
   const [isOptionClick, setIsOptionClick] = useState(false);
   const [checkmarkChecked, setCheckmarkChecked] = useState("");
+  const [message, setMessage] = useState("");
 
   const onCheckmarkChange = (text) => {
     setCheckmarkChecked(text);
@@ -43,11 +44,12 @@ const Modal = ({ handleClose }) => {
 
       await emailjs.send(serviceID, templateID, templateParams, userID);
 
-      alert(t("modal.request.success"));
+      setMessage(t("modal.request.success"));
     } catch (error) {
       setError("root", {
         message: t("modal.request.error"),
       });
+      setMessage(t("modal.request.error"));
     }
   };
 
@@ -153,7 +155,7 @@ const Modal = ({ handleClose }) => {
                         required: false,
                       })}
                       typeof="textarea"
-                      placeholder={text.place}
+                      placeholder={t("modal.fields.type")}
                       className="w-full h-full outline-none resize-none min-h-[28px]"
                       style={{
                         borderBottom: "1px solid hsla(0, 0%, 83.9%, .3)",
@@ -224,8 +226,16 @@ const Modal = ({ handleClose }) => {
               </button>
             </div>
             {errors.root && (
-              <div className="text-center mt-4 text-red-500 font-semibold text-[14px]">
+              <div className="text-center mt-4 text-red-500 font-semibold text-[14px] pointer-events-none">
                 {errors.root.message}
+              </div>
+            )}
+            {message && (
+              <div
+                className="text-center mt-5 text-red-500 font-semibold text-[18px] pointer-events-none"
+                style={!errors.root ? { color: "green" } : { color: "red" }}
+              >
+                {message}
               </div>
             )}
           </div>

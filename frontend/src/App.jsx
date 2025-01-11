@@ -82,10 +82,7 @@ const App = () => {
       <MyContext.Provider value={{}}>
         <ApolloProvider client={client}>
           <Routes>
-            <Route
-              path="/:lang/"
-              element={<Navigate to="/:lang/" replace />}
-            />
+            <Route path="/:lang/" element={<Navigate to="/:lang/" replace />} />
             <Route exact path="/:lang/home" element={<Home />} />
             <Route exact path="/:lang/projects" element={<Projects />} />
             <Route exact path="/:lang/about" element={<About />} />
