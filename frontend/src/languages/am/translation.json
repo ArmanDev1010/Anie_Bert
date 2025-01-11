@@ -1,57 +1,164 @@
 {
   "navbar": {
-    "home": "Գլխավոր",
-    "projects": "Նախագծեր",
-    "about": "Մեր մասին",
-    "services": "Ծառայություններ",
-    "contacts": "Կապ",
-    "request": "Հայց կատարել",
-    "location": "Սասունցի Դավիթ 54, Երևան",
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About us",
+    "services": "Services",
+    "contacts": "Contacts",
+    "request": "Make request",
+    "location": "Davit 54 of Sasuntsi",
     "phone": "055 550123",
     "email": "info@aniebert.com"
   },
+  "modal": {
+    "make_request": "Make request",
+    "fields": {
+      "name": "Name",
+      "surname": "Last Name",
+      "phone": "Phone",
+      "city": "Your city",
+      "mail": "Email",
+      "type": "Property type",
+      "comment": "Your comment",
+      "area": "Area (m²)"
+    },
+    "property_types": {
+      "all": "All",
+      "apartament": "Apartament",
+      "house": "House",
+      "commerce": "Commerce",
+      "architecture": "Architecture"
+    },
+    "request": {
+      "success": "✅ Request Sent!!!",
+      "error": "❌ There was an error sending your request. Please try again."
+    },
+    "send_request": "Send Request"
+  },
   "hero": {
-    "buttons": {
-      "start": "Start project",
-      "learn": "Learn more"
+    "title": "Building Visions & Creating Reality",
+    "start_btn": "Start project",
+    "types": {
+      "interior": "Interior Design",
+      "architecture": "Architecture",
+      "commercial": "Commerial"
+    }
+  },
+  "masterpiece": {
+    "1": "Where creativity meets functionality",
+    "2": "Сreating as an interior — releasing as a masterpiece",
+    "3": "Turning your vision into reality"
+  },
+  "about": {
+    "component": {
+      "phrase": "Anie Bert is an architecture and interior design studio founded by Anie Bert in 2021. We have been engaged in residential and commercial design projects for over 3 years. Completing 15+ residential and commercial projects.",
+      "paragraph": "Your home should tell the story of who you are, and be a collection of what you love.",
+      "about_btn": "About us"
+    },
+    "page": {
+      "description": {
+        "1": "Anie Bert is an architecture and interior",
+        "2": "design studio founded by Anie Bert in 2021",
+        "3": "Completing 15+ residential and commercial projects",
+        "4": "The studio focuses on creating functional",
+        "5": "aesthetically pleasing spaces."
+      },
+      "team": {
+        "title": "The Team",
+        "paragraph": "Our team consists of gifted professionals who release all projects as their personal creative achievements with the best results"
+      }
+    }
+  },
+  "projects": {
+    "component": {
+      "title": "Our projects",
+      "see_other": "See other projects"
+    },
+    "page": {
+      "title": "Projects",
+      "back_btn": "Go Back",
+      "types": {
+        "all": "All",
+        "interior": "Interior Design",
+        "architecture": "Architecture",
+        "commercial": "Commerial"
+      },
+      "infos": {
+        "location": "Location",
+        "year": "Year",
+        "area": "Area"
+      },
+      "category": {
+        "all": "All",
+        "bedroom": "Bedroom",
+        "living_room": "Living Room",
+        "kitchen": "Kithen",
+        "bathroom": "Bathroom"
+      }
     }
   },
   "services": {
-    "interior": {
-      "top_text": {
-        "1": "We design",
-        "2": "interiors equipped",
-        "3": "to transform any space",
-        "4": "into a functional and beautiful environment."
-      },
-      "parallax_texts": {
-        "top": "By selecting color schemes, materials, furniture and decor our designs create a cohesive and harmonious design scheme, a memorable ambience and optimize the use of space.",
-        "bottom": "Each of our designs are influenced by creating environments that stand out and connect with people."
+    "component": {
+      "view": "View",
+      "types": {
+        "interior": "Interior Design",
+        "architecture": "Architecture",
+        "commercial": "Commerial"
       }
     },
-    "architecture": {
-      "top_text": {
-        "1": "We create",
-        "2": "functional",
-        "3": "aesthetically pleasing",
-        "4": "and innovative spaces."
+    "page": {
+      "explore_btn": "Click to explore",
+      "expertise": "Area of expertise",
+      "learn_btn": "Learn more",
+      "works": "Works",
+      "projects": "Projects",
+      "types": {
+        "interior": "Interior Design",
+        "architecture": "Architecture",
+        "commercial": "Commerial"
       },
-      "parallax_texts": {
-        "top": "By choosing appropriate structural forms, materials, and spatial arrangements, our architectural designs establish a unified and resonant aesthetic, craft an enduring atmosphere, and maximize the functionality and efficiency of the built environment.",
-        "bottom": "Each of our designs are influenced by creating environments that stand out and connect with people."
-      }
-    },
-    "commercial": {
-      "top_text": {
-        "1": "We turn",
-        "2": "ordinary spaces into",
-        "3": "extraordinary, efficient",
-        "4": "and visually stunning workplaces."
+      "interior": {
+        "top_text": {
+          "1": "We design",
+          "2": "interiors equipped",
+          "3": "to transform any space",
+          "4": "into a functional and beautiful environment."
+        },
+        "parallax_texts": {
+          "top": "By selecting color schemes, materials, furniture and decor our designs create a cohesive and harmonious design scheme, a memorable ambience and optimize the use of space.",
+          "bottom": "Each of our designs are influenced by creating environments that stand out and connect with people."
+        }
       },
-      "parallax_texts": {
-        "top": "By integrating brand identity, functional layout, materials, and visual elements, our commercial designs forge a consistent and engaging aesthetic, foster a distinctive atmosphere, and enhance both customer experience and operational efficiency.",
-        "bottom": "Each of our designs are influenced by creating environments that stand out and connect with people."
+      "architecture": {
+        "top_text": {
+          "1": "We create",
+          "2": "functional",
+          "3": "aesthetically pleasing",
+          "4": "and innovative spaces."
+        },
+        "parallax_texts": {
+          "top": "By choosing appropriate structural forms, materials, and spatial arrangements, our architectural designs establish a unified and resonant aesthetic, craft an enduring atmosphere, and maximize the functionality and efficiency of the built environment.",
+          "bottom": "Each of our designs are influenced by creating environments that stand out and connect with people."
+        }
+      },
+      "commercial": {
+        "top_text": {
+          "1": "We turn",
+          "2": "ordinary spaces into",
+          "3": "extraordinary, efficient",
+          "4": "and visually stunning workplaces."
+        },
+        "parallax_texts": {
+          "top": "By integrating brand identity, functional layout, materials, and visual elements, our commercial designs forge a consistent and engaging aesthetic, foster a distinctive atmosphere, and enhance both customer experience and operational efficiency.",
+          "bottom": "Each of our designs are influenced by creating environments that stand out and connect with people."
+        }
       }
     }
+  },
+  "contact": {
+    "title": "Contact us",
+    "paragraph": "For cooperation or if you have any questions for us.",
+    "message_btn": "Send us a message",
+    "intouch_btn": "Get in touch"
   }
 }

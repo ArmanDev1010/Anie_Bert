@@ -66,7 +66,7 @@ const Projects = () => {
 };
 
 const Project = ({ data }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -80,7 +80,7 @@ const Project = ({ data }) => {
       <div className="sticky top-0 flex h-[100vh] items-center overflow-hidden pt-[80px]">
         <motion.ul style={{ x }} className="flex gap-8">
           {data.map((text, key) => (
-            <Link to={`project/${text.documentId}`} key={key}>
+            <Link to={`/${i18n.language}/project/${text.documentId}`} key={key}>
               <div
                 className="group project"
                 style={{
@@ -103,14 +103,14 @@ const Project = ({ data }) => {
               </div>
             </Link>
           ))}
-          <Link to={"/projects"}>
+          <Link to={`/${i18n.language}/projects`}>
             <div className="group project">
               <div>
                 <div className="group-hover:translate-y-[-110%] transition duration-500">
                   {t("projects.component.see_other")}
                 </div>
                 <div className="translate-y-[110%] group-hover:translate-y-[0%] transition duration-500 absolute top-0 bottom-0 left-0 right-0">
-                {t("projects.component.see_other")}
+                  {t("projects.component.see_other")}
                 </div>
               </div>
               <Swiper

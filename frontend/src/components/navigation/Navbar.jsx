@@ -7,7 +7,7 @@ import { Modal, Menu, LanguageSwitcherWithArrow } from "../index";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ invert_colors, fixed_active }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [pos, setPos] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -57,7 +57,7 @@ const Navbar = ({ invert_colors, fixed_active }) => {
         </Link>
         <ul className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 max-desktopS:hidden flex items-center gap-14">
           {["projects", "about", "services", "contacts"].map((text, key) => (
-            <Link to={`/${text}`} key={key}>
+            <Link to={`/${i18n.language}/${text}`} key={key}>
               <li className="text-[18px] font-[600] max-desktopM:text-[17px] cursor-pointer translate duration-300 hover:opacity-50">
                 {t(`navbar.${text}`)}
               </li>

@@ -58,7 +58,9 @@ const Service = () => {
           <div className="font-sometimestimes text-[5vw] leading-[1.2] pointer-events-none px-[64px]">
             {["", "", "", ""].map((text, key) => (
               <span key={key}>
-                {t(`services.${service.toLowerCase()}.top_text.${key + 1}`)}
+                {t(
+                  `services.page.${service.toLowerCase()}.top_text.${key + 1}`
+                )}
                 <HoverImage src={service_.text_images[key]?.url} />
               </span>
             ))}

@@ -25,7 +25,7 @@ const PROJECTS = gql`
 `;
 
 const Works = ({ service }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { loading, error, data } = useQuery(PROJECTS, {
     variables: { service: service.toLowerCase() },
@@ -35,10 +35,6 @@ const Works = ({ service }) => {
   if (error) return <p>error</p>;
 
   const projects = data.heroes;
-
-  const cleanText = (e) => {
-    return e.replace(/_/g, " ");
-  };
 
   return (
     <div className="">
@@ -83,7 +79,7 @@ const Works = ({ service }) => {
           className="grid grid-cols-2 gap-[3.25rem_1rem]"
         >
           {projects.map((text, key) => (
-            <Link to={`/project/${text.documentId}`} key={key}>
+            <Link to={`/${i18n.language}/project/${text.documentId}`} key={key}>
               <li className="w-full">
                 <div className="relative bg-gray-500 w-full h-[576px] mb-[0.7rem]">
                   <ImageSlideshow

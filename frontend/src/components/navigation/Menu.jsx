@@ -6,14 +6,14 @@ import { Link, useLocation } from "react-router-dom";
 
 import { IoLocationSharp } from "react-icons/io5";
 
-import { Socials } from "../";
+import { LanguageSwitcherWithArrow, Socials } from "../";
 
 const Menu = ({ handleClose }) => {
   let location = useLocation();
   const { t } = useTranslation();
 
   return (
-    <div className="menu w-full h-full fixed top-0 left-0 z-[9] text-black !text-[#3a3e4b]">
+    <div className="menu w-full h-full fixed top-0 left-0 z-[9]">
       <motion.div
         className="relative w-full h-full z-[1]"
         initial={{ opacity: 0 }}
@@ -37,6 +37,7 @@ const Menu = ({ handleClose }) => {
               </Link>
             )
           )}
+          <LanguageSwitcherWithArrow menu={true} />
         </ul>
         <div className="absolute left-[64px] bottom-[37px] z-[2] text-white">
           <ul className="flex gap-28 items-center">

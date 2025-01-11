@@ -35,7 +35,7 @@ const opacity = {
 };
 
 const About = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const phrase = t("about.component.phrase");
 
@@ -77,7 +77,7 @@ const About = () => {
             </motion.p>
           </div>
           <div data-scroll data-scroll-speed={0.1}>
-            <Link to={"/about"}>
+            <Link to={`/${i18n.language}/about`}>
               <RoundedButton className="w-[180px] h-[180px] bg-[#222] text-white rounded-[50%] relative flex items-center justify-center cursor-pointer">
                 <p className="m-0 text-lg font-medium relative z-[1]">
                   {t("about.component.about_btn")}

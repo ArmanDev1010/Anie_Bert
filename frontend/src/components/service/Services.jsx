@@ -42,7 +42,7 @@ const scaleAnimation = {
 };
 
 const Services = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [modal, setModal] = useState({ active: false, index: 0 });
   const { active, index } = modal;
@@ -116,7 +116,7 @@ const Services = () => {
         {data.services?.map((service, index) => {
           return (
             <Link
-              to={`/services/${service.service}`}
+              to={`/${i18n.language}/services/${service.service}`}
               key={index}
               className="w-full"
             >

@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const SwiperSlides = ({ data }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [swiper, setSwiper] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -129,7 +129,7 @@ const SwiperSlides = ({ data }) => {
               )}
             </div>
           ))}
-          <Link to={`project/${activeId}`}>
+          <Link to={`/${i18n.language}/project/${activeId}`}>
             <div className="w-fit relative">
               <TiltCard
                 element={

@@ -77,10 +77,10 @@ const ParallaxScroll = ({ service, service_page, images }) => {
       {service_page && (
         <div className="pointer-events-none text-[16px] text-gray-600">
           <p className="absolute top-0 left-[64px] w-[320px]">
-            {t(`services.${service.toLowerCase()}.parallax_texts.top`)}
+            {t(`services.page.${service.toLowerCase()}.parallax_texts.top`)}
           </p>
           <p className="absolute bottom-0 text-right right-[64px] w-[320px]">
-            {t(`services.${service.toLowerCase()}.parallax_texts.bottom`)}
+            {t(`services.page.${service.toLowerCase()}.parallax_texts.bottom`)}
           </p>
         </div>
       )}

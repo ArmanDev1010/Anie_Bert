@@ -41,7 +41,7 @@ const Projects = () => {
 };
 
 const ProjectsSection = ({ projects }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [selectedFilters, setSelectedFilters] = useState(["all"]);
   const [items, setItems] = useState([]);
@@ -140,7 +140,7 @@ const ProjectsSection = ({ projects }) => {
         className="grid grid-cols-2 gap-[3.25rem_1rem] px-[64px]"
       >
         {filteredItems.map((text, key) => (
-          <Link to={`/project/${text.documentId}`} key={key}>
+          <Link to={`/${i18n.language}/project/${text.documentId}`} key={key}>
             <li className="w-full">
               <div className="relative bg-gray-500 w-full h-[576px] mb-[0.7rem]">
                 <ImageSlideshow
