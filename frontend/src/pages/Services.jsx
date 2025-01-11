@@ -5,6 +5,7 @@ import Lenis from "@studio-freight/lenis";
 import { Link } from "react-router-dom";
 
 import { useQuery, gql } from "@apollo/client";
+import { useTranslation } from "react-i18next";
 
 const images = [
   {
@@ -77,7 +78,6 @@ const images = [
 const SERVICES = gql`
   query GetServices {
     services(sort: "order") {
-      title
       service
     }
   }
@@ -119,7 +119,6 @@ const Services = () => {
       passive: false,
     });
 
-    // New: Observer to detect which section is in view
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -128,7 +127,7 @@ const Services = () => {
           }
         });
       },
-      { threshold: 0.5 } // Adjust this value to change when the section is considered active
+      { threshold: 0.5 }
     );
 
     // New: Observe each section
@@ -200,17 +199,21 @@ const Services = () => {
 };
 
 const FixedTitle = ({ services, activeSection }) => {
+  const { t } = useTranslation();
+
   const containerRef = useRef(null);
   const textRef = useRef(null);
 
   useEffect(() => {
-    resizeText();
+    setTimeout(() => {
+      resizeText();
 
-    window.addEventListener("resize", resizeText);
+      window.addEventListener("resize", resizeText);
 
-    return () => {
-      window.removeEventListener("resize", resizeText);
-    };
+      return () => {
+        window.removeEventListener("resize", resizeText);
+      };
+    }, 10);
   }, [activeSection]);
 
   const resizeText = () => {
@@ -261,7 +264,7 @@ const FixedTitle = ({ services, activeSection }) => {
             damping: 20,
           }}
         >
-          {services[activeSection].title}
+          {t(`services.page.types.${services[activeSection].service}`)}
         </motion.h1>
       </div>
       <Link to={`./${services[activeSection].service}`}>
@@ -276,7 +279,7 @@ const FixedTitle = ({ services, activeSection }) => {
               "padding-left .5s ease, right .5s ease, opacity .5s ease",
           }}
         >
-          Click to Explore
+          {t("services.page.explore_btn")}
         </p>
       </Link>
     </div>

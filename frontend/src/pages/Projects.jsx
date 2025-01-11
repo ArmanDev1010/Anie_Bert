@@ -3,6 +3,7 @@ import { Navbar, Contact, ImageSlideshow } from "../components";
 import { motion } from "framer-motion";
 import { useQuery, gql } from "@apollo/client";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const PROJECTS = gql`
   query GetProjects {
@@ -40,6 +41,8 @@ const Projects = () => {
 };
 
 const ProjectsSection = ({ projects }) => {
+  const { t } = useTranslation();
+
   const [selectedFilters, setSelectedFilters] = useState(["all"]);
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(projects);
@@ -80,10 +83,6 @@ const ProjectsSection = ({ projects }) => {
     }
   };
 
-  const cleanText = (e) => {
-    return e.replace(/_/g, " ");
-  };
-
   return (
     <div className="relative projects mb-[70px]">
       <div className="pt-[20px] pb-10 px-[64px] border-b border-secondary mb-10">
@@ -103,7 +102,7 @@ const ProjectsSection = ({ projects }) => {
           className="pointer-events-none font-articulat text-secondary uppercase text-[max(3vw,5.5vw)] leading-[1.1] 
         pointer-events-none mb-[50px] max-desktopM:text-[max(3vw,5.2vw)]"
         >
-          Projects
+          {t("projects.page.title")}
         </motion.p>
         <div className="flex items-center justify-between">
           <div className="flex gap-5">
@@ -115,12 +114,12 @@ const ProjectsSection = ({ projects }) => {
                   selectedFilters?.includes(text) ? "bg-thirdly text-white" : ""
                 }`}
               >
-                {text.replace(/_/g, " ")}
+                {t(`projects.page.types.${text}`)}
               </button>
             ))}
           </div>
           <p className="text-xl italic pointer-events-none">
-            ({filteredItems.length}) Projects
+            ({filteredItems.length}) {t("projects.page.title")}
           </p>
         </div>
       </div>
@@ -164,7 +163,7 @@ const ProjectsSection = ({ projects }) => {
                               key={key}
                             >
                               {type == "type"
-                                ? cleanText(text.type)
+                                ? t(`projects.page.types.${text.type}`)
                                 : text.year}
                             </div>
                           ) : null

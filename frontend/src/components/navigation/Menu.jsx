@@ -6,7 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { IoLocationSharp } from "react-icons/io5";
 
-import { Socials } from "../../";
+import { Socials } from "../";
 
 const Menu = ({ handleClose }) => {
   let location = useLocation();

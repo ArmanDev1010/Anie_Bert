@@ -1,16 +1,21 @@
 import React, { useLayoutEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-
-const phrases = [
-  "Anie Bert is an architecture and interior",
-  "design studio founded by Anie Bert in 2021",
-  "Completing 15+ residential and commercial projects",
-  "The studio focuses on creating functional",
-  "aesthetically pleasing spaces.",
-];
+import { useTranslation } from "react-i18next";
 
 const Description = () => {
+  const { t } = useTranslation();
+
+  const phrases = [
+    "Anie Bert is an architecture and interior",
+    "design studio founded by Anie Bert in 2021",
+    "Completing 15+ residential and commercial projects",
+    "The studio focuses on creating functional",
+    "aesthetically pleasing spaces.",
+  ].map((text, key) => {
+    return t(`about.page.description.${key + 1}`);
+  });
+
   return (
     <div className="relative text-black text-[2.7vw] font-articulat uppercase my-[50px] ml-[5vw]">
       {phrases.map((phrase, index) => {

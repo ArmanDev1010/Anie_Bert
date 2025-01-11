@@ -5,8 +5,11 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const ParallaxImages = ({ data }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="mx-auto max-w-5xl px-4 pt-[200px]">
       {[
@@ -23,14 +26,24 @@ const ParallaxImages = ({ data }) => {
           className={text.style}
         />
       ))}
-      <div className="absolute top-[70%] left-36 text-2xl">
-        Сreating as an interior — <br></br> releasing as a masterpiece
-      </div>
-      <div className="absolute top-[60%] right-[10%] text-2xl">
-        Where creativity meets <br></br>functionality
-      </div>
-      <div className="absolute top-[80%] right-[5%] text-2xl">
-        Turning your vision into <br></br> reality
+      <div className="">
+        {[
+          { top: 70, left: 7 },
+          { top: 60, right: 10 },
+          { top: 80, right: 5 },
+        ].map((text, key) => (
+          <div
+            key={key}
+            className="absolute text-2xl max-w-[350px] pointer-events-none"
+            style={
+              text.left
+                ? { top: `${text.top}%`, left: `${text.left}%` }
+                : { top: `${text.top}%`, right: `${text.right}%` }
+            }
+          >
+            {t(`masterpiece.${key + 1}`)}
+          </div>
+        ))}
       </div>
     </div>
   );

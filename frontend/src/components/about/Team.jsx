@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { useQuery, gql } from "@apollo/client";
+import { useTranslation } from "react-i18next";
 
 const TEAM = gql`
   query GetTeam {
@@ -17,6 +18,8 @@ const TEAM = gql`
 `;
 
 const Team = () => {
+  const { t } = useTranslation();
+
   const { loading, error, data } = useQuery(TEAM);
 
   if (loading) return <p></p>;
@@ -28,10 +31,11 @@ const Team = () => {
     <div className="team relative px-[5vw] pt-[3vh] pb-[8vh] bg-secondary text-white">
       <div className="relative z-[1]">
         <div className="pointer-events-none mb-[40px]">
-          <div className="text-[6vw] font-[600]">The Team</div>
+          <div className="text-[6vw] font-[600]">
+            {t("about.page.team.title")}
+          </div>
           <p className="text-xl w-[700px]">
-            Our team consists of gifted professionals who release all projects
-            as their personal creative achievements with the best results
+            {t("about.page.team.paragraph")}
           </p>
         </div>
         <ul className="grid grid-cols-3 gap-7">

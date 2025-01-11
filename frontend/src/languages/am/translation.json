@@ -1,16 +1,14 @@
 {
   "navbar": {
-    "home": "Home",
-    "projects": "Projects",
-    "about": "About us",
-    "services": "Services",
-    "contacts": "Contacts",
-    "request": "Make request",
-    "send_request": "Send request",
-    "discover_more": "Discover more",
-    "location": "Yerevan, Armenia",
+    "home": "Գլխավոր",
+    "projects": "Նախագծեր",
+    "about": "Մեր մասին",
+    "services": "Ծառայություններ",
+    "contacts": "Կապ",
+    "request": "Հայց կատարել",
+    "location": "Սասունցի Դավիթ 54, Երևան",
     "phone": "055 550123",
-    "email": "info.aniebert@gmail.com"
+    "email": "info@aniebert.com"
   },
   "hero": {
     "buttons": {

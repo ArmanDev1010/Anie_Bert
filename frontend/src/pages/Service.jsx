@@ -86,10 +86,12 @@ const Service = () => {
 };
 
 const Expertise = ({ data, showModal, close, open }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="mt-[50px] mb-[70px] px-[64px]">
       <p className="uppercase text-5xl text-secondary font-[600] border-b-[1px] border-b-black pb-5 w-full pointer-events-none">
-        Area of expertise
+        {t("services.page.expertise")}
       </p>
       <div className="flex flex-col items-end mb-[50px]">
         <ul className="w-[70%] pointer-events-none">
@@ -113,10 +115,10 @@ const Expertise = ({ data, showModal, close, open }) => {
           <span>(</span>
           <div className="relative overflow-hidden">
             <div className="group-hover:translate-y-[-110%] transition duration-300">
-              Learn more
+              {t("services.page.learn_btn")}
             </div>
             <div className="translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
-              Learn more
+              {t("services.page.learn_btn")}
             </div>
           </div>
           <span>)</span>

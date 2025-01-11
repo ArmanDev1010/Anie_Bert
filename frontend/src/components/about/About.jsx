@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 import { RoundedButton } from "..";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const slideUp = {
   initial: {
@@ -34,8 +35,9 @@ const opacity = {
 };
 
 const About = () => {
-  const phrase =
-    "Anie Bert is an architecture and interior design studio founded by Anie Bert in 2021. We have been engaged in residential and commercial design projects for over 3 years. Completing 15+ residential and commercial projects.";
+  const { t } = useTranslation();
+
+  const phrase = t("about.component.phrase");
 
   return (
     <div className="px-[200px] mt-[100px] mb-[120px] flex justify-center max-desktopM:mb-[80px] max-desktopM:px-[150px]">
@@ -71,15 +73,14 @@ const About = () => {
               variants={opacity}
               className="text-[18px] w-full font-medium pointer-events-none w-[500px]"
             >
-              Your home should tell the story of who you are, and be a
-              collection of what you love.
+              {t("about.component.paragraph")}
             </motion.p>
           </div>
           <div data-scroll data-scroll-speed={0.1}>
             <Link to={"/about"}>
               <RoundedButton className="w-[180px] h-[180px] bg-[#222] text-white rounded-[50%] relative flex items-center justify-center cursor-pointer">
                 <p className="m-0 text-lg font-medium relative z-[1]">
-                  About us
+                  {t("about.component.about_btn")}
                 </p>
               </RoundedButton>
             </Link>

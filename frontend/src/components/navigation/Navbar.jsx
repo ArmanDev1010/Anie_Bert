@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { AnimatePresence } from "framer-motion";
 
-import { Modal, Menu, LanguageSwitcherWithArrow } from "../../index";
+import { Modal, Menu, LanguageSwitcherWithArrow } from "../index";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ invert_colors, fixed_active }) => {

@@ -7,6 +7,7 @@ import { Contact, Navbar } from "../components";
 import { motion } from "framer-motion";
 
 import { BsArrowLeft } from "react-icons/bs";
+import { useTranslation } from "react-i18next";
 
 const PROJECT = gql`
   query GetProject($documentId: ID!) {
@@ -32,7 +33,6 @@ const PROJECT = gql`
 
 const Project = () => {
   const { documentId } = useParams();
-  console.log(documentId)
   const { loading, error, data } = useQuery(PROJECT, {
     variables: { documentId: documentId },
   });
@@ -55,6 +55,8 @@ const Project = () => {
 };
 
 const TheProject = ({ data, images }) => {
+  const { t } = useTranslation();
+
   const [selectedFilters, setSelectedFilters] = useState(["all"]);
   const [filteredItems, setFilteredItems] = useState(images);
   const [items, setItems] = useState([]);
@@ -107,10 +109,10 @@ const TheProject = ({ data, images }) => {
         />
         <div className="relative overflow-hidden">
           <div className="group-hover:translate-y-[-110%] transition duration-300">
-            Go Back
+            {t("projects.page.back_btn")}
           </div>
           <div className="translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
-            Go Back
+            {t("projects.page.back_btn")}
           </div>
         </div>
       </Link>
@@ -139,7 +141,10 @@ const TheProject = ({ data, images }) => {
             (text == "year" && data.year) ||
             (text == "area" && data.area) ? (
               <li key={key}>
-                <span className="capitalize">{text}</span> :{" "}
+                <span className="capitalize">
+                  {t(`projects.page.infos.${text}`)}
+                </span>{" "}
+                :{" "}
                 {text == "location"
                   ? data.location
                   : text == "year"
@@ -159,7 +164,7 @@ const TheProject = ({ data, images }) => {
               selectedFilters?.includes(text) ? "bg-thirdly text-white" : ""
             }`}
           >
-            {text.replace(/_/g, " ")}
+            {t(`projects.page.category.${text}`)}
           </button>
         ))}
       </div>

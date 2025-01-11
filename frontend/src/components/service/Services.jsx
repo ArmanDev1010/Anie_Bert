@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
+import { useTranslation } from "react-i18next";
 
 const SERVICES = gql`
   query GetServices {
     services(sort: "order") {
-      title
       service
     }
   }
@@ -42,6 +42,8 @@ const scaleAnimation = {
 };
 
 const Services = () => {
+  const { t } = useTranslation();
+
   const [modal, setModal] = useState({ active: false, index: 0 });
   const { active, index } = modal;
   const modalContainer = useRef(null);
@@ -130,7 +132,7 @@ const Services = () => {
               last:border-b-[1px] last:border-b-[rgb(201,201,201)] hover:opacity-50 max-desktopM:px-[70px]"
               >
                 <h2 className="text-[45px] m-0 font-semibold text-[#222] transition-all duration-[0.4s] group-hover:-translate-x-[10px] max-desktopM:text-[40px]">
-                  {service.title}
+                  {t(`services.component.types.${service.service}`)}
                 </h2>
                 <p className="transition-all duration-[0.4s] font-medium group-hover:translate-x-[10px]">
                   <svg
@@ -193,7 +195,7 @@ const Services = () => {
             key={key}
             animate={active ? "enter" : "closed"}
           >
-            {text == "cursorLabel" ? "View" : ""}
+            {text == "cursorLabel" && t("services.component.view")}
           </motion.div>
         ))}
       </>

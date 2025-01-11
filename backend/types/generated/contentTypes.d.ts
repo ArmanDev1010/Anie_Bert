@@ -556,7 +556,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
       }>;
     publishedAt: Schema.Attribute.DateTime;
     service: Schema.Attribute.Enumeration<
-      ['Interior', 'architecture', 'commercial']
+      ['interior', 'architecture', 'commercial']
     > &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -568,13 +568,6 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
-        };
-      }>;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
         };
       }>;
     updatedAt: Schema.Attribute.DateTime;

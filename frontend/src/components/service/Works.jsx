@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useQuery, gql } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { ImageSlideshow } from "../index";
+import { useTranslation } from "react-i18next";
 
 const PROJECTS = gql`
   query GetProjects($service: String!) {
@@ -24,6 +25,8 @@ const PROJECTS = gql`
 `;
 
 const Works = ({ service }) => {
+  const { t } = useTranslation();
+
   const { loading, error, data } = useQuery(PROJECTS, {
     variables: { service: service.toLowerCase() },
   });
@@ -57,10 +60,10 @@ const Works = ({ service }) => {
             }}
             className="pointer-events-none font-articulat text-secondary uppercase text-[max(3vw,4.5vw)] leading-[1.1] pointer-events-none"
           >
-            WORKS
+            {t("services.page.works")}
           </motion.p>
           <p className="text-xl italic pointer-events-none">
-            ({projects.length}) Projects
+            ({projects.length}) {t("services.page.projects")}
           </p>
         </div>
 

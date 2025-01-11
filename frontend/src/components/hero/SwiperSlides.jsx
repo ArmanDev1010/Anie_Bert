@@ -14,8 +14,11 @@ import { motion } from "framer-motion";
 
 import { TiltCard } from "../index";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const SwiperSlides = ({ data }) => {
+  const { t } = useTranslation();
+
   const [swiper, setSwiper] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [swiperLength, setSwiperLength] = useState(null);
@@ -121,7 +124,7 @@ const SwiperSlides = ({ data }) => {
                   }
                   className="text-gray-200"
                 >
-                  {data[activeIndex]?.type}
+                  {t(`hero.types.${data[activeIndex]?.type}`)}
                 </motion.div>
               )}
             </div>

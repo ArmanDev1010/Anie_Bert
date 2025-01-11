@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { IoIosArrowDown } from "react-icons/io";
 
 const LanguageSwitcherWithArrow = ({ pos, invert_colors, fixed_active }) => {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
 
   const [isClick, setIsClick] = useState(false);
 
@@ -21,7 +21,7 @@ const LanguageSwitcherWithArrow = ({ pos, invert_colors, fixed_active }) => {
       <select
         value={i18n.language}
         onChange={handleLanguageChange}
-        className="appearance-none cursor-pointer w-20 font-[600] uppercase bg-transparent border-[1px] rounded-lg py-1 px-2 border-[#e3e3e3] outline-none"
+        className="appearance-none cursor-pointer w-[74px] font-[600] uppercase bg-transparent py-1 px-2 outline-none"
         style={
           pos || invert_colors || fixed_active
             ? { color: "black", borderColor: "black" }

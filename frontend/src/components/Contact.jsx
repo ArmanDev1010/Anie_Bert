@@ -72,7 +72,7 @@ const Contact = ({ is_contact_page }) => {
             }}
             className="uppercase text-5xl font-[700] mb-10"
           >
-            Contact us
+            {t("contact.title")}
           </motion.p>
           <motion.p
             initial="hidden"
@@ -87,7 +87,7 @@ const Contact = ({ is_contact_page }) => {
               visible: { opacity: 1, y: 0 },
               hidden: { opacity: 0, y: 60 },
             }}
-            className="max-w-[400px] text-gray-700"
+            className="max-w-[400px] text-secondary leading-[1.7] pointer-events-auto"
             style={
               is_contact_page && {
                 color: "white",
@@ -97,9 +97,19 @@ const Contact = ({ is_contact_page }) => {
               }
             }
           >
-            {is_contact_page
-              ? "For cooperation, advertising, suppliers, contractors proposals, and just if you have any questions for us. info.aniebert@gmail.com"
-              : "For cooperation or if you have any questions for us. info.aniebert@gmail.com"}
+            {t("contact.paragraph")}
+            <Link
+              to={"mailto:info@aniebert.com"}
+              className="text-secondary font-[600]"
+              style={
+                is_contact_page && {
+                  color: "white",
+                }
+              }
+            >
+              {" "}
+              info.aniebert@gmail.com
+            </Link>
           </motion.p>
         </div>
         <motion.ul
@@ -121,7 +131,7 @@ const Contact = ({ is_contact_page }) => {
                     transition-text duration-300 hover:text-gray-500"
                   >
                     <IoLocationSharp className="text-[17px]" />
-                    <span className="capitalize">Davit 54 of Sasuntsi</span>
+                    <span className="capitalize">{t("navbar.location")}</span>
                   </div>
                 </Link>
               ) : (
@@ -129,7 +139,7 @@ const Contact = ({ is_contact_page }) => {
                   to={
                     text == "phone"
                       ? "tel:+374 55 550123"
-                      : "mailto:info.aniebert@gmail.com"
+                      : "mailto:info@aniebert.com"
                   }
                 >
                   <p className="font-[600] tracking-[1px] text-[15px] cursor-pointer transition-opacity duration-200 hover:opacity-70">
@@ -167,13 +177,17 @@ const Contact = ({ is_contact_page }) => {
           >
             <div className="pointer-events-none relative overflow-hidden text-center text-[16px] font-[600]">
               <div className="group-hover:translate-y-[-110%] transition duration-300">
-                {is_contact_page ? "Get in touch" : "Send us a message"}
+                {is_contact_page
+                  ? t("contact.intouch_btn")
+                  : t("contact.message_btn")}
               </div>
               <div
                 className="text-white translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0"
                 style={is_contact_page && { color: "black" }}
               >
-                {is_contact_page ? "Get in touch" : "Send us a message"}
+                {is_contact_page
+                  ? t("contact.intouch_btn")
+                  : t("contact.message_btn")}
               </div>
             </div>
           </button>

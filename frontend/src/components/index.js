@@ -4,9 +4,9 @@ import BottomHero from "./hero/BottomHero";
 import SwiperSlides from "./hero/SwiperSlides";
 
 // Navigation
-import Navbar from "./reusable/navigation/Navbar";
-import Menu from "./reusable/navigation/Menu";
-import Modal from "./reusable/navigation/Modal";
+import Navbar from "./navigation/Navbar";
+import Menu from "./navigation/Menu";
+import Modal from "./navigation/Modal";
 
 // Masterpiece
 import Masterpiece from "./masterpiece/Masterpiece";

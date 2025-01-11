@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import Modal from "../reusable/navigation/Modal";
+import Modal from "../navigation/Modal";
 import { AnimatePresence } from "framer-motion";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { motion } from "framer-motion";
@@ -35,10 +35,10 @@ const BottomHero = () => {
             visible: { opacity: 1, y: 0 },
             hidden: { opacity: 0, y: 60 },
           }}
-          className="pointer-events-none font-articulat text-[max(3vw,5.5vw)] leading-[1.1] pointer-events-none mb-10
-        max-desktopM:text-[max(3vw,5.3vw)] max-desktopM:mb-8"
+          className="pointer-events-none font-articulat text-[5.5vw] w-[45vw] leading-[1.1] pointer-events-none mb-10 
+          max-desktopM:mb-8"
         >
-          Building Visions & <br></br>Creating Reality
+          {t("hero.title")}
         </motion.h1>
         <motion.button
           initial="hidden"
@@ -58,10 +58,10 @@ const BottomHero = () => {
         >
           <div className="relative overflow-hidden border-[2px] border-white bg-inherit rounded-full px-12 text-lg font-semibold">
             <div className="group-hover:translate-y-[-110%] transition duration-300 py-4">
-              {t(`hero.buttons.start`)}
+              {t(`hero.start_btn`)}
             </div>
             <div className="translate-y-[110%] bg-white text-black py-4 group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
-              {t(`hero.buttons.start`)}
+              {t(`hero.start_btn`)}
             </div>
           </div>
           <div className="absolute top-0 -right-10 w-20 h-full">

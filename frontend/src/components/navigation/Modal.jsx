@@ -7,6 +7,7 @@ import emailjs from "@emailjs/browser";
 
 const Modal = ({ handleClose }) => {
   const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -40,21 +41,12 @@ const Modal = ({ handleClose }) => {
         checkmark: data.checkmark,
       };
 
-      // Send the email
-      let result = await emailjs.send(
-        serviceID,
-        templateID,
-        templateParams,
-        userID
-      );
-      console.log("Email sent successfully:", result.text);
+      await emailjs.send(serviceID, templateID, templateParams, userID);
 
-      // Optionally, you can show a success message to the user here
-      alert("Request sent successfully!");
+      alert(t("modal.request.success"));
     } catch (error) {
-      console.error("Failed to send email:", error);
       setError("root", {
-        message: "There was an error sending your request. Please try again.",
+        message: t("modal.request.error"),
       });
     }
   };
@@ -71,7 +63,7 @@ const Modal = ({ handleClose }) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="pb-[43px] mb-[6px] relative p-[44px_70px] w-full bg-white border-[1px_solid_rgba(0,0,0,.04)]">
             <p className="text-[22px] font-[600] text-center mb-[25px]">
-              Make request
+              {t("modal.make_request")}
             </p>
             <div className="w-full h-full grid grid-cols-2 gap-x-[36px] gap-y-[26px] !text-[#3a3e4b]">
               {[
@@ -110,7 +102,7 @@ const Modal = ({ handleClose }) => {
                             : "",
                       })}
                       type="text"
-                      placeholder={text.place}
+                      placeholder={t(`modal.fields.${text.clean}`)}
                       className="w-full outline-none"
                     />
                   ) : text.place == "Property type" ? (
@@ -137,7 +129,9 @@ const Modal = ({ handleClose }) => {
                             key={key_option}
                             className="!bg-white text-[13px]"
                           >
-                            {text_option}
+                            {t(
+                              `modal.property_types.${text_option.toLowerCase()}`
+                            )}
                           </option>
                         ))}
                       </select>
@@ -146,7 +140,7 @@ const Modal = ({ handleClose }) => {
                           isOptionClick ? "hidden" : null
                         } pointer-events-none`}
                       >
-                        {text.place}
+                        {t("modal.fields.type")}
                       </div>
                       <IoIosArrowDown
                         style={isClick ? { transform: "rotate(-90deg)" } : null}
@@ -172,7 +166,7 @@ const Modal = ({ handleClose }) => {
           </div>
           <div className="py-[43px] px-[69px] relative w-full bg-white border-[1px_solid_rgba(0,0,0,.04)]">
             <p className="text-[12px] font-semibold mb-[41px] text-left">
-              Area (m²)
+              {t("modal.fields.area")}
             </p>
             <div className="relative flex justify-between mb-[56px] before:content-[''] before:absolute before:top-1/2 before:left-[20px] before:w-[calc(100%-40px)] before:-translate-y-1/2 before:h-[1px] before:bg-[hsla(0,0%,83.9%,0.3)]">
               {[
@@ -221,10 +215,10 @@ const Modal = ({ handleClose }) => {
               >
                 <div className="relative overflow-hidden text-center text-[16px] font-[600]">
                   <div className="group-hover:translate-y-[-110%] transition duration-300">
-                    {isSubmitting ? "Loading..." : t(`navbar.send_request`)}
+                    {isSubmitting ? "Loading..." : t(`modal.send_request`)}
                   </div>
                   <div className="text-black translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
-                    {isSubmitting ? "Loading..." : t(`navbar.send_request`)}
+                    {isSubmitting ? "Loading..." : t(`modal.send_request`)}
                   </div>
                 </div>
               </button>

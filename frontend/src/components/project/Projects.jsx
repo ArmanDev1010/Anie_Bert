@@ -29,6 +29,8 @@ const PROJECTS = gql`
 `;
 
 const Projects = () => {
+  const { t } = useTranslation();
+
   const { loading, error, data } = useQuery(PROJECTS);
 
   if (loading) return <p></p>;
@@ -51,7 +53,7 @@ const Projects = () => {
             hidden: { opacity: 0, y: 60 },
           }}
         >
-          Our Projects
+          {t("projects.component.title")}
         </motion.p>
       </div>
       <Project data={data?.heroes} />
@@ -105,10 +107,10 @@ const Project = ({ data }) => {
             <div className="group project">
               <div>
                 <div className="group-hover:translate-y-[-110%] transition duration-500">
-                  See other projects
+                  {t("projects.component.see_other")}
                 </div>
                 <div className="translate-y-[110%] group-hover:translate-y-[0%] transition duration-500 absolute top-0 bottom-0 left-0 right-0">
-                  See other projects
+                {t("projects.component.see_other")}
                 </div>
               </div>
               <Swiper

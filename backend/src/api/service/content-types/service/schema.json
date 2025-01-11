@@ -26,15 +26,6 @@
       },
       "component": "expertise.text"
     },
-    "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "required": true
-    },
     "service": {
       "pluginOptions": {
         "i18n": {
@@ -43,7 +34,7 @@
       },
       "type": "enumeration",
       "enum": [
-        "Interior",
+        "interior",
         "architecture",
         "commercial"
       ],
