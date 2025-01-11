@@ -108,7 +108,7 @@ const Contact = ({ is_contact_page }) => {
               }
             >
               {" "}
-              info.aniebert@gmail.com
+              {t("navbar.email")}
             </Link>
           </motion.p>
         </div>

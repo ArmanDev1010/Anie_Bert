@@ -9,7 +9,6 @@ import {
 } from "../components";
 
 const Home = () => {
-
   return (
     <div className="relative bg-white text-black">
       <Hero />

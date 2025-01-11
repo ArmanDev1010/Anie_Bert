@@ -6,7 +6,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { motion } from "framer-motion";
 
 const BottomHero = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -37,6 +37,7 @@ const BottomHero = () => {
           }}
           className="pointer-events-none font-articulat text-[5.5vw] w-[45vw] leading-[1.1] pointer-events-none mb-10 
           max-desktopM:mb-8"
+          style={i18n.language !== "en" && {fontSize: "4.7vw"}}
         >
           {t("hero.title")}
         </motion.h1>

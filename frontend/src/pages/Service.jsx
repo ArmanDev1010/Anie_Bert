@@ -26,7 +26,7 @@ const SERVICE = gql`
 `;
 
 const Service = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -55,7 +55,10 @@ const Service = () => {
         <Navbar invert_colors={true} />
         <div className="w-full h-[120px] mb-[30px]"></div>
         <div className="relative">
-          <div className="font-sometimestimes text-[5vw] leading-[1.2] pointer-events-none px-[64px]">
+          <div
+            className="font-sometimestimes text-[5vw] leading-[1.2] pointer-events-none px-[64px]"
+            style={i18n !== "en" && { fontSize: "4.5vw" }}
+          >
             {["", "", "", ""].map((text, key) => (
               <span key={key}>
                 {t(

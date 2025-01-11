@@ -1,162 +1,162 @@
 {
   "navbar": {
-    "home": "Home",
-    "projects": "Projects",
-    "about": "About us",
-    "services": "Services",
-    "contacts": "Contacts",
-    "request": "Make request",
-    "location": "Davit 54 of Sasuntsi"
+    "home": "Главная",
+    "projects": "Проекты",
+    "about": "О нас",
+    "services": "Услуги",
+    "contacts": "Контакты",
+    "request": "Сделать запрос",
+    "location": "Давит 54, Сасунци"
   },
   "modal": {
-    "make_request": "Make request",
+    "make_request": "Сделать запрос",
     "fields": {
-      "name": "Name",
-      "surname": "Last Name",
-      "phone": "Phone",
-      "city": "Your city",
-      "mail": "Email",
-      "type": "Property type",
-      "comment": "Your comment",
-      "area": "Area (m²)"
+      "name": "Имя",
+      "surname": "Фамилия",
+      "phone": "Телефон",
+      "city": "Ваш город",
+      "mail": "Электронная почта",
+      "type": "Тип недвижимости",
+      "comment": "Ваш комментарий",
+      "area": "Площадь (м²)"
     },
     "property_types": {
-      "all": "All",
-      "apartament": "Apartament",
-      "house": "House",
-      "commerce": "Commerce",
-      "architecture": "Architecture"
+      "all": "Все",
+      "apartament": "Квартира",
+      "house": "Дом",
+      "commerce": "Коммерческая",
+      "architecture": "Архитектура"
     },
     "request": {
-      "success": "✅ Request Sent!!!",
-      "error": "❌ There was an error sending your request. Please try again."
+      "success": "✅ Заявка отправлена!",
+      "error": "❌ Произошла ошибка при отправке вашей заявки. Пожалуйста, попробуйте снова."
     },
-    "send_request": "Send Request"
+    "send_request": "Отправить заявку"
   },
   "hero": {
-    "title": "Building Visions & Creating Reality",
-    "start_btn": "Start project",
+    "title": "Строим видения и создаем реальность",
+    "start_btn": "Начать проект",
     "types": {
-      "interior": "Interior Design",
-      "architecture": "Architecture",
-      "commercial": "Commerial"
+      "interior": "Дизайн интерьера",
+      "architecture": "Архитектура",
+      "commercial": "Коммерческий дизайн"
     }
   },
   "masterpiece": {
-    "1": "Where creativity meets functionality",
-    "2": "Сreating as an interior — releasing as a masterpiece",
-    "3": "Turning your vision into reality"
+    "1": "Где креативность встречается с функциональностью",
+    "2": "Создавая как интерьер — выпуская как шедевр",
+    "3": "Превращая ваши видения в реальность"
   },
   "about": {
     "component": {
-      "phrase": "Anie Bert is an architecture and interior design studio founded by Anie Bert in 2021. We have been engaged in residential and commercial design projects for over 3 years. Completing 15+ residential and commercial projects.",
-      "paragraph": "Your home should tell the story of who you are, and be a collection of what you love.",
-      "about_btn": "About us"
+      "phrase": "Anie Bert — это студия архитектуры и дизайна интерьера, основанная Anie Bert в 2021 году. Мы занимаемся жилыми и коммерческими проектами дизайна уже более 3 лет. Завершили 15+ жилых и коммерческих проектов.",
+      "paragraph": "Ваш дом должен рассказывать историю о том, кто вы, и быть коллекцией того, что вы любите.",
+      "about_btn": "О нас"
     },
     "page": {
       "description": {
-        "1": "Anie Bert is an architecture and interior",
-        "2": "design studio founded by Anie Bert in 2021",
-        "3": "Completing 15+ residential and commercial projects",
-        "4": "The studio focuses on creating functional",
-        "5": "aesthetically pleasing spaces."
+        "1": "Anie Bert — это архитектурная и интерьерная",
+        "2": "студия дизайна, основанная Anie Bert в 2021 году",
+        "3": "Завершила более 15 жилых и коммерческих проектов",
+        "4": "Студия сосредоточена на создании функциональных",
+        "5": "эстетически приятных пространств."
       },
       "team": {
-        "title": "The Team",
-        "paragraph": "Our team consists of gifted professionals who release all projects as their personal creative achievements with the best results"
+        "title": "Команда",
+        "paragraph": "Наша команда состоит из талантливых профессионалов, которые воплощают все проекты как свои личные творческие достижения с лучшими результатами"
       }
     }
   },
   "projects": {
     "component": {
-      "title": "Our projects",
-      "see_other": "See other projects"
+      "title": "Наши проекты",
+      "see_other": "Посмотреть другие проекты"
     },
     "page": {
-      "title": "Projects",
-      "back_btn": "Go Back",
+      "title": "Проекты",
+      "back_btn": "Назад",
       "types": {
-        "all": "All",
-        "interior": "Interior Design",
-        "architecture": "Architecture",
-        "commercial": "Commerial"
+        "all": "Все",
+        "interior": "Дизайн интерьера",
+        "architecture": "Архитектура",
+        "commercial": "Коммерческий дизайн"
       },
       "infos": {
-        "location": "Location",
-        "year": "Year",
-        "area": "Area"
+        "location": "Местоположение",
+        "year": "Год",
+        "area": "Площадь"
       },
       "category": {
-        "all": "All",
-        "bedroom": "Bedroom",
-        "living_room": "Living Room",
-        "kitchen": "Kithen",
-        "bathroom": "Bathroom"
+        "all": "Все",
+        "bedroom": "Спальня",
+        "living_room": "Гостиная",
+        "kitchen": "Кухня",
+        "bathroom": "Ванная"
       }
     }
   },
   "services": {
     "component": {
-      "view": "View",
+      "view": "Смотреть",
       "types": {
-        "interior": "Interior Design",
-        "architecture": "Architecture",
-        "commercial": "Commerial"
+        "interior": "Дизайн интерьера",
+        "architecture": "Архитектура",
+        "commercial": "Коммерческий дизайн"
       }
     },
     "page": {
-      "explore_btn": "Click to explore",
-      "expertise": "Area of expertise",
-      "learn_btn": "Learn more",
-      "works": "Works",
-      "projects": "Projects",
+      "explore_btn": "Узнать больше",
+      "expertise": "Область экспертизы",
+      "learn_btn": "Узнать больше",
+      "works": "Работы",
+      "projects": "Проекты",
       "types": {
-        "interior": "Interior Design",
-        "architecture": "Architecture",
-        "commercial": "Commerial"
+        "interior": "Дизайн интерьера",
+        "architecture": "Архитектура",
+        "commercial": "Коммерческий дизайн"
       },
       "interior": {
         "top_text": {
-          "1": "We design",
-          "2": "interiors equipped",
-          "3": "to transform any space",
-          "4": "into a functional and beautiful environment."
+          "1": "Мы проектируем",
+          "2": "интерьеры, оснащённые",
+          "3": "для преобразования любого пространства",
+          "4": "в функциональную и красивую среду."
         },
         "parallax_texts": {
-          "top": "By selecting color schemes, materials, furniture and decor our designs create a cohesive and harmonious design scheme, a memorable ambience and optimize the use of space.",
-          "bottom": "Each of our designs are influenced by creating environments that stand out and connect with people."
+          "top": "Выбирая цветовые схемы, материалы, мебель и декор, наши дизайны создают согласованную и гармоничную дизайнерскую схему, запоминающуюся атмосферу и оптимизируют использование пространства.",
+          "bottom": "Каждый из наших дизайнов вдохновлен созданием среды, которая выделяется и связывает людей."
         }
       },
       "architecture": {
         "top_text": {
-          "1": "We create",
-          "2": "functional",
-          "3": "aesthetically pleasing",
-          "4": "and innovative spaces."
+          "1": "Мы создаём",
+          "2": "функциональные",
+          "3": "эстетически приятные",
+          "4": "и инновационные пространства."
         },
         "parallax_texts": {
-          "top": "By choosing appropriate structural forms, materials, and spatial arrangements, our architectural designs establish a unified and resonant aesthetic, craft an enduring atmosphere, and maximize the functionality and efficiency of the built environment.",
-          "bottom": "Each of our designs are influenced by creating environments that stand out and connect with people."
+          "top": "Выбирая подходящие структурные формы, материалы и пространственные решения, наши архитектурные проекты устанавливают единую и резонансную эстетику, создают долговечную атмосферу и максимально увеличивают функциональность и эффективность построенного окружения.",
+          "bottom": "Каждый из наших дизайнов вдохновлен созданием среды, которая выделяется и связывает людей."
         }
       },
       "commercial": {
         "top_text": {
-          "1": "We turn",
-          "2": "ordinary spaces into",
-          "3": "extraordinary, efficient",
-          "4": "and visually stunning workplaces."
+          "1": "Мы превращаем",
+          "2": "обычные пространства в",
+          "3": "необыкновенные, эффективные",
+          "4": "и визуально впечатляющие рабочие места."
         },
         "parallax_texts": {
-          "top": "By integrating brand identity, functional layout, materials, and visual elements, our commercial designs forge a consistent and engaging aesthetic, foster a distinctive atmosphere, and enhance both customer experience and operational efficiency.",
-          "bottom": "Each of our designs are influenced by creating environments that stand out and connect with people."
+          "top": "Интегрируя идентичность бренда, функциональное расположение, материалы и визуальные элементы, наши коммерческие дизайны формируют последовательную и вовлекающую эстетику, способствуют уникальной атмосфере и улучшают как впечатление клиентов, так и операционную эффективность.",
+          "bottom": "Каждый из наших дизайнов вдохновлен созданием среды, которая выделяется и связывает людей."
         }
       }
     }
   },
   "contact": {
-    "title": "Contact us",
-    "paragraph": "For cooperation or if you have any questions for us.",
-    "message_btn": "Send us a message",
-    "intouch_btn": "Get in touch"
+    "title": "Свяжитесь с нами",
+    "paragraph": "Для сотрудничества или если у вас есть вопросы к нам.",
+    "message_btn": "Отправьте нам сообщение",
+    "intouch_btn": "Связаться с нами"
   }
 }

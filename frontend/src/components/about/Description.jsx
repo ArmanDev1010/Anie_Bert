@@ -29,7 +29,7 @@ const Phrase = ({ children }) => {
         scrollTrigger: {
           trigger: text.current,
           scrub: true,
-          start: "0px bottom",
+          start: "400px bottom",
           end: "bottom+=400px bottom",
         },
         opacity: 0,
