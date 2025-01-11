@@ -6,9 +6,9 @@
   scroll-behavior: smooth;
 }
 
-$primary__color: "#ffff";
-$secondary__color: "#36454f";
-$thirdly__color: "#334152";
+$primary__color: #ffff;
+$secondary__color: #36454f;
+$thirdly__color: #334152;
 
 $desktopB: "1920px";
 $desktopBM: "1750px";
@@ -328,7 +328,7 @@ body {
     -webkit-box-sizing: initial;
     box-sizing: initial;
     border: 1px solid #fff;
-    background-color: #261d1d !important;
+    background-color: $secondary__color !important;
     -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }

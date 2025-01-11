@@ -544,7 +544,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     order: Schema.Attribute.Integer &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     parallax_images: Schema.Attribute.Media<'images' | 'files', true> &
