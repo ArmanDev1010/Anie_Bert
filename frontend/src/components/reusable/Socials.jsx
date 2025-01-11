@@ -7,7 +7,7 @@ const Socials = () => {
       {["fb", "yt", "In"].map((text, key) => (
         <li
           key={key}
-          className="capitalize font-[600] text-[18px] cursor-pointer transition-opacity duration-200 hover:opacity-70"
+          className="!font-montserrat capitalize font-[600] text-[18px] cursor-pointer transition-opacity duration-200 hover:opacity-70"
         >
           <Link
             to={

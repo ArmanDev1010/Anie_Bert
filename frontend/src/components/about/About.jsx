@@ -71,7 +71,7 @@ const About = () => {
               whileInView="open"
               viewport={{ once: true }}
               variants={opacity}
-              className="text-[18px] w-full font-medium pointer-events-none w-[500px]"
+              className="!font-montserrat text-[18px] w-full font-medium pointer-events-none w-[500px]"
             >
               {t("about.component.paragraph")}
             </motion.p>

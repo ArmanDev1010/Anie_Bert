@@ -77,7 +77,7 @@ const App = () => {
   }, [location, navigate]);
 
   return (
-    <div className="font-montserrat bg-[#080808] text-white">
+    <div className="font-montserrat font-montserratarm bg-[#080808] text-white">
       <CursorFollow />
       <MyContext.Provider value={{}}>
         <ApolloProvider client={client}>

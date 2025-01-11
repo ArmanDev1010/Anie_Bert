@@ -26,7 +26,7 @@ const ParallaxImages = ({ data }) => {
           className={text.style}
         />
       ))}
-      <div className="">
+      <div className="!font-montserrat">
         {[
           { top: 70, left: 7 },
           { top: 60, right: 10 },

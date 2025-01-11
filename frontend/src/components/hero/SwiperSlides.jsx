@@ -100,7 +100,7 @@ const SwiperSlides = ({ data }) => {
                   animate={
                     progress?.toFixed(1) == "0.2" ? "visisble" : "hidden"
                   }
-                  className="mb-3 font-medium italic capitalize leading-[1.2]"
+                  className="!font-montserrat mb-3 font-medium italic capitalize leading-[1.2]"
                 >
                   {data[activeIndex]?.project_address}
                 </motion.div>

@@ -115,6 +115,37 @@ body {
     format("truetype");
 }
 
+@font-face {
+  font-family: "Montserratarm";
+  font-weight: 400;
+  src: url("./fonts/montserrat-armenian/Montserratarm-Regular.otf")
+    format("opentype");
+}
+@font-face {
+  font-family: "Montserratarm";
+  font-weight: 300;
+  src: url("./fonts/montserrat-armenian/Montserratarm-Light.otf")
+    format("opentype");
+}
+@font-face {
+  font-family: "Montserratarm";
+  font-weight: 500;
+  src: url("./fonts/montserrat-armenian/Montserratarm-Medium.otf")
+    format("opentype");
+}
+@font-face {
+  font-family: "Montserratarm";
+  font-weight: 600;
+  src: url("./fonts/montserrat-armenian/Montserratarm-SemiBold.otf")
+    format("opentype");
+}
+@font-face {
+  font-family: "Montserratarm";
+  font-weight: 700;
+  src: url("./fonts/montserrat-armenian/Montserratarm-Bold.otf")
+    format("opentype");
+}
+
 .main-cursor {
   position: fixed;
   pointer-events: none;
@@ -168,7 +199,8 @@ body {
     img:nth-child(2) {
       display: block;
     }
-    li, p {
+    li,
+    p {
       color: black;
       font-weight: 600;
     }

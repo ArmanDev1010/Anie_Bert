@@ -12,6 +12,7 @@ export default {
         montserrat: ["Montserrateng", "sans-serif"],
         articulat: ["Articulat", "sans-serif"],
         sometimestimes: ["Sometimestimes", "sans-serif"],
+        montserratarm: ["Montserratarm", "sans-serif"],
       },
     },
     screens: {

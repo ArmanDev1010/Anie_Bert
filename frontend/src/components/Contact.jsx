@@ -142,7 +142,7 @@ const Contact = ({ is_contact_page }) => {
                       : "mailto:info@aniebert.com"
                   }
                 >
-                  <p className="font-[600] tracking-[1px] text-[15px] cursor-pointer transition-opacity duration-200 hover:opacity-70">
+                  <p className="!font-montserrat font-[600] tracking-[1px] text-[15px] cursor-pointer transition-opacity duration-200 hover:opacity-70">
                     {t(`navbar.${text}`)}
                   </p>
                 </Link>
@@ -192,7 +192,7 @@ const Contact = ({ is_contact_page }) => {
             </div>
           </button>
         </motion.div>
-        <div className="absolute bottom-1 left-0 w-full h-[60px] flex justify-between items-center px-[64px] pb-[29px]">
+        <div className="!font-montserrat absolute bottom-1 left-0 w-full h-[60px] flex justify-between items-center px-[64px] pb-[29px]">
           <p className="text-[14px] pointer-events-none">
             © Copyright 2024. All rights reserved
           </p>
