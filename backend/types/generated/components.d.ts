@@ -7,7 +7,7 @@ export interface ExpertiseText extends Struct.ComponentSchema {
     displayName: 'text';
   };
   attributes: {
-    text: Schema.Attribute.String & Schema.Attribute.DefaultTo<'#36454f'>;
+    text: Schema.Attribute.String;
   };
 }
 

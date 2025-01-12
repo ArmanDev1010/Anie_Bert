@@ -10,8 +10,25 @@ import { BsArrowLeft } from "react-icons/bs";
 import { useTranslation } from "react-i18next";
 
 const PROJECT = gql`
-  query GetProject($documentId: ID!) {
-    hero(documentId: $documentId) {
+  query GetProject($documentId: ID!, $locale: I18NLocaleCode) {
+    hero(documentId: $documentId, locale: $locale) {
+      project_address
+      type
+      documentId
+      location
+      year
+      area
+      image {
+        url
+      }
+      images {
+        image {
+          url
+        }
+        category
+      }
+    }
+    fallback: hero(documentId: $documentId, locale: "en") {
       project_address
       type
       documentId
@@ -32,19 +49,30 @@ const PROJECT = gql`
 `;
 
 const Project = () => {
+  const { i18n } = useTranslation();
+
   const { documentId } = useParams();
   const { loading, error, data } = useQuery(PROJECT, {
-    variables: { documentId: documentId },
+    variables: {
+      documentId: documentId,
+      locale: i18n.language === "am" ? "hy" : i18n.language,
+    },
   });
 
   if (loading) return <p></p>;
   if (error) return <p>error</p>;
 
+  let project = data.hero || data.fallback;
+
+  if (!project) {
+    return <p>No data available for this service.</p>;
+  }
+
   return (
     <div className="relative bg-white text-black">
       <Navbar invert_colors={true} />
       <div className="w-full h-[120px] mb-[30px]"></div>
-      <TheProject data={data.hero} images={data.hero.images} />
+      <TheProject data={project} images={project.images} />
       <div
         className="absolute top-0 left-0 w-full h-screen bg-cover bg-no-repeat opacity-10"
         style={{ backgroundImage: "url(/src/assets/line-grid.png)" }}

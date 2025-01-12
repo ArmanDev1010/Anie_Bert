@@ -14,10 +14,28 @@ import { useQuery, gql } from "@apollo/client";
 import { Link } from "react-router-dom";
 
 const PROJECTS = gql`
-  query GetProjects {
-    heroes(filters: { show_inside_home: { eq: true } }, sort: "project_order") {
-      project_address
+  query GetProjects($locale: I18NLocaleCode) {
+    heroes(
+      filters: { show_inside_home: { eq: true } }
+      sort: "project_order"
+      locale: $locale
+    ) {
       documentId
+      project_address
+      image {
+        url
+      }
+      project_thumbnail {
+        url
+      }
+    }
+    fallback: heroes(
+      filters: { show_inside_home: { eq: true } }
+      sort: "project_order"
+      locale: "en"
+    ) {
+      documentId
+      project_address
       image {
         url
       }
@@ -29,12 +47,30 @@ const PROJECTS = gql`
 `;
 
 const Projects = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const { loading, error, data } = useQuery(PROJECTS);
+  const { loading, error, data } = useQuery(PROJECTS, {
+    variables: {
+      locale: i18n.language === "am" ? "hy" : i18n.language,
+    },
+  });
 
   if (loading) return <p></p>;
   if (error) return <p>error</p>;
+
+  const projects = [...(data.heroes || []), ...(data.fallback || [])].reduce(
+    (acc, current) => {
+      if (!acc.find((hero) => hero.documentId === current.documentId)) {
+        acc.push(current);
+      }
+      return acc;
+    },
+    []
+  );
+
+  if (!projects.length) {
+    return <p>No data available for this service.</p>;
+  }
 
   return (
     <div className="projects_section relative bg-white text-black">
@@ -56,7 +92,7 @@ const Projects = () => {
           {t("projects.component.title")}
         </motion.p>
       </div>
-      <Project data={data?.heroes} />
+      <Project data={projects} />
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-no-repeat opacity-20"
         style={{ backgroundImage: "url(/src/assets/line-grid.png)" }}

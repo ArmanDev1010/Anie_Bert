@@ -10,7 +10,7 @@ import { LanguageSwitcherWithArrow, Socials } from "../";
 
 const Menu = ({ handleClose }) => {
   let location = useLocation();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="menu w-full h-full fixed top-0 left-0 z-[9]">
@@ -23,7 +23,7 @@ const Menu = ({ handleClose }) => {
         <ul className="absolute left-[211px] top-[calc(50%+10px)] -translate-y-1/2 flex flex-col gap-[34px]">
           {["home", "projects", "about", "services", "contacts"].map(
             (text, key) => (
-              <Link to={text == "home" ? "/" : `/${text}`} key={key}>
+              <Link to={text == "home" ? "/" : `/${i18n.language}/${text}`} key={key}>
                 <li
                   className={`${
                     location.pathname.split("/")[1] == text ||

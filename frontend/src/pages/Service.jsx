@@ -9,12 +9,23 @@ import { Modal } from "../components/index";
 import { AnimatePresence } from "framer-motion";
 
 const SERVICE = gql`
-  query GetServices($service: String!) {
-    services(filters: { service: { eq: $service } }) {
+  query GetServices($service: String!, $locale: I18NLocaleCode) {
+    services(filters: { service: { eq: $service } }, locale: $locale) {
       expertise {
         text
       }
       service
+      text_images {
+        url
+      }
+      parallax_images {
+        url
+      }
+    }
+    fallback: services(filters: { service: { eq: $service } }, locale: "en") {
+      expertise {
+        text
+      }
       text_images {
         url
       }
@@ -41,13 +52,20 @@ const Service = () => {
 
   const { service } = useParams();
   const { loading, error, data } = useQuery(SERVICE, {
-    variables: { service: service },
+    variables: {
+      service: service,
+      locale: i18n.language === "am" ? "hy" : i18n.language,
+    },
   });
 
   if (loading) return <p></p>;
   if (error) return <p>error</p>;
 
-  const service_ = data.services[0];
+  let serviceData = data.services[0] || data.fallback[0];
+
+  if (!serviceData) {
+    return <p>No data available for this service.</p>;
+  }
 
   return (
     <>
@@ -64,17 +82,17 @@ const Service = () => {
                 {t(
                   `services.page.${service.toLowerCase()}.top_text.${key + 1}`
                 )}
-                <HoverImage src={service_.text_images[key]?.url} />
+                <HoverImage src={serviceData?.text_images[key]?.url} />
               </span>
             ))}
           </div>
           <ParallaxScroll
             service={service}
             service_page={true}
-            images={service_.parallax_images}
+            images={serviceData?.parallax_images}
           />
           <Expertise
-            data={service_.expertise}
+            data={serviceData?.expertise}
             showModal={showModal}
             close={close}
             open={open}
@@ -100,7 +118,7 @@ const Expertise = ({ data, showModal, close, open }) => {
       </p>
       <div className="flex flex-col items-end mb-[50px]">
         <ul className="w-[70%] pointer-events-none">
-          {data.map((text, key) => (
+          {data?.map((text, key) => (
             <li
               key={key}
               className="py-4

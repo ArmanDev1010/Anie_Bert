@@ -389,7 +389,7 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
     area: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     createdAt: Schema.Attribute.DateTime;
@@ -472,7 +472,7 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
     year: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
   };
@@ -548,7 +548,6 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
         };
       }>;
     parallax_images: Schema.Attribute.Media<'images' | 'files', true> &
-      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: false;

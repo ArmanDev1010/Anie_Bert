@@ -6,10 +6,24 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const PROJECTS = gql`
-  query GetProjects {
-    heroes {
-      project_address
+  query GetProjects($locale: I18NLocaleCode) {
+    heroes(locale: $locale) {
       documentId
+      project_address
+      image {
+        url
+      }
+      type
+      year
+      images {
+        image {
+          url
+        }
+      }
+    }
+    fallback: heroes(locale: "en") {
+      documentId
+      project_address
       image {
         url
       }
@@ -25,16 +39,36 @@ const PROJECTS = gql`
 `;
 
 const Projects = () => {
-  const { loading, error, data } = useQuery(PROJECTS);
+  const { i18n } = useTranslation();
+
+  const { loading, error, data } = useQuery(PROJECTS, {
+    variables: {
+      locale: i18n.language === "am" ? "hy" : i18n.language,
+    },
+  });
 
   if (loading) return <p></p>;
   if (error) return <p>error</p>;
+
+  const projects = [...(data.heroes || []), ...(data.fallback || [])].reduce(
+    (acc, current) => {
+      if (!acc.find((hero) => hero.documentId === current.documentId)) {
+        acc.push(current);
+      }
+      return acc;
+    },
+    []
+  );
+
+  if (!projects.length) {
+    return <p>No data available for this service.</p>;
+  }
 
   return (
     <div className="relative bg-white text-black">
       <Navbar invert_colors={true} />
       <div className="w-full h-[120px] mb-[30px]"></div>
-      <ProjectsSection projects={data.heroes} />
+      <ProjectsSection projects={projects} />
       <Contact />
     </div>
   );
@@ -67,7 +101,7 @@ const ProjectsSection = ({ projects }) => {
 
   useEffect(() => {
     filterItems();
-  }, [selectedFilters]);
+  }, [selectedFilters, projects]);
 
   const filterItems = () => {
     if (selectedFilters.length > 0 && selectedFilters[0] !== "all") {
@@ -82,6 +116,8 @@ const ProjectsSection = ({ projects }) => {
       setFilteredItems([...projects]);
     }
   };
+
+  console.log(projects);
 
   return (
     <div className="relative projects mb-[70px]">

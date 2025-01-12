@@ -16,15 +16,15 @@ const ParallaxScroll = ({ service, service_page, images }) => {
   const images_array = service_page
     ? [
         {
-          src: images[0].url,
+          src: images && images[0]?.url,
           y: 0,
         },
         {
-          src: images[1].url,
+          src: images && images[1]?.url,
           y: lg,
         },
         {
-          src: images[2].url,
+          src: images && images[2]?.url,
           y: md,
         },
       ]
@@ -61,7 +61,7 @@ const ParallaxScroll = ({ service, service_page, images }) => {
               className="imageContainer absolute"
             >
               <div
-                className="w-full h-full bg-cover bg-center bg-no-repeat"
+                className="w-full h-full bg-cover bg-center bg-no-repeat bg-secondary"
                 style={{
                   backgroundImage: `url(${
                     service_page

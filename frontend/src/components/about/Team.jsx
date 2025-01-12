@@ -5,8 +5,18 @@ import { useQuery, gql } from "@apollo/client";
 import { useTranslation } from "react-i18next";
 
 const TEAM = gql`
-  query GetTeam {
-    teams(sort: "order") {
+  query GetTeam($locale: I18NLocaleCode) {
+    teams(sort: "order", locale: $locale) {
+      documentId
+      name
+      role
+      social_media_link
+      photo {
+        url
+      }
+    }
+    fallback: teams(sort: "order", locale: "en") {
+      documentId
       name
       role
       social_media_link
@@ -18,14 +28,30 @@ const TEAM = gql`
 `;
 
 const Team = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const { loading, error, data } = useQuery(TEAM);
+  const { loading, error, data } = useQuery(TEAM, {
+    variables: {
+      locale: i18n.language === "am" ? "hy" : i18n.language,
+    },
+  });
 
   if (loading) return <p></p>;
   if (error) return <p>error</p>;
 
-  const team = data.teams;
+  const team = [...(data.teams || []), ...(data.fallback || [])].reduce(
+    (acc, current) => {
+      if (!acc.find((team_) => team_.documentId === current.documentId)) {
+        acc.push(current);
+      }
+      return acc;
+    },
+    []
+  );
+
+  if (!team.length) {
+    return <p>No data available for this service.</p>;
+  }
 
   return (
     <div className="team relative px-[5vw] pt-[3vh] pb-[8vh] bg-secondary text-white">
@@ -34,9 +60,7 @@ const Team = () => {
           <div className="text-[6vw] font-[600]">
             {t("about.page.team.title")}
           </div>
-          <p className="text-xl w-[700px]">
-            {t("about.page.team.paragraph")}
-          </p>
+          <p className="text-xl w-[700px]">{t("about.page.team.paragraph")}</p>
         </div>
         <ul className="grid grid-cols-3 gap-7">
           {team.map((text, key) => (

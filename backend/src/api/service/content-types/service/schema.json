@@ -65,7 +65,7 @@
     "parallax_images": {
       "type": "media",
       "multiple": true,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files"

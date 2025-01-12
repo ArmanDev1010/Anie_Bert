@@ -100,7 +100,7 @@
     "year": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "string"
@@ -108,7 +108,7 @@
     "area": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "string"

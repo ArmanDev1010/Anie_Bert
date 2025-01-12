@@ -259,7 +259,7 @@ const renderField = ({
 
 const Checkmark = ({ text, checkmarkChecked, onCheckmarkChange, register }) => (
   <label className="relative !h-[18px] !w-[18px] cursor-pointer select-none">
-    <p className="absolute -top-[20px] left-1/2 text-[10px] text-center tracking-[0.06em] whitespace-nowrap text-gray-400 font-semibold -translate-x-1/2 transition-text duration-500 ease">
+    <p className="!font-montserrat absolute -top-[20px] left-1/2 text-[10px] text-center tracking-[0.06em] whitespace-nowrap text-gray-400 font-semibold -translate-x-1/2 transition-text duration-500 ease">
       {text}
     </p>
     <input
