@@ -7,6 +7,8 @@ import SwiperSlides from "./hero/SwiperSlides";
 import Navbar from "./navigation/Navbar";
 import Menu from "./navigation/Menu";
 import Modal from "./navigation/Modal";
+import MenuBtn from "./navigation/MenuBtn";
+import RequestBtn from "./navigation/RequestBtn";
 
 // Masterpiece
 import Masterpiece from "./masterpiece/Masterpiece";
@@ -67,4 +69,6 @@ export {
   ImageSlideshow,
   Works,
   LanguageSwitcherWithArrow,
+  MenuBtn,
+  RequestBtn,
 };

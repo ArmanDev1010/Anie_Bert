@@ -1,101 +1,139 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-
 import { AnimatePresence } from "framer-motion";
-
-import { Modal, Menu, LanguageSwitcherWithArrow } from "../index";
 import { Link } from "react-router-dom";
+
+import {
+  Modal,
+  Menu,
+  LanguageSwitcherWithArrow,
+  MenuBtn,
+  RequestBtn,
+} from "../index";
 
 const Navbar = ({ invert_colors, fixed_active }) => {
   const { t, i18n } = useTranslation();
 
-  const [pos, setPos] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
-  const close = () => setShowModal(false);
-  const open = () => setShowModal(true);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(document.scrollingElement.scrollTop >= 5);
+    };
 
-  if (showModal || showMenu) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "visible";
-  }
+    document.addEventListener("scroll", handleScroll);
+    return () => document.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
-    document.addEventListener("scroll", (e) => {
-      let scrolled = document.scrollingElement.scrollTop;
-      if (scrolled >= 5) {
-        setPos(true);
-      } else {
-        setPos(false);
-      }
-    });
-  }, []);
+    document.body.style.overflow = showModal || showMenu ? "hidden" : "visible";
+  }, [showModal, showMenu]);
+
+  const toggleModal = () => setShowModal(!showModal);
+
+  const navClasses = `navbar menu__panel fixed !text-white top-0 left-0 px-[64px] w-full h-[120px] flex items-center justify-between z-[10] max-_1080:!px-[5%] max-_550:h-[100px]`;
+  const navStyle = { transition: "all .3s ease" };
+
+  // Determine if fixed or inverted colors should be applied
+  const shouldApplyFixedOrInverted = (isScrolled || fixed_active) && !showMenu;
+  const shouldApplyInvertColor = invert_colors && !showMenu && !isScrolled;
 
   return (
     <>
       <div
-        className={`navbar menu__panel ${
-          (pos && !showMenu) || (fixed_active && !showMenu) ? "fixed_white" : ""
-        } ${
-          invert_colors && !showMenu && !pos ? "invert_color" : ""
-        } fixed !text-white top-0 left-0 px-[64px] w-full h-[120px] flex items-center justify-between z-[10]`}
-        style={{ transition: "all .3s ease" }}
+        className={`${navClasses} ${
+          shouldApplyFixedOrInverted ? "fixed_white" : ""
+        } ${shouldApplyInvertColor ? "invert_color" : ""}`}
+        style={navStyle}
       >
-        <Link to={"/"}>
-          {["white", "black"].map((text, key) => (
+        {/* Logo */}
+        <Link to="/">
+          {["white", "black"].map((color, index) => (
             <img
-              src={`/src/assets/logos/${text}_logo_text.png`}
+              key={index}
+              src={`/src/assets/logos/${color}_logo_text.png`}
               alt="logo"
-              key={key}
               className={`w-[210px] ${
-                text == "black" ? "hidden" : ""
-              } cursor-pointer max-desktopM:w-[190px]`}
+                color === "black" ? "hidden" : ""
+              } cursor-pointer max-_1600:w-[190px] max-_550:w-[170px]`}
             />
           ))}
         </Link>
-        <ul className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 max-desktopS:hidden flex items-center gap-14">
-          {["projects", "about", "services", "contacts"].map((text, key) => (
-            <Link to={`/${i18n.language}/${text}`} key={key}>
-              <li className="text-[18px] font-[600] max-desktopM:text-[17px] cursor-pointer translate duration-300 hover:opacity-50">
-                {t(`navbar.${text}`)}
+
+        {/* Desktop Navigation */}
+        <ul className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center gap-14 max-_1440:hidden">
+          {["projects", "about", "services", "contacts"].map((item, index) => (
+            <Link key={index} to={`/${i18n.language}/${item}`}>
+              <li className="text-[18px] font-[600] cursor-pointer translate duration-300 hover:opacity-50 max-_1600:text-[17px]">
+                {t(`navbar.${item}`)}
               </li>
             </Link>
           ))}
           <LanguageSwitcherWithArrow
-            pos={pos}
+            pos={isScrolled}
             invert_colors={invert_colors}
             fixed_active={fixed_active}
+            showMenu={showMenu}
           />
         </ul>
-        <div
-          className={`menu_btn ${showMenu ? "menu_btn_clicked" : ""} ${
-            pos ? "menu_btn_fixed" : ""
-          } cursor-pointer relative p-10 desktopS:hidden`}
-          onClick={() => setShowMenu(!showMenu)}
-        ></div>
-        <button
-          onClick={() => (showModal ? close() : open())}
-          className={`group ${
-            showMenu && invert_colors && !pos ? "text-white" : ""
-          } border-[1px] border-white/50 cursor-pointer px-[58px] py-3 outline-none transition duration-200 hover:bg-secondary`}
-        >
-          <div className="pointer-events-none relative overflow-hidden text-center text-[16px] font-[600]">
-            <div className="group-hover:translate-y-[-110%] transition duration-300">
-              {t(`navbar.request`)}
-            </div>
-            <div className="translate-y-[110%] group-hover:translate-y-[0%] transition duration-300 absolute top-0 bottom-0 left-0 right-0">
-              {t(`navbar.request`)}
-            </div>
+
+        {/* Menu Button */}
+        <MenuBtn
+          pos={isScrolled}
+          setShowMenu={setShowMenu}
+          showMenu={showMenu}
+          center={true}
+        />
+
+        {/* Mobile Navigation */}
+        <div className="flex items-center gap-5">
+          <div className="flex items-center gap-7 _1440:hidden max-_550:gap-4">
+            <LanguageSwitcherWithArrow
+              pos={isScrolled}
+              invert_colors={invert_colors}
+              fixed_active={fixed_active}
+              showMenu={showMenu}
+            />
+            <MenuBtn
+              pos={isScrolled}
+              setShowMenu={setShowMenu}
+              showMenu={showMenu}
+            />
           </div>
-        </button>
+
+          {/* Request Button */}
+          <RequestBtn
+            toggleModal={toggleModal}
+            showMenu={showMenu}
+            invert_colors={invert_colors}
+            isScrolled={isScrolled}
+          />
+        </div>
       </div>
+
+      {/* Modals */}
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
-        {showModal && <Modal showModal={showModal} handleClose={close} />}
-      </AnimatePresence>
-      <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
-        {showMenu && <Menu showModal={showMenu} handleClose={close} />}
+        {showModal && (
+          <Modal
+            key="modal"
+            showModal={showModal}
+            handleClose={toggleModal}
+            setShowMenu={setShowMenu}
+          />
+        )}
+        {showMenu && (
+          <Menu
+            key="menu"
+            showModal={showMenu}
+            handleClose={toggleModal}
+            toggleModal={toggleModal}
+            showMenu={showMenu}
+            invert_colors={invert_colors}
+            isScrolled={isScrolled}
+          />
+        )}
       </AnimatePresence>
     </>
   );

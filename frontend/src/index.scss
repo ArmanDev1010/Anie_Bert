@@ -124,14 +124,12 @@ body {
 @font-face {
   font-family: "Montserratarm";
   font-weight: 300;
-  src: url("./fonts/montserrat-armenian/Montserratarm-Light.otf")
-    format("otf");
+  src: url("./fonts/montserrat-armenian/Montserratarm-Light.otf") format("otf");
 }
 @font-face {
   font-family: "Montserratarm";
   font-weight: 500;
-  src: url("./fonts/montserrat-armenian/Montserratarm-Medium.otf")
-    format("otf");
+  src: url("./fonts/montserrat-armenian/Montserratarm-Medium.otf") format("otf");
 }
 @font-face {
   font-family: "Montserratarm";
@@ -142,8 +140,7 @@ body {
 @font-face {
   font-family: "Montserratarm";
   font-weight: 700;
-  src: url("./fonts/montserrat-armenian/Montserratarm-Bold.otf")
-    format("otf");
+  src: url("./fonts/montserrat-armenian/Montserratarm-Bold.otf") format("otf");
 }
 
 .main-cursor {
@@ -255,38 +252,43 @@ body {
       background-color: #000000;
     }
   }
-  .menu_btn:after,
-  .menu_btn:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 35px;
-    height: 2px;
-    background-color: #fff;
-    transition: all 0.2s ease;
-  }
-  .menu_btn_fixed:after,
-  .menu_btn_fixed:before {
-    background: black;
-  }
-  .menu_btn:before {
-    top: 60%;
-  }
-  .menu_btn:after {
-    top: 40%;
-  }
-  .menu_btn_clicked:before {
-    transform: rotate(45deg);
-    top: 50%;
-  }
-  .menu_btn_clicked:after {
-    transform: rotate(-45deg);
-    top: 50%;
-  }
-  .menu_btn_clicked:after,
-  .menu_btn_clicked:before {
-    background-color: #fff;
+  .menu_btn {
+    &:after,
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 35px;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.2s ease;
+    }
+    &.menu_btn_fixed:after,
+    &.menu_btn_fixed:before {
+      background: black;
+    }
+    &.menu_btn:before {
+      top: 60%;
+    }
+    &.menu_btn:after {
+      top: 40%;
+    }
+    &.menu_btn_clicked:before {
+      transform: rotate(45deg);
+      top: 50%;
+      left: 0;
+    }
+    &.menu_btn_clicked:after {
+      transform: rotate(-45deg);
+      top: 50%;
+      left: 0;
+    }
+    &.menu_btn_clicked:after,
+    &.menu_btn_clicked:before {
+      background-color: #fff;
+    }
   }
 }
 

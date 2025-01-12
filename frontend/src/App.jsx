@@ -79,7 +79,7 @@ const App = () => {
   return (
     <div
       className={` ${
-        i18n.language == "en" ? "font-montserrat" : "font-montserratarm"
+        i18n.language == "am" ? "font-montserratarm" : "font-montserrat"
       } bg-[#080808] text-white`}
     >
       <CursorFollow />

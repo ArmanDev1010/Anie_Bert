@@ -117,8 +117,6 @@ const ProjectsSection = ({ projects }) => {
     }
   };
 
-  console.log(projects);
-
   return (
     <div className="relative projects mb-[70px]">
       <div className="pt-[20px] pb-10 px-[64px] border-b border-secondary mb-10">

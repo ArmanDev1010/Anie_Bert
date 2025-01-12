@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { IoIosArrowDown } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 
-const Modal = ({ handleClose }) => {
+const Modal = ({ handleClose, setShowMenu }) => {
   const { t } = useTranslation();
   const {
     register,
@@ -18,6 +18,10 @@ const Modal = ({ handleClose }) => {
   const [selectedType, setSelectedType] = useState("");
   const [checkmarkChecked, setCheckmarkChecked] = useState("");
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    setShowMenu(false);
+  }, []);
 
   const propertyTypes = [
     "All",
@@ -75,17 +79,22 @@ const Modal = ({ handleClose }) => {
   return (
     <div className="modal fixed top-0 left-0 w-full h-full z-[12] text-[#3a3e4b]">
       <motion.div
-        className="absolute top-[75px] left-[197px] w-[calc(100%-394px)] h-[calc(100vh-150px)] py-[56px] px-[123px] overflow-auto bg-[#f2f2f2] shadow-[0_2px_24px_rgba(0,0,0,.04)] z-[1]"
+        className="absolute top-[75px] left-[197px] w-[calc(100%-394px)] h-[calc(100vh-150px)] py-[56px] px-[123px] overflow-auto bg-[#f2f2f2] shadow-[0_2px_24px_rgba(0,0,0,.04)] z-[1]
+        max-_1280:w-[calc(100%-216px)] max-_1280:h-[calc(100vh-86px)] max-_1280:top-[43px] max-_1280:left-[105px] max-_1280:p-[32px_50px]
+        max-_900:w-[calc(100%-48px)] max-_900:h-[calc(100%-64px)] max-_900:top-[90px] max-_900:left-[24px] max-_900:p-[0] max-_900:bg-transparent max-_900:pb-[64px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="p-[44px_70px] pb-[43px] mb-[6px] bg-white border border-[rgba(0,0,0,.04)]">
+          <div
+            className="p-[44px_70px] pb-[43px] mb-[6px] bg-white border border-[rgba(0,0,0,.04)] 
+          max-_1280:p-[46px_53px_42px_53px] max-_550:p-[33px_30px]"
+          >
             <p className="text-[22px] font-[600] text-center mb-[25px]">
               {t("modal.make_request")}
             </p>
-            <div className="grid grid-cols-2 gap-x-[36px] gap-y-[26px]">
+            <div className="grid grid-cols-2 gap-x-[36px] gap-y-[26px] max-_900:flex max-_900:flex-col">
               {fields.map(({ place, clean, isComment }, key) => (
                 <div
                   key={key}
@@ -111,13 +120,18 @@ const Modal = ({ handleClose }) => {
               ))}
             </div>
           </div>
-          <div className="py-[43px] px-[69px] bg-white border border-[rgba(0,0,0,.04)]">
+          <div
+            className="py-[43px] px-[69px] bg-white border border-[rgba(0,0,0,.04)] 
+          max-_1280:p-[46px_53px_42px_53px] max-_550:p-[40px_31px]"
+          >
             <p className="text-[12px] font-semibold mb-[41px]">
               {t("modal.fields.area")}
             </p>
             <div
-              className="relative flex justify-between mb-[56px] 
-            before:content-[''] before:absolute before:top-1/2 before:left-[20px] before:w-[calc(100%-40px)] before:-translate-y-1/2 before:h-[1px] before:bg-[hsla(0,0%,83.9%,0.3)]"
+              className="relative flex justify-between mb-[56px] flex-wrap
+              max-_900:grid max-_900:grid-rows-[70px_30px] max-_900:grid-cols-[20px_20px_20px_20px] max-_900:items-evenly
+            before:content-[''] before:absolute before:top-1/2 before:left-[20px] before:w-[calc(100%-40px)] before:-translate-y-1/2 before:h-[1px] before:bg-[hsla(0,0%,83.9%,0.3)] before:max-_900:top-[10px]
+            after:content-[''] _900:after:hidden after:absolute after:bottom-[20px] after:left-[20px] after:w-[calc(100%-40px)] after:-translate-y-1/2 after:h-[1px] after:bg-[hsla(0,0%,83.9%,0.3)]"
             >
               {[
                 "to 50",
@@ -126,6 +140,7 @@ const Modal = ({ handleClose }) => {
                 "250-400",
                 "400-600",
                 "600-800",
+                "800-1000",
                 "1000+",
               ].map((text, key) => (
                 <Checkmark
@@ -143,7 +158,7 @@ const Modal = ({ handleClose }) => {
                 type="submit"
                 className="group bg-secondary text-white border border-secondary px-[58px] py-3 transition duration-200 hover:bg-white"
               >
-                <div className="relative overflow-hidden text-[16px] font-[600]">
+                <div className="relative overflow-hidden text-[16px] font-[600] max-_550:text-[15px]">
                   <div className="group-hover:-translate-y-[110%] transition duration-300">
                     {isSubmitting ? "Loading..." : t("modal.send_request")}
                   </div>
@@ -170,14 +185,14 @@ const Modal = ({ handleClose }) => {
         </form>
       </motion.div>
       <motion.div
-        className="fixed inset-0 bg-[rgba(26,27,32,.80)]"
+        className="fixed inset-0 bg-[rgba(26,27,32,.85)]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={handleClose}
       ></motion.div>
       <motion.div
-        className="absolute top-[17px] right-[18px] w-[61px] h-[61px] p-5 cursor-pointer"
+        className="request__close absolute top-[17px] right-[18px] w-[61px] h-[61px] p-5 cursor-pointer max-_700:right-[1px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
