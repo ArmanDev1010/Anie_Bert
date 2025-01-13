@@ -12,9 +12,9 @@ const Home = () => {
   return (
     <div className="relative bg-white text-black">
       <Hero />
+      <Masterpiece />
       <div className="h-screen"></div>
-      {/* <Masterpiece />
-      <About />
+      {/* <About />
       <Services />
       <Projects />
       <Contact /> */}

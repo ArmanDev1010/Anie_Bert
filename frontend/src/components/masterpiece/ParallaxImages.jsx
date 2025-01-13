@@ -10,13 +10,43 @@ import { useTranslation } from "react-i18next";
 const ParallaxImages = ({ data }) => {
   const { t } = useTranslation();
 
+  const calculateHeight = (num) => {
+    if (window.innerWidth > 1200) return num;
+    return num + 1;
+  };
+
+  const calculateStartEnd = (num) => {
+    if (window.innerWidth > 1200) return num;
+    return num + 1;
+  };
+
   return (
     <div className="mx-auto max-w-5xl px-4 pt-[200px]">
       {[
-        { start: -200, end: 200, style: "w-1/3", url: data[0].url },
-        { start: 200, end: -250, style: "mx-auto w-2/4", url: data[1].url },
-        { start: -200, end: 200, style: "ml-auto w-1/3", url: data[2].url },
-        { start: -100, end: -500, style: "ml-24 w-5/12", url: data[3].url },
+        {
+          start: calculateStartEnd(-200),
+          end: 200,
+          style: "w-1/3",
+          url: data[0].url,
+        },
+        {
+          start: calculateStartEnd(200),
+          end: -250,
+          style: "mx-auto w-2/4",
+          url: data[1].url,
+        },
+        {
+          start: calculateStartEnd(-200),
+          end: 200,
+          style: "ml-auto w-1/3",
+          url: data[2].url,
+        },
+        {
+          start: calculateStartEnd(-100),
+          end: -500,
+          style: "ml-24 w-5/12",
+          url: data[3].url,
+        },
       ].map((text, key) => (
         <ParallaxImg
           src={`http://localhost:1337/${text.url}`}
@@ -34,11 +64,18 @@ const ParallaxImages = ({ data }) => {
         ].map((text, key) => (
           <div
             key={key}
-            className="absolute text-2xl max-w-[350px] pointer-events-none"
+            className="absolute text-2xl max-w-[350px] pointer-events-none max-_700:hidden"
             style={
               text.left
-                ? { top: `${text.top}%`, left: `${text.left}%` }
-                : { top: `${text.top}%`, right: `${text.right}%` }
+                ? {
+                    top: `${calculateHeight(text.top)}%`,
+                    left: `${text.left}%`,
+                  }
+                : {
+                    top: `${calculateHeight(text.top)}%`,
+                    right: `${text.right}%`,
+                    textAlign: "right",
+                  }
             }
           >
             {t(`masterpiece.${key + 1}`)}

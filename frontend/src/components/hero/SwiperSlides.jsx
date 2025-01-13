@@ -136,7 +136,7 @@ const SwiperSlides = ({ data }) => {
               }}
               variants={{
                 visible: { opacity: 1, y: 0 },
-                hidden: { opacity: 0, y: 60 },
+                hidden: { opacity: 0, y: window.innerWidth < 450 ? 40 : 60 },
               }}
               animate={progress?.toFixed(1) === "0.2" ? "" : "hidden"}
               className="!font-montserrat text-[64px] mb-3 font-[600] capitalize leading-[1.2] 
