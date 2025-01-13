@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 import { IoLocationSharp } from "react-icons/io5";
-import { RequestBtn, Socials } from "../";
+import { ContactInfo, RequestBtn, Socials } from "../";
 
 const Menu = ({
   showMenu,
@@ -59,31 +59,7 @@ const Menu = ({
           />
         </ul>
 
-        <ul
-          className="flex gap-28 items-center px-[64px] pb-[40px]
-        max-_1080:!px-[5%] max-_900:justify-between max-_900:gap-0 max-_900:pb-[25px] max-_550:pb-[15px]"
-        >
-          <li className="max-_1080:hidden">
-            <Socials />
-          </li>
-          <li>
-            <div
-              className="rounded-full py-1.5 px-5 border border-white cursor-pointer flex items-center gap-3 
-            text-[17px] font-[500] capitalize transition-bg duration-300 hover:bg-white/50 max-_700:text-[15px] max-_550:text-[13px]"
-            >
-              <IoLocationSharp className="max-_550:hidden" />
-              <span>{t(`navbar.location`)}</span>
-            </div>
-          </li>
-          <li className="!font-montserrat flex gap-x-28 text-[15px] max-_900:flex-col max-_900:gap-y-3 max-_900:text-right max-_700:text-[14px] max-_550:text-[12px]">
-            <p className="font-[600] tracking-[1px] cursor-pointer transition-opacity duration-200 hover:opacity-70">
-              {t(`navbar.phone`)}
-            </p>
-            <p className="font-[600] tracking-[1px] cursor-pointer transition-opacity duration-200 hover:opacity-70">
-              {t(`navbar.email`)}
-            </p>
-          </li>
-        </ul>
+        <ContactInfo />
       </motion.div>
 
       {/* Background overlay */}

@@ -34,13 +34,8 @@
     "send_request": "Send Request"
   },
   "hero": {
-    "title": "Building Visions & Creating Reality",
-    "start_btn": "Start project",
-    "types": {
-      "interior": "Interior Design",
-      "architecture": "Architecture",
-      "commercial": "Commerial"
-    }
+    "explore_btn": "Click to explore",
+    "next": "Next project"
   },
   "masterpiece": {
     "1": "Where creativity meets functionality",

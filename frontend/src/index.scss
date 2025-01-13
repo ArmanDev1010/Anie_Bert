@@ -346,6 +346,14 @@ body {
       --progress: 0;
       width: var(--progress);
     }
+    .seethrough_text {
+      color: transparent;
+      -webkit-text-stroke: 1px #fff;
+      text-stroke: 1px #fff;
+      text-shadow: none;
+      -webkit-transition: color 0.5s ease;
+      transition: color 0.5s ease;
+    }
   }
 }
 

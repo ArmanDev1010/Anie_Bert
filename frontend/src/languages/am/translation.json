@@ -36,13 +36,8 @@
     "send_request": "Ուղարկել Հարցումը"
   },
   "hero": {
-    "title": "Building Visions & Creating Reality",
-    "start_btn": "Սկսել նախագիծ",
-    "types": {
-      "interior": "Ինտերիեր դիզայն",
-      "architecture": "Ճարտարապետություն",
-      "commercial": "Կոմերցիոն դիզայն"
-    }
+    "explore_btn": "Իմանալ ավելին",
+    "next": "Հաջորդ նախագիծը"
   },
   "masterpiece": {
     "1": "Where creativity meets functionality",

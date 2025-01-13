@@ -1,6 +1,5 @@
 // Hero
 import Hero from "./hero/Hero";
-import BottomHero from "./hero/BottomHero";
 import SwiperSlides from "./hero/SwiperSlides";
 
 // Navigation
@@ -34,12 +33,12 @@ import Contact from "./Contact";
 import CursorFollow from "./CursorFollow";
 
 // Effects
-import TiltCard from "./reusable/hover_effects/TiltCard";
 import RoundedButton from "./reusable/hover_effects/RoundedButton";
 import Magnetic from "./reusable/hover_effects/Magnetic";
 
 // Components
 import Socials from "./reusable/Socials";
+import ContactInfo from "./reusable/ContactInfo";
 
 import LanguageSwitcherWithArrow from "./navigation/LanguageSwitcherWithArrow";
 
@@ -48,10 +47,8 @@ export {
   Navbar,
   CursorFollow,
   Modal,
-  BottomHero,
   Menu,
   SwiperSlides,
-  TiltCard,
   Masterpiece,
   CenterImage,
   ParallaxImages,
@@ -71,4 +68,5 @@ export {
   LanguageSwitcherWithArrow,
   MenuBtn,
   RequestBtn,
+  ContactInfo,
 };

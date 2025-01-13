@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, BottomHero, SwiperSlides } from "../index";
+import { ContactInfo, Navbar, SwiperSlides } from "../index";
 
 import { useQuery, gql } from "@apollo/client";
 import { useTranslation } from "react-i18next";
@@ -63,8 +63,8 @@ const Hero = () => {
     <div className="hero relative h-screen text-white">
       <div className="relative w-full h-full px-[64px] overflow-hidden">
         <Navbar />
-        <BottomHero />
         <SwiperSlides data={heroes} />
+        <ContactInfo hero={true} />
       </div>
     </div>
   );
