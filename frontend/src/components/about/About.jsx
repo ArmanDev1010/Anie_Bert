@@ -40,9 +40,15 @@ const About = () => {
   const phrase = t("about.component.phrase");
 
   return (
-    <div className="px-[200px] mt-[100px] mb-[120px] flex justify-center max-desktopM:mb-[80px] max-desktopM:px-[150px]">
-      <div className="max-w-[1400px] flex gap-[80px] relative">
-        <p className="m-0 text-[28px] gap-[8px] leading-[1.3] font-semibold pointer-events-none w-1/2">
+    <div
+      className="px-[64px] mt-[100px] mb-[80px] flex justify-center 
+    max-_900:mb-[50px] max-_900:mt-[64px] max-_700:px-[5%] max-_400:mb-[80px]"
+    >
+      <div className="max-w-[1400px] flex gap-[80px] relative max-_900:flex-col max-_550:gap-[60px] max-_400:gap-[50px]">
+        <p
+          className="m-0 text-[clamp(1.55em,2.3vw,2em)] gap-[8px] leading-[1.45] font-semibold pointer-events-none w-[70%]
+        max-_900:w-full max-_900:text-secondary max-_550:text-[5vw] max-_400:text-[6vw]"
+        >
           {phrase.split(" ").map((word, index) => {
             return (
               <span
@@ -64,21 +70,24 @@ const About = () => {
             );
           })}
         </p>
-        <div className="w-1/2 flex flex-col items-end gap-[70px]">
-          <div className="w-full flex justify-end text-right">
+        <div className="relative w-[30%] flex flex-col items-end gap-[70px] max-_900:w-full max-_900:flex-row max-_550:mb-20">
+          <div className="w-full flex max-_900:self-start">
             <motion.p
               initial="closed"
               whileInView="open"
               viewport={{ once: true }}
               variants={opacity}
-              className="!font-montserrat text-[18px] w-full font-medium pointer-events-none w-[500px]"
+              className="text-[18px] font-medium pointer-events-none max-w-[14em] max-_550:text-base"
             >
               {t("about.component.paragraph")}
             </motion.p>
           </div>
           <div data-scroll data-scroll-speed={0.1}>
             <Link to={`/${i18n.language}/about`}>
-              <RoundedButton className="w-[180px] h-[180px] bg-[#222] text-white rounded-[50%] relative flex items-center justify-center cursor-pointer">
+              <RoundedButton
+                className="w-[180px] h-[180px] bg-[#222] text-white rounded-[50%] relative flex items-center justify-center cursor-pointer
+              max-_550:w-[144px] max-_550:h-[144px] max-_550:absolute max-_550:-bottom-20 max-_550:right-0 max-_400:-bottom-36"
+              >
                 <p className="m-0 text-lg font-medium relative z-[1]">
                   {t("about.component.about_btn")}
                 </p>

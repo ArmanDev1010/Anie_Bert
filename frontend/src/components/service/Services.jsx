@@ -107,7 +107,8 @@ const Services = () => {
 
   return (
     <div
-      className="flex items-center px-[200px] pt-[40px] flex-col bg-white text-black max-desktopM:px-[150px]"
+      className="flex items-center px-[200px] pt-[40px] flex-col bg-white text-black 
+      max-_1600:px-[150px] max-_1280:px-[64px] max-_700:px-[5%]"
       onMouseMove={(e) => {
         moveItems(e.clientX, e.clientY);
       }}
@@ -129,9 +130,12 @@ const Services = () => {
                   manageModal(false, index, e.clientX, e.clientY);
                 }}
                 className="group flex w-full justify-between items-center py-[50px] px-[100px] border-t-[1px] border-t-[rgb(201,201,201)] cursor-pointer transition-all duration-200
-              last:border-b-[1px] last:border-b-[rgb(201,201,201)] hover:opacity-50 max-desktopM:px-[70px]"
+              last:border-b-[1px] last:border-b-[rgb(201,201,201)] hover:opacity-50 max-_1600:px-[70px] max-_700:px-[50px] max-_550:px-[10px]"
               >
-                <h2 className="text-[45px] m-0 font-semibold text-[#222] transition-all duration-[0.4s] group-hover:-translate-x-[10px] max-desktopM:text-[40px]">
+                <h2
+                  className="text-[45px] m-0 font-semibold text-[#222] transition-all duration-[0.4s] group-hover:-translate-x-[10px] 
+                max-_1600:text-[40px] max-_700:text-[35px] max-_550:text-[28px]"
+                >
                   {t(`services.component.types.${service.service}`)}
                 </h2>
                 <p className="transition-all duration-[0.4s] font-medium group-hover:translate-x-[10px]">
@@ -140,7 +144,8 @@ const Services = () => {
                     fill="black"
                     strokeWidth="0"
                     viewBox="0 0 24 24"
-                    className="pointer-events-none relative z-1 rotate-45 text-7xl text-black transition-all duration-[0.4s] ease-out group-hover:rotate-90"
+                    className="pointer-events-none relative z-1 rotate-45 text-7xl text-black transition-all duration-[0.4s] ease-out group-hover:rotate-90
+                    max-_700:text-6xl max-_550:text-5xl"
                     height="0.6em"
                     width="0.6em"
                     xmlns="http://www.w3.org/2000/svg"

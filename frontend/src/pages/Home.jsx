@@ -13,10 +13,9 @@ const Home = () => {
     <div className="relative bg-white text-black">
       <Hero />
       <Masterpiece />
-      <div className="h-screen"></div>
-      {/* <About />
+      <About />
       <Services />
-      <Projects />
+      {/* <Projects />
       <Contact /> */}
     </div>
   );
