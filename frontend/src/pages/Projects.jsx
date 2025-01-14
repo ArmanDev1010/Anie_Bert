@@ -119,7 +119,10 @@ const ProjectsSection = ({ projects }) => {
 
   return (
     <div className="relative projects mb-[70px]">
-      <div className="pt-[20px] pb-10 px-[64px] border-b border-secondary mb-10">
+      <div
+        className="relative pt-[20px] pb-10 px-[64px] border-b border-secondary mb-10 
+      max-_1080:px-[5%] max-_900:pb-16 max-_550:pt-[5px]"
+      >
         <motion.p
           initial="hidden"
           whileInView="visible"
@@ -133,13 +136,13 @@ const ProjectsSection = ({ projects }) => {
             visible: { opacity: 1, y: 0 },
             hidden: { opacity: 0, y: 60 },
           }}
-          className="pointer-events-none font-articulat text-secondary uppercase text-[max(3vw,5.5vw)] leading-[1.1] 
-        pointer-events-none mb-[50px] max-desktopM:text-[max(3vw,5.2vw)]"
+          className="font-articulat text-secondary uppercase text-[max(3vw,5vw)] mb-[50px] leading-[1.1] pointer-events-none
+          max-_1440:text-7xl max-_1440:mb-[40px] max-_550:text-[14vw]"
         >
           {t("projects.page.title")}
         </motion.p>
         <div className="flex items-center justify-between">
-          <div className="flex gap-5">
+          <div className="flex gap-5 flex-wrap">
             {["all", ...filters].map((text, key) => (
               <button
                 onClick={() => handleFilterButtonClick(text)}
@@ -152,7 +155,7 @@ const ProjectsSection = ({ projects }) => {
               </button>
             ))}
           </div>
-          <p className="text-xl italic pointer-events-none">
+          <p className="text-xl italic pointer-events-none max-_900:absolute max-_900:bottom-3 max-_900:right-5">
             ({filteredItems.length}) {t("projects.page.title")}
           </p>
         </div>
