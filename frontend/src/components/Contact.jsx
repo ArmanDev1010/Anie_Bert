@@ -27,7 +27,7 @@ const Contact = ({ is_contact_page }) => {
           is_contact_page && {
             background: "#36454f",
             color: "white",
-            minHeight: "100vh",
+            minHeight: "100%",
             paddingTop: "50px",
           }
         }

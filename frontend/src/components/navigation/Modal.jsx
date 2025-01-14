@@ -20,7 +20,7 @@ const Modal = ({ handleClose, setShowMenu }) => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    setShowMenu(false);
+    setShowMenu && setShowMenu(false);
   }, []);
 
   const propertyTypes = [

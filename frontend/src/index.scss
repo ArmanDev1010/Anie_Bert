@@ -390,7 +390,7 @@ body {
   }
   .horizontal {
     padding: 0 32px;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     ul {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -401,6 +401,9 @@ body {
     }
     @media screen and (max-width: $_700) {
       padding: 0 3%;
+    }
+    @media screen and (max-width: $_550) {
+      margin-bottom: 20px;
     }
   }
 }
