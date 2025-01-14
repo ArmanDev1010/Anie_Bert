@@ -25,7 +25,7 @@ const Contact = ({ is_contact_page }) => {
         className="bg-white relative w-full pt-[85px] pb-[185px] px-[210px] text-black max-_1440:px-[10%] max-_900:mb-10 max-_700:px-[5%]"
         style={
           is_contact_page && {
-            background: "#36454f",
+            background: "#222",
             color: "white",
             minHeight: "100%",
             paddingTop: "50px",
@@ -154,7 +154,11 @@ const Contact = ({ is_contact_page }) => {
         </div>
         <div
           className="absolute top-0 left-0 w-full h-full pointer-events-none bg-cover bg-no-repeat opacity-20 z-[0]"
-          style={{ backgroundImage: "url(/src/assets/grid-crosshairs.png)" }}
+          style={{
+            backgroundImage: `url(/src/assets/patterns/${
+              is_contact_page ? "grid-crosshairs_white" : "grid-crosshairs"
+            }.png)`,
+          }}
         ></div>
       </div>
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>

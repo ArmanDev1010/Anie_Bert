@@ -126,7 +126,7 @@ const Projects = () => {
       <Project data={projects} isDesktop={isDesktop} />
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-no-repeat opacity-20"
-        style={{ backgroundImage: "url(/src/assets/line-grid.png)" }}
+        style={{ backgroundImage: "url(/src/assets/patterns/line-grid.png)" }}
       ></div>
     </div>
   );
