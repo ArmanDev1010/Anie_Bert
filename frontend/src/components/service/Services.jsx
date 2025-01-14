@@ -130,15 +130,16 @@ const Services = () => {
                   manageModal(false, index, e.clientX, e.clientY);
                 }}
                 className="group flex w-full justify-between items-center py-[50px] px-[100px] border-t-[1px] border-t-[rgb(201,201,201)] cursor-pointer transition-all duration-200
-              last:border-b-[1px] last:border-b-[rgb(201,201,201)] hover:opacity-50 max-_1600:px-[70px] max-_700:px-[50px] max-_550:px-[10px]"
+              last:border-b-[1px] last:border-b-[rgb(201,201,201)] hover:opacity-50 max-_1600:px-[70px] max-_900:px-[50px] max-_550:px-[10px]"
               >
                 <h2
-                  className="text-[45px] m-0 font-semibold text-[#222] transition-all duration-[0.4s] group-hover:-translate-x-[10px] 
-                max-_1600:text-[40px] max-_700:text-[35px] max-_550:text-[28px]"
+                  className="text-[45px] m-0 font-semibold text-[#222] whitespace-nowrap overflow-hidden text-ellipsis 
+                  transition-all duration-[0.4s] group-hover:-translate-x-[10px] 
+                max-_1600:text-[40px] max-_900:text-[35px] max-_700:text-[28px] max-_550:text-[28px]"
                 >
                   {t(`services.component.types.${service.service}`)}
                 </h2>
-                <p className="transition-all duration-[0.4s] font-medium group-hover:translate-x-[10px]">
+                <p className="transition-all duration-[0.4s] font-medium group-hover:translate-x-[10px] pl-[20px]">
                   <svg
                     stroke="black"
                     fill="black"
@@ -165,7 +166,8 @@ const Services = () => {
           variants={scaleAnimation}
           initial="initial"
           animate={active ? "enter" : "closed"}
-          className="h-[350px] w-[400px] fixed top-1/2 left-1/2 bg-white pointer-events-none overflow-hidden z-[3]"
+          className="h-[350px] w-[400px] fixed top-1/2 left-1/2 bg-white pointer-events-none overflow-hidden z-[3] 
+          max-_900:hidden"
         >
           <div
             style={{ top: index * -100 + "%" }}
@@ -194,7 +196,8 @@ const Services = () => {
         {["cursor", "cursorLabel"].map((text, key) => (
           <motion.div
             ref={cursor}
-            className="w-[80px] h-[80px] rounded-[50%] bg-secondary text-white fixed z-[3] flex items-center justify-center text-[14px] font-medium pointer-events-none"
+            className="w-[80px] h-[80px] rounded-[50%] bg-secondary text-white fixed z-[3] flex items-center justify-center text-[14px] font-medium pointer-events-none 
+            max-_900:hidden"
             variants={scaleAnimation}
             initial="initial"
             key={key}

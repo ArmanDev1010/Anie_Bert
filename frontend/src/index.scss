@@ -22,6 +22,18 @@ $mobileB: "550px";
 $mobileM: "400px";
 $mobileS: "360px";
 
+$_1920: "1920px";
+$_1750: "1750px";
+$_1600: "1600px";
+$_1440: "1440px";
+$_1280: "1280px";
+$_1080: "1080px";
+$_900: "900px";
+$_700: "700px";
+$_550: "550px";
+$_400: "400px";
+$_360: "360px";
+
 body {
   padding: 0;
   margin: 0;
@@ -358,38 +370,37 @@ body {
 }
 
 .projects_section {
-  .project {
-    background: #080808;
+  .vertical {
     position: relative;
-    width: 650px;
-    height: 550px;
-    overflow: hidden;
-    cursor: pointer;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-    transition: transform 0.3s;
-    & > div:nth-child(1) {
-      font-size: 2.5vw;
-      position: absolute;
-      font-weight: 600;
-      text-align: center;
+    z-index: 3;
+    height: 300vh;
+    & > div {
+      position: sticky;
+      top: 0;
+      display: flex;
+      height: 100vh;
+      align-items: center;
       overflow: hidden;
-      pointer-events: none;
-      color: white;
-      top: 50%;
-      left: 50%;
-      z-index: 5;
-      transform: translate(-50%, -50%);
-      width: 100%;
+      padding-top: 80px;
+      ul {
+        display: flex;
+        gap: 32px;
+      }
     }
-    &:hover {
-      transform: translateY(-20px);
+  }
+  .horizontal {
+    padding: 0 32px;
+    margin-bottom: 80px;
+    ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      @media screen and (max-width: $_900) {
+        grid-template-columns: 1fr;
+      }
     }
-    @media screen and (max-width: $desktopM) {
-      width: 600px;
-      height: 500px;
+    @media screen and (max-width: $_700) {
+      padding: 0 3%;
     }
   }
 }

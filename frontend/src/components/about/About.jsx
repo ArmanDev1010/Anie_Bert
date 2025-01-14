@@ -41,8 +41,8 @@ const About = () => {
 
   return (
     <div
-      className="px-[64px] mt-[100px] mb-[80px] flex justify-center 
-    max-_900:mb-[50px] max-_900:mt-[64px] max-_700:px-[5%] max-_400:mb-[80px]"
+      className="px-[64px] mt-[100px] mb-[60px] flex justify-center 
+    max-_900:mb-[36px] max-_900:mt-[64px] max-_700:px-[5%]"
     >
       <div className="max-w-[1400px] flex gap-[80px] relative max-_900:flex-col max-_550:gap-[60px] max-_400:gap-[50px]">
         <p
@@ -70,7 +70,7 @@ const About = () => {
             );
           })}
         </p>
-        <div className="relative w-[30%] flex flex-col items-end gap-[70px] max-_900:w-full max-_900:flex-row max-_550:mb-20">
+        <div className="relative w-[30%] flex flex-col items-end gap-[70px] max-_900:w-full max-_900:flex-row max-_550:flex-col max-_550:gap-0">
           <div className="w-full flex max-_900:self-start">
             <motion.p
               initial="closed"
@@ -86,7 +86,7 @@ const About = () => {
             <Link to={`/${i18n.language}/about`}>
               <RoundedButton
                 className="w-[180px] h-[180px] bg-[#222] text-white rounded-[50%] relative flex items-center justify-center cursor-pointer
-              max-_550:w-[144px] max-_550:h-[144px] max-_550:absolute max-_550:-bottom-20 max-_550:right-0 max-_400:-bottom-36"
+              max-_550:w-[144px] max-_550:h-[144px]"
               >
                 <p className="m-0 text-lg font-medium relative z-[1]">
                   {t("about.component.about_btn")}
