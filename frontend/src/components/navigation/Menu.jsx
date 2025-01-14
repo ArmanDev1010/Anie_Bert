@@ -59,7 +59,7 @@ const Menu = ({
           />
         </ul>
 
-        <ContactInfo />
+        <ContactInfo menu={true} />
       </motion.div>
 
       {/* Background overlay */}

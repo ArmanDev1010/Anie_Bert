@@ -135,7 +135,7 @@ const Services = () => {
                 <h2
                   className="text-[45px] m-0 font-semibold text-[#222] whitespace-nowrap overflow-hidden text-ellipsis 
                   transition-all duration-[0.4s] group-hover:-translate-x-[10px] 
-                max-_1600:text-[40px] max-_900:text-[35px] max-_700:text-[28px] max-_550:text-[28px]"
+                max-_1600:text-[40px] max-_900:text-[35px] max-_700:text-[28px] max-_550:text-[24px] max-_400:text-[22px]"
                 >
                   {t(`services.component.types.${service.service}`)}
                 </h2>
@@ -146,7 +146,7 @@ const Services = () => {
                     strokeWidth="0"
                     viewBox="0 0 24 24"
                     className="pointer-events-none relative z-1 rotate-45 text-7xl text-black transition-all duration-[0.4s] ease-out group-hover:rotate-90
-                    max-_700:text-6xl max-_550:text-5xl"
+                    max-_700:text-6xl max-_550:text-5xl max-_400:text-4xl"
                     height="0.6em"
                     width="0.6em"
                     xmlns="http://www.w3.org/2000/svg"

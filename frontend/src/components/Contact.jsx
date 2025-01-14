@@ -1,31 +1,9 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { IoLocationSharp } from "react-icons/io5";
-import { Modal, Socials } from "./";
+import { ContactInfo, Modal } from "./";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
-const container = {
-  hidden: { opacity: 1, scale: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { ease: "linear", delayChildren: 1, staggerChildren: 0.15 },
-  },
-};
-
-const item = {
-  hidden: {
-    y: 20,
-    opacity: 0,
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.35 },
-  },
-};
 
 const Contact = ({ is_contact_page }) => {
   const { t } = useTranslation();
@@ -44,12 +22,13 @@ const Contact = ({ is_contact_page }) => {
   return (
     <>
       <div
-        className="bg-white relative w-full pt-[85px] pb-[185px] px-[210px] text-black"
+        className="bg-white relative w-full pt-[85px] pb-[185px] px-[210px] text-black max-_1440:px-[10%] max-_900:mb-10 max-_700:px-[5%]"
         style={
           is_contact_page && {
-            background: "transparent",
+            background: "#36454f",
             color: "white",
-            height: "100%",
+            minHeight: "100vh",
+            paddingTop: "50px",
           }
         }
       >
@@ -70,7 +49,7 @@ const Contact = ({ is_contact_page }) => {
               visible: { opacity: 1, y: 0 },
               hidden: { opacity: 0, y: 60 },
             }}
-            className="uppercase text-5xl font-[700] mb-10"
+            className="uppercase text-5xl font-[700] mb-10 max-_550:text-4xl"
           >
             {t("contact.title")}
           </motion.p>
@@ -100,7 +79,7 @@ const Contact = ({ is_contact_page }) => {
             {t("contact.paragraph")}
             <Link
               to={"mailto:info@aniebert.com"}
-              className="text-secondary font-[600]"
+              className="text-secondary font-[600] max-_550:text-[15px]"
               style={
                 is_contact_page && {
                   color: "white",
@@ -112,44 +91,7 @@ const Contact = ({ is_contact_page }) => {
             </Link>
           </motion.p>
         </div>
-        <motion.ul
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="flex gap-28 items-center mb-[63px]"
-          style={is_contact_page && { marginBottom: "100px" }}
-        >
-          {["socials", "location", "phone", "email"].map((text, key) => (
-            <motion.li key={key} variants={item} className="">
-              {text == "socials" ? (
-                <Socials />
-              ) : text == "location" ? (
-                <Link to={"https://maps.app.goo.gl/ZcfcTCohGbfCG16D9"}>
-                  <div
-                    className="rounded-full py-1.5 px-5 border border-white cursor-pointer flex items-center gap-3 font-[500]
-                    transition-text duration-300 hover:text-gray-500"
-                  >
-                    <IoLocationSharp className="text-[17px]" />
-                    <span className="capitalize">{t("navbar.location")}</span>
-                  </div>
-                </Link>
-              ) : (
-                <Link
-                  to={
-                    text == "phone"
-                      ? "tel:+374 55 550123"
-                      : "mailto:info@aniebert.com"
-                  }
-                >
-                  <p className="!font-montserrat font-[600] tracking-[1px] text-[15px] cursor-pointer transition-opacity duration-200 hover:opacity-70">
-                    {t(`navbar.${text}`)}
-                  </p>
-                </Link>
-              )}
-            </motion.li>
-          ))}
-        </motion.ul>
+        <ContactInfo is_contact_page={is_contact_page} contact={true} />
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -192,7 +134,10 @@ const Contact = ({ is_contact_page }) => {
             </div>
           </button>
         </motion.div>
-        <div className="!font-montserrat absolute bottom-1 left-0 w-full h-[60px] flex justify-between items-center px-[64px] pb-[29px]">
+        <div
+          className="!font-montserrat absolute bottom-1 left-0 w-full h-[60px] flex justify-between items-center px-[64px] pb-[29px] 
+        max-_900:px-[10%] max-_900:flex-col max-_900:gap-5"
+        >
           <p className="text-[14px] pointer-events-none">
             © Copyright 2024. All rights reserved
           </p>
