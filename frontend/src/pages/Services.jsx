@@ -7,78 +7,13 @@ import { Link } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import { useTranslation } from "react-i18next";
 
-const images = [
-  {
-    src: "1",
-    left: "5%",
-    top: "60%",
-    width: "25vw",
-    height: "250px",
-  },
-  {
-    src: "2",
-    left: "30%",
-    top: "5%",
-    width: "15vw",
-    height: "200px",
-  },
-  {
-    src: "3",
-    left: "40%",
-    top: "70%",
-    width: "30vw",
-    height: "450px",
-  },
-  {
-    src: "4",
-    left: "80%",
-    top: "30%",
-    width: "12vw",
-    height: "350px",
-  },
-
-  {
-    src: "5",
-    left: "90%",
-    top: "150%",
-    width: "12vw",
-    height: "300px",
-  },
-  {
-    src: "6",
-    left: "1%",
-    top: "170%",
-    width: "30vw",
-    height: "200px",
-  },
-
-  {
-    src: "7",
-    left: "80%",
-    top: "200%",
-    width: "12vw",
-    height: "350px",
-  },
-  {
-    src: "8",
-    left: "5%",
-    top: "260%",
-    width: "18vw",
-    height: "250px",
-  },
-  {
-    src: "9",
-    left: "20%",
-    top: "214%",
-    width: "12vw",
-    height: "180px",
-  },
-];
-
 const SERVICES = gql`
   query GetServices {
     services(sort: "order") {
       service
+      main_image {
+        url
+      }
     }
   }
 `;
@@ -171,26 +106,16 @@ const Services = () => {
             <div
               className="h-screen snap-start relative w-full bg-white text-white"
               key={key}
-            ></div>
-          ))}
-        </div>
-        <div className="">
-          {images.map((img, index) => (
-            <div
-              key={index}
-              style={{
-                position: "absolute",
-                left: `clamp(0%, ${img.left}, calc(100% - ${img.width}))`,
-                top: img.top,
-                width: img.width,
-                height: img.height,
-                backgroundImage: `url(/src/assets/about_images/${img.src}.jpg)`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                zIndex: 1,
-              }}
-            />
+            >
+              <div
+                className="absolute top-0 left-0 bg-secondary w-full h-full z-[1] bg-cover bg-center bg-no-repeat overflow-hidden
+                after:content-[''] after:absolute after:top-0 after:left-0 after:w-[101%] after:h-[101%]
+        after:bg-[linear-gradient(0deg,rgba(0,0,0,.63)_0,rgba(0,0,0,.24))] after:z-[-1]"
+                style={{
+                  backgroundImage: `url(http://localhost:1337/${text?.main_image?.url})`,
+                }}
+              ></div>
+            </div>
           ))}
         </div>
       </div>
@@ -199,7 +124,7 @@ const Services = () => {
 };
 
 const FixedTitle = ({ services, activeSection }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const containerRef = useRef(null);
   const textRef = useRef(null);
@@ -214,7 +139,7 @@ const FixedTitle = ({ services, activeSection }) => {
         window.removeEventListener("resize", resizeText);
       };
     }, 10);
-  }, [activeSection]);
+  }, [activeSection, i18n.language]);
 
   const resizeText = () => {
     const container = containerRef.current;
@@ -243,8 +168,8 @@ const FixedTitle = ({ services, activeSection }) => {
   };
 
   return (
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2] text-[#d9d9d9] w-full text-center mix-blend-difference pointer-events-none">
-      <p className="font-sometimestimes text-[3vw]">
+    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2] text-white w-full text-center pointer-events-none">
+      <p className="font-sometimestimes text-[3vw] max-_700:text-[4vw] max-_550:text-[5vw]">
         {activeSection + 1} / {services.length}
       </p>
       <div
@@ -252,7 +177,8 @@ const FixedTitle = ({ services, activeSection }) => {
         ref={containerRef}
       >
         <motion.h1
-          className="font-sometimestimes mt-[1rem] mb-[3rem] mx-auto whitespace-nowrap text-center leading-[1]"
+          className="!font-montserrat font-[600] mt-[1rem] mb-[3rem] mx-auto whitespace-nowrap text-center leading-[1] 
+          max-_700:mb-[2rem] max-_550:mb-[1rem] max-_550:mt-[10px]"
           ref={textRef}
           key={activeSection}
           initial={{ y: 200 }}
@@ -269,9 +195,10 @@ const FixedTitle = ({ services, activeSection }) => {
       </div>
       <Link to={`./${services[activeSection].service}`}>
         <p
-          className="relative text-[1.3rem] uppercase font-[600] cursor-pointer w-fit !pointer-events-auto
-            inline-block pl-4 ml-[1px] text-lg cursor-pointer font-[500] hover:pl-[64px]
-            before:content-[''] before:block before:absolute before:top-1/2 before:left-0 before:h-[1px] before:w-[8px] before:-translate-y-1/2 before:bg-white
+          className="relative text-[1.4rem] uppercase font-[600] cursor-pointer w-fit !pointer-events-auto
+            inline-block pl-0 ml-[1px] text-lg cursor-pointer font-[500] hover:pl-[64px]
+            max-_700:text-base max-_550:text-[14px]
+            before:content-[''] before:block before:absolute before:top-1/2 before:left-0 before:h-[1px] before:w-[8px] before:-translate-y-1/2 before:bg-white before:-left-4
             after:content-[''] after:block after:absolute after:top-1/2 after:left-[calc(100%+9px)] after:h-[1px] after:w-[56px] after:-translate-y-1/2 after:bg-white
             hover:after:w-[8px] hover:before:w-[56px] before:transition-[width_0.5s_ease] before:duration-[0.5s] after:transition-[width_0.5s_ease] after:duration-[0.5s]"
           style={{

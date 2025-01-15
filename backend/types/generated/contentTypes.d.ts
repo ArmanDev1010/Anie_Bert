@@ -541,6 +541,14 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::service.service'
     >;
+    main_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     order: Schema.Attribute.Integer &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
