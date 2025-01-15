@@ -46,7 +46,7 @@ const ParallaxScroll = ({ service, service_page, images }) => {
   return (
     <div
       ref={container}
-      className="parallax_scroll relative mt-[10vh] min-h-[75vh]"
+      className="parallax_scroll relative mt-[10vh] min-h-[75vh] max-_700:mt-0 max-_550:min-h-[55vh]"
     >
       <div
         className={`flex w-full justify-center relative mt-[5vh] ${
@@ -58,7 +58,7 @@ const ParallaxScroll = ({ service, service_page, images }) => {
             <motion.div
               style={{ y }}
               key={key}
-              className="imageContainer absolute"
+              className="about_imageContainer absolute"
             >
               <div
                 className="w-full h-full bg-cover bg-center bg-no-repeat bg-secondary"

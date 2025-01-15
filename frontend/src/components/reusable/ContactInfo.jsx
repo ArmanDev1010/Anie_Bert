@@ -71,7 +71,7 @@ const ContactInfo = ({ hero, is_contact_page, contact, menu }) => {
   return (
     <motion.ul
       variants={container}
-      initial="hidden"
+      initial={!menu ? "hidden" : "visisble"}
       whileInView="visible"
       viewport={{ once: true }}
       style={is_contact_page && { marginBottom: "100px" }}

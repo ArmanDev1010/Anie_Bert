@@ -54,20 +54,23 @@ const Team = () => {
   }
 
   return (
-    <div className="team relative px-[5vw] pt-[3vh] pb-[8vh] bg-secondary text-white">
+    <div className="team relative px-[5vw] py-[8vh] bg-secondary text-white">
       <div className="relative z-[1]">
-        <div className="pointer-events-none mb-[40px]">
-          <div className="text-[6vw] font-[600]">
+        <div className="pointer-events-none mb-[60px] max-_900:mb-[50px] max-_550:mb-[40px]">
+          <div className="text-8xl font-[600] mb-7 max-_900:text-7xl max-_550:text-[13.5vw]">
             {t("about.page.team.title")}
           </div>
-          <p className="text-xl w-[700px]">{t("about.page.team.paragraph")}</p>
+          <p className="text-xl max-w-[700px] max-_700:text-lg max-_550:text-base">
+            {t("about.page.team.paragraph")}
+          </p>
         </div>
-        <ul className="grid grid-cols-3 gap-7">
+        <ul className="grid grid-cols-3 gap-7 max-_1080:grid-cols-2 max-_700:grid-cols-1">
           {team.map((text, key) => (
             <li key={key} className="group relative pb-2">
               <Link to={text.social_media_link}>
                 <div
-                  className="h-[30vw] relative wrap overflow-hidden mb-5 bg-cover bg-center bg-no-repeat group-hover:rounded-[20px] transition-[cubic-bezier(.165,.84,.44,1)] duration-[0.6s]"
+                  className="gray_filter h-[30vw] relative wrap overflow-hidden mb-5 bg-cover bg-center bg-no-repeat group-hover:rounded-[20px] transition-[cubic-bezier(.165,.84,.44,1)] duration-[0.6s]
+                  max-_1080:h-[50vw] max-_700:h-[70vw] max-_550:h-[80vw]"
                   style={{
                     backgroundImage: `url(http://localhost:1337/${text.photo.url})`,
                   }}

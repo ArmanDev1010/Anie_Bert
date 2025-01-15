@@ -2,6 +2,21 @@ import React, { useLayoutEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+
+const slideUp = {
+  initial: {
+    y: "100%",
+  },
+  open: (i) => ({
+    y: "0%",
+    transition: { duration: 0.5, delay: 0.01 * i },
+  }),
+  closed: {
+    y: "100%",
+    transition: { duration: 0.5 },
+  },
+};
 
 const Description = () => {
   const { t } = useTranslation();
@@ -10,12 +25,43 @@ const Description = () => {
     return t(`about.page.description.${key + 1}`);
   });
 
+  const phrase = t("about.component.phrase");
+
   return (
-    <div className="relative text-black text-[2.7vw] font-articulat uppercase my-[50px] ml-[5vw]">
-      {phrases.map((phrase, index) => {
-        return <Phrase key={index}>{phrase}</Phrase>;
-      })}
-    </div>
+    <>
+      <div className="relative text-black text-[2.7vw] font-articulat uppercase my-[50px] ml-[5vw] max-_1080:hidden">
+        {phrases.map((phrase, index) => {
+          return <Phrase key={index}>{phrase}</Phrase>;
+        })}
+      </div>
+      <div className="_1080:hidden px-[5%] my-[50px] max-_550:my-[40px] max-_550:mb-[50px]">
+        <p
+          className="m-0 text-secondary text-[clamp(1.55em,4vw,2em)] gap-[8px] leading-[1.45] w-full font-semibold pointer-events-none
+        max-_550:text-[5vw] max-_400:text-[5.5vw]"
+        >
+          {phrase.split(" ").map((word, index) => {
+            return (
+              <span
+                key={index}
+                className="relative overflow-hidden inline-flex"
+              >
+                <motion.span
+                  initial="closed"
+                  whileInView="open"
+                  viewport={{ once: true }}
+                  variants={slideUp}
+                  custom={index}
+                  key={index}
+                  className="mr-[10px]"
+                >
+                  {word}
+                </motion.span>
+              </span>
+            );
+          })}
+        </p>
+      </div>
+    </>
   );
 };
 
@@ -30,7 +76,7 @@ const Phrase = ({ children }) => {
           trigger: text.current,
           scrub: true,
           start: "0px bottom",
-          end: "bottom+=400px bottom",
+          end: "bottom+=200px bottom",
         },
         opacity: 0,
         left: "-200px",

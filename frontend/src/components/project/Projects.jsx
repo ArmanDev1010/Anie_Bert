@@ -116,7 +116,7 @@ const Projects = () => {
           {t("projects.component.title")}
         </motion.p>
         <div className="_1280:hidden w-full flex justify-center max-_700:justify-start max-_550:text-sm">
-          <p className="max-w-[400px]">
+          <p className="max-w-[500px]">
             We released more than 150 commercial and private projects all around
             the world, providing our clients with custom solutions in stylish,
             functional, and well-thought-out designs.
