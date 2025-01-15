@@ -23,7 +23,7 @@ const Menu = ({
   };
 
   return (
-    <div className="menu w-full h-full fixed top-0 left-0 z-[9]">
+    <div className="menu w-full h-full fixed top-0 left-0 z-[9] !text-white">
       <motion.div
         className="relative w-full h-full z-[1] flex flex-col justify-end"
         initial={{ opacity: 0 }}

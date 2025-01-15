@@ -155,9 +155,6 @@ const ProjectsSection = ({ projects }) => {
               </button>
             ))}
           </div>
-          <p className="text-xl italic pointer-events-none max-_900:absolute max-_900:bottom-3 max-_900:right-5">
-            ({filteredItems.length}) {t("projects.page.title")}
-          </p>
         </div>
       </div>
       <motion.ul
