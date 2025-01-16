@@ -46,9 +46,8 @@
   },
   "about": {
     "component": {
-      "phrase": "Anie Bert-ը ճարտարապետության և ինտերիերի դիզայնի ստուդիա է, որը հիմնադրվել է Անի Բերտի կողմից 2021 թվականին և արդեն 3 տարի է զբաղվում է բնակարանների և կոմերցիոն տարածքների դիզայն նախագծերով. Ավարտին հասցնելով 15 և ավելի բնակելի և կոմերցիոն նախագծեր.",
-      "paragraph": "Your home should tell the story of who you are, and be a collection of what you love.",
-      "about_btn": "Մեր մասին"
+      "name": "Անի Սահակյան",
+      "founder": "Հիմնադիր"
     },
     "page": {
       "description": {

@@ -88,7 +88,9 @@ const ContactInfo = ({ hero, is_contact_page, contact, menu }) => {
       <motion.li variants={item}>
         <Link to="https://maps.app.goo.gl/ZcfcTCohGbfCG16D9">
           <div className={getLocationClasses()}>
-            <IoLocationSharp className={`${menu && "max-_550:hidden"}`} />
+            <IoLocationSharp
+              className={`${menu || (hero && "max-_550:hidden")}`}
+            />
             <span>{t(`navbar.location`)}</span>
           </div>
         </Link>

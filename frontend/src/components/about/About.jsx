@@ -1,99 +1,78 @@
 import React from "react";
-
-import { motion } from "framer-motion";
-
-import { RoundedButton } from "..";
-import { Link } from "react-router-dom";
+import { useQuery, gql } from "@apollo/client";
 import { useTranslation } from "react-i18next";
 
-const slideUp = {
-  initial: {
-    y: "100%",
-  },
-  open: (i) => ({
-    y: "0%",
-    transition: { duration: 0.5, delay: 0.01 * i },
-  }),
-  closed: {
-    y: "100%",
-    transition: { duration: 0.5 },
-  },
-};
-
-const opacity = {
-  initial: {
-    opacity: 0,
-  },
-  open: {
-    opacity: 1,
-    transition: { duration: 0.5 },
-  },
-  closed: {
-    opacity: 0,
-    transition: { duration: 0.5 },
-  },
-};
+const ABOUT = gql`
+  query GetAbout($locale: I18NLocaleCode) {
+    about(locale: $locale) {
+      paragraph
+      image {
+        url
+      }
+    }
+    fallback: about(locale: "en") {
+      paragraph
+      image {
+        url
+      }
+    }
+  }
+`;
 
 const About = () => {
   const { t, i18n } = useTranslation();
 
-  const phrase = t("about.component.phrase");
+  const { loading, error, data } = useQuery(ABOUT, {
+    variables: {
+      locale: i18n.language === "am" ? "hy" : i18n.language,
+    },
+  });
 
+  if (loading) return <p></p>;
+  if (error) return <p>error</p>;
+
+  let about = data.about || data.fallback;
+
+  if (!about) {
+    return <p>No data available for this service.</p>;
+  }
   return (
     <div
-      className="px-[64px] mt-[100px] mb-[60px] flex justify-center 
-    max-_900:mb-[36px] max-_900:mt-[64px] max-_700:px-[5%]"
+      className="flex flex-col items-end pb-[5vw] pr-[10vw] mt-[70px] 
+    max-_1080:px-[5%] max-_1080:pb-[104px] max-_700:pb-[50px] max-_700:mt-[50px]"
     >
-      <div className="max-w-[1400px] flex gap-[80px] relative max-_900:flex-col max-_550:gap-[60px] max-_400:gap-[50px]">
-        <p
-          className="m-0 text-[clamp(1.55em,2.3vw,2em)] gap-[8px] leading-[1.45] font-semibold pointer-events-none w-[70%]
-        max-_900:w-full max-_900:text-secondary max-_550:text-[5vw] max-_400:text-[6vw]"
+      <div
+        className="grid grid-cols-[26vw_35vw] gap-x-[9vw] 
+      max-_1080:grid-cols-2 max-_1080:gap-x-[92px] max-_700:flex max-_700:flex-col-reverse"
+      >
+        <div
+          className="block self-start row-[1/3] col-[2/3] w-full relative overflow-hidden
+        after:content-[''] after:block after:w-full after:h-0 after:pt-[120%] max-_1440:after:pt-[150%] max-_700:after:pt-[80%] 
+        max-_550:after:pt-[120%]"
         >
-          {phrase.split(" ").map((word, index) => {
-            return (
-              <span
-                key={index}
-                className="relative overflow-hidden inline-flex"
-              >
-                <motion.span
-                  initial="closed"
-                  whileInView="open"
-                  viewport={{ once: true }}
-                  variants={slideUp}
-                  custom={index}
-                  key={index}
-                  className="mr-[10px]"
-                >
-                  {word}
-                </motion.span>
-              </span>
-            );
-          })}
-        </p>
-        <div className="relative w-[30%] flex flex-col items-end gap-[70px] max-_900:w-full max-_900:flex-row max-_550:flex-col max-_550:gap-0">
-          <div className="w-full flex max-_900:self-start">
-            <motion.p
-              initial="closed"
-              whileInView="open"
-              viewport={{ once: true }}
-              variants={opacity}
-              className="text-[18px] font-medium pointer-events-none max-w-[14em] max-_550:text-base"
-            >
-              {t("about.component.paragraph")}
-            </motion.p>
-          </div>
-          <div data-scroll data-scroll-speed={0.1}>
-            <Link to={`/${i18n.language}/about`}>
-              <RoundedButton
-                className="w-[180px] h-[180px] bg-[#222] text-white rounded-[50%] relative flex items-center justify-center cursor-pointer
-              max-_550:w-[144px] max-_550:h-[144px]"
-              >
-                <p className="m-0 text-lg font-medium relative z-[1]">
-                  {t("about.component.about_btn")}
-                </p>
-              </RoundedButton>
-            </Link>
-          </div>
+          <img
+            src={`http://localhost:1337/${about.image.url}`}
+            className="block w-full h-full bg-secondary absolute top-0 left-0 object-cover"
+          />
+        </div>
+        <div className="row-[1/2] col-[1/2] max-_700:mb-[40px]">
+          <p
+            className="mt-[2.7vw] font-[700] text-[42px] leading-[44px] whitespace-nowrap w-0
+          max-_1080:mt-0 max-_1080:text-[35px] max-_1080:leading-[39px] max-_550:text-[28px] max-_550:leading-[32px]"
+          >
+            {t("about.component.name")}
+          </p>
+          <p className="mt-[2.2vw] font-[600] max-_1080:mt-[16px] max-_700:text-[15px] max-_700:mt-[12px]">
+            {t("about.component.founder")}
+          </p>
+          <p
+            className="mt-[3.6vw] relative text-[#080808] leading-[170%] text-lg 
+            max-_1280:before:text-[32px] max-_1080:mt-[32px] max-_1080:before:static max-_900:text-base 
+            max-_700:text-lg max-_700:mt-[25px] max-_700:before:leading-[39px] max-_550:text-base max-_400:text-sm
+          before:content-['\201C'] before:block before:absolute before:right-[calc(100%+1.1vw)] before:font-[700] before:text-[2.5vw] before:leading-[3vw]"
+          >
+            {about.paragraph}
+          </p>
         </div>
       </div>
     </div>

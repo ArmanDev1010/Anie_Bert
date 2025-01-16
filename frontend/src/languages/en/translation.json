@@ -44,9 +44,8 @@
   },
   "about": {
     "component": {
-      "phrase": "Anie Bert is an architecture and interior design studio founded by Anie Bert in 2021. We have been engaged in residential and commercial design projects for over 3 years. Completing 15+ residential and commercial projects.",
-      "paragraph": "Your home should tell the story of who you are, and be a collection of what you love.",
-      "about_btn": "About us"
+      "name": "Ani Sahakyan",
+      "founder": "Founder"
     },
     "page": {
       "description": {
