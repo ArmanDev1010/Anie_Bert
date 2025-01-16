@@ -1,8 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useQuery, gql } from "@apollo/client";
-import { Link } from "react-router-dom";
-import { ImageSlideshow } from "../index";
+import { Horizontal } from "../index";
 import { useTranslation } from "react-i18next";
 
 const PROJECTS = gql`
@@ -26,7 +25,7 @@ const PROJECTS = gql`
 `;
 
 const Works = ({ service }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { loading, error, data } = useQuery(PROJECTS, {
     variables: { service: service.toLowerCase() },
@@ -36,29 +35,6 @@ const Works = ({ service }) => {
   if (error) return <p>error</p>;
 
   const projects = data.heroes;
-
-  const renderInfo = (type, text, t) => {
-    const value = {
-      type: text.type ? t(`projects.page.types.${text.type}`) : null,
-      year: text.year,
-      area: text.area,
-    }[type];
-    if (value !== null) {
-      return (
-        <div
-          key={type}
-          className="rounded-[4px] text-white p-[0.4rem_0.5rem_0.3rem] uppercase"
-          style={{
-            backgroundColor: "hsla(0,0%,100%,.1)",
-            backdropFilter: "blur(4px)",
-          }}
-        >
-          {value}
-        </div>
-      );
-    }
-    return null;
-  };
 
   return (
     <div className="">
@@ -82,7 +58,6 @@ const Works = ({ service }) => {
         >
           {t("services.page.works")}
         </motion.p>
-
         <motion.ul
           initial="hidden"
           whileInView="visible"
@@ -96,28 +71,10 @@ const Works = ({ service }) => {
             visible: { opacity: 1, y: 0 },
             hidden: { opacity: 0, y: 60 },
           }}
-          className="grid grid-cols-2 gap-[3.25rem_1rem] max-_700:grid-cols-1 max-_700:gap-y-[2rem] max-_400:gap-y-[1.5rem]"
+          className="horizontal"
         >
           {projects.map((text, key) => (
-            <Link to={`/${i18n.language}/project/${text.documentId}`} key={key}>
-              <li className="relative w-full overflow-hidden">
-                <div className="absolute z-[3] flex gap-[1rem] top-[1rem] left-[1rem] text-sm font-[600] max-_550:text-xs">
-                  {["type", "year", "area"].map((type) =>
-                    renderInfo(type, text, t)
-                  )}
-                </div>
-                <div className="relative bg-gray-500 w-full h-[576px] mb-[0.7rem] max-_1080:h-[401px] max-_550:h-[301px] max-_400:h-[201px] max-_400:mb-[0.4rem]">
-                  <ImageSlideshow
-                    main_image={text}
-                    images={text.images.slice(0, 5)}
-                    defaultImageIndex={0}
-                  />
-                </div>
-                <p className="font-articulat text-[3.5vw] font-[500] text-secondary tracking-[1px] max-_700:text-4xl max-_550:text-[7vw]">
-                  {text.project_address}
-                </p>
-              </li>
-            </Link>
+            <Horizontal text={text} key={key} />
           ))}
         </motion.ul>
       </div>

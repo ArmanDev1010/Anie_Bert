@@ -24,6 +24,7 @@ import Team from "./about/Team";
 // Projects
 import Projects from "./project/Projects";
 import ImageSlideshow from "./project/ImageSlideshow";
+import Horizontal from "./project/Horizontal";
 
 // Services
 import Services from "./service/Services";
@@ -69,4 +70,5 @@ export {
   MenuBtn,
   RequestBtn,
   ContactInfo,
+  Horizontal,
 };

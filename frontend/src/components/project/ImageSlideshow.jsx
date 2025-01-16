@@ -61,27 +61,29 @@ const ImageSlideshow = ({ main_image, images, defaultImageIndex, element }) => {
       className="slideshow-container relative z-[1] w-full h-full"
       ref={containerRef}
     >
-      <div
-        className="absolute z-[2] bottom-[10px] left-1/2 -translate-x-1/2 flex justify-center gap-[0.5rem]
+      {images.length > 0 && (
+        <div
+          className="absolute z-[2] bottom-[16px] left-1/2 -translate-x-1/2 flex justify-center gap-[0.5rem]
         rounded-[1rem] p-[0.375rem]"
-        style={{
-          backgroundColor: "hsla(0,0%,100%,.1)",
-          backdropFilter: "blur(4px)",
-        }}
-      >
-        {images.map((_, index) => (
-          <span
-            key={index}
-            className={`${
-              index === activeIndex ? "!opacity-100 !scale-[2]" : null
-            } h-[0.25rem] w-[0.25rem] bg-white opacity-50 rounded-full`}
-            style={{
-              transition:
-                "opacity .3s cubic-bezier(.24,1,.52,1), transform .3s cubic-bezier(.24,1,.52,1)",
-            }}
-          />
-        ))}
-      </div>
+          style={{
+            backgroundColor: "hsla(0,0%,100%,.1)",
+            backdropFilter: "blur(4px)",
+          }}
+        >
+          {images.map((_, index) => (
+            <span
+              key={index}
+              className={`${
+                index === activeIndex ? "!opacity-100 !scale-[2]" : null
+              } h-[0.25rem] w-[0.25rem] bg-white opacity-50 rounded-full`}
+              style={{
+                transition:
+                  "opacity .3s cubic-bezier(.24,1,.52,1), transform .3s cubic-bezier(.24,1,.52,1)",
+              }}
+            />
+          ))}
+        </div>
+      )}
       {[main_image, ...images].map((image, index) => (
         <div
           key={index}
@@ -101,6 +103,10 @@ const ImageSlideshow = ({ main_image, images, defaultImageIndex, element }) => {
         ></div>
       ))}
       {element}
+      <div
+        className="after:content-[''] after:absolute after:top-0 after:left-0 after:w-[101%] after:h-[101%]
+        after:bg-[linear-gradient(0deg,rgba(0,0,0,.63)_0,rgba(0,0,0,.24))] after:z-[1]"
+      ></div>
     </div>
   );
 };

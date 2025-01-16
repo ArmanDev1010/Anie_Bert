@@ -13,6 +13,8 @@ import { Autoplay } from "swiper/modules";
 import { useQuery, gql } from "@apollo/client";
 import { Link } from "react-router-dom";
 
+import Horizontal from "./Horizontal";
+
 const PROJECTS = gql`
   query GetProjects($locale: I18NLocaleCode) {
     heroes(
@@ -31,6 +33,11 @@ const PROJECTS = gql`
       project_thumbnail {
         url
       }
+      images {
+        image {
+          url
+        }
+      }
     }
     fallback: heroes(
       filters: { show_inside_home: { eq: true } }
@@ -47,6 +54,11 @@ const PROJECTS = gql`
       }
       project_thumbnail {
         url
+      }
+      images {
+        image {
+          url
+        }
       }
     }
   }
@@ -161,72 +173,6 @@ const Project = ({ data, isDesktop }) => {
   );
 };
 
-const Horizontal = ({ text }) => {
-  const { t, i18n } = useTranslation();
-
-  const renderInfo = (type, text, t) => {
-    const value = {
-      type: text.type ? t(`projects.page.types.${text.type}`) : null,
-      year: text.year,
-      area: text.area,
-    }[type];
-    if (value !== null) {
-      return (
-        <div
-          key={type}
-          className="rounded-[4px] text-white p-[0.4rem_0.5rem_0.3rem] uppercase"
-          style={{
-            backgroundColor: "hsla(0,0%,100%,.1)",
-            backdropFilter: "blur(4px)",
-          }}
-        >
-          {value}
-        </div>
-      );
-    }
-    return null;
-  };
-
-  return (
-    <Link to={`/${i18n.language}/project/${text.documentId}`}>
-      <div
-        className="relative z-[2] bg-red-500 w-full h-[401px] overflow-hidden bg-cover bg-center bg-no-repeat
-        after:content-[''] after:absolute after:top-0 after:left-0 after:w-[101%] after:h-[101%]
-        after:bg-[linear-gradient(0deg,rgba(0,0,0,.63)_0,rgba(0,0,0,.24))] after:z-[-1]"
-        style={{
-          backgroundImage: `url(http://localhost:1337/${
-            text.project_thumbnail?.url
-              ? text.project_thumbnail?.url
-              : text.image?.url
-          })`,
-        }}
-      >
-        <div className="absolute flex gap-[1rem] top-[1rem] left-[1rem] text-sm font-[600] max-_550:text-xs">
-          {["type", "year", "area"].map((type) => renderInfo(type, text, t))}
-        </div>
-        <div className="absolute bottom-[4vh] left-[3vw] z-[1] text-white max-w-[270px] max-_900:max-w-[350px]">
-          <h3 className="text-[25px] font-[600] mb-2 max-_900:text-[32px] max-_550:text-[25px] max-_400:text-[6vw]">
-            {text.project_address}
-          </h3>
-          <p
-            className="relative text-[13px] uppercase font-[600] cursor-pointer w-fit !pointer-events-auto inline-block pl-4 ml-[1px] cursor-pointer font-[500] hover:pl-[64px]
-              max-_400:text-[11px]
-              before:content-[''] before:block before:absolute before:top-1/2 before:left-0 before:h-[1px] before:w-[8px] before:-translate-y-1/2 before:bg-white
-              after:content-[''] after:block after:absolute after:top-1/2 after:left-[calc(100%+9px)] after:h-[1px] after:w-[56px] after:-translate-y-1/2 after:bg-white
-              hover:after:w-[8px] hover:before:w-[56px] before:transition-[width_0.5s_ease] before:duration-[0.5s] after:transition-[width_0.5s_ease] after:duration-[0.5s]"
-            style={{
-              transition:
-                "padding-left .5s ease, right .5s ease, opacity .5s ease",
-            }}
-          >
-            {t("services.page.explore_btn")}
-          </p>
-        </div>
-      </div>
-    </Link>
-  );
-};
-
 const Vertical = ({ text }) => {
   const { i18n } = useTranslation();
 
@@ -267,7 +213,7 @@ const OtherProjets = () => {
     <Link to={`/${i18n.language}/projects`}>
       <div
         className="group relative z-[2] text-white
-      w-[650px] h-[550px] max-_1600:w-[600px] max-_1600:h-[500px] max-_1280:w-full max-_1280:h-[401px]"
+      w-[650px] h-[550px] max-_1600:w-[600px] max-_1600:h-[500px] max-_1280:w-full max-_1280:h-[401px] max-_400:h-[351px]"
       >
         <div
           className="w-full text-center absolute z-[2] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden text-[2.5vw] font-[600]

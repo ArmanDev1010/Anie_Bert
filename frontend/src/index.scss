@@ -369,7 +369,7 @@ body {
   }
 }
 
-.projects_section {
+.projects_section, .projects {
   .vertical {
     position: relative;
     z-index: 3;
@@ -405,6 +405,15 @@ body {
     @media screen and (max-width: $_550) {
       margin-bottom: 20px;
     }
+  }
+}
+
+ul.horizontal {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  @media screen and (max-width: $_900) {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -580,35 +589,6 @@ body {
         z-index: 3;
       }
     }
-  }
-}
-
-.projects {
-  .tb_gradient {
-    background: linear-gradient(
-      0deg,
-      hsla(0, 0%, 5%, 0) 50%,
-      hsla(0, 0%, 5%, 0.01) 52.25%,
-      hsla(0, 0%, 5%, 0.02) 54.28%,
-      hsla(0, 0%, 5%, 0.031) 56.16%,
-      hsla(0, 0%, 5%, 0.043) 57.99%,
-      hsla(0, 0%, 5%, 0.057) 59.85%,
-      hsla(0, 0%, 5%, 0.074) 61.84%,
-      hsla(0, 0%, 5%, 0.093) 64.04%,
-      hsla(0, 0%, 5%, 0.116) 66.55%,
-      hsla(0, 0%, 5%, 0.142) 69.44%,
-      hsla(0, 0%, 5%, 0.172) 72.81%,
-      hsla(0, 0%, 5%, 0.207) 76.76%,
-      hsla(0, 0%, 5%, 0.246) 81.36%,
-      hsla(0, 0%, 5%, 0.291) 86.71%,
-      hsla(0, 0%, 5%, 0.343) 92.89%,
-      hsla(0, 0%, 5%, 0.4)
-    );
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
   }
 }
 

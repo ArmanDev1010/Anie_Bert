@@ -22,7 +22,8 @@ const Contact = ({ is_contact_page }) => {
   return (
     <>
       <div
-        className="bg-white relative w-full pt-[85px] pb-[185px] px-[210px] text-black max-_1440:px-[10%] max-_900:mb-10 max-_700:px-[5%]"
+        className="bg-white relative w-full pt-[85px] pb-[185px] px-[210px] text-black max-_1440:px-[10%] max-_900:mb-10 max-_700:px-[5%]
+        max-_550:pt-[60px]"
         style={
           is_contact_page && {
             background: "#222",
