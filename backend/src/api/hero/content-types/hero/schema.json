@@ -136,6 +136,14 @@
         "architecture",
         "commercial"
       ]
+    },
+    "paragraph": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
     }
   }
 }

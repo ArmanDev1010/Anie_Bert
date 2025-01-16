@@ -430,6 +430,12 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    paragraph: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     project_address: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
