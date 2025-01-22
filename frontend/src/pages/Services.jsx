@@ -164,7 +164,7 @@ const FixedTitle = ({ services, activeSection }) => {
       }
     }
 
-    text.style.fontSize = max - 10 + "px";
+    text.style.fontSize = max - (window.innerWidth > 700 ? 15 : 5) + "px";
   };
 
   return (

@@ -113,7 +113,7 @@ const Services = () => {
         moveItems(e.clientX, e.clientY);
       }}
     >
-      <div className="w-full flex flex-col items-center justify-center mb-[100px]">
+      <div className="w-full flex flex-col items-center justify-center mb-[130px] max-_1280:mb-[100px] max-_700:mb-[85px]">
         {data.services?.map((service, index) => {
           return (
             <Link
@@ -130,7 +130,7 @@ const Services = () => {
                   manageModal(false, index, e.clientX, e.clientY);
                 }}
                 className="group flex w-full justify-between items-center py-[50px] px-[100px] border-t-[1px] border-t-[rgb(201,201,201)] cursor-pointer transition-all duration-200
-              last:border-b-[1px] last:border-b-[rgb(201,201,201)] hover:opacity-50 max-_1600:px-[70px] max-_900:px-[50px] max-_550:px-[10px]"
+              last:border-b-[1px] last:border-b-[rgb(201,201,201)] hover:opacity-50 max-_1600:px-[70px] max-_900:px-[50px] max-_700:py-[40px] max-_550:px-[10px]"
               >
                 <h2
                   className="text-[45px] m-0 font-semibold text-[#222] whitespace-nowrap overflow-hidden text-ellipsis 

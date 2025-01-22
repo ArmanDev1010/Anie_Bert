@@ -25,7 +25,7 @@ const Description = () => {
     return t(`about.page.description.${key + 1}`);
   });
 
-  const phrase = t("about.component.phrase");
+  const phrase = t("about.page.description");
 
   return (
     <>

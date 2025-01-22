@@ -54,10 +54,10 @@ const Team = () => {
   }
 
   return (
-    <div className="team relative px-[5vw] py-[8vh] bg-secondary text-white">
+    <div className="team relative px-[5vw] py-[8vh] bg-secondary text-white max-_700:py-[5vh]">
       <div className="relative z-[1]">
         <div className="pointer-events-none mb-[60px] max-_900:mb-[50px] max-_550:mb-[40px]">
-          <div className="text-8xl font-[600] mb-7 max-_900:text-7xl max-_550:text-[13.5vw]">
+          <div className="text-8xl font-[600] mb-7 max-_900:text-7xl max-_550:text-[12vw]">
             {t("about.page.team.title")}
           </div>
           <p className="text-xl max-w-[700px] max-_700:text-lg max-_550:text-base">
