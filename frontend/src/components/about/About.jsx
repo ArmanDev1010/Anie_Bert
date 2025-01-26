@@ -35,7 +35,7 @@ const About = () => {
         max-_550:after:pt-[120%]"
         >
           <img
-            src={`/assets/founder.jpg`}
+            src={`/assets/team/founder.jpg`}
             className="block w-full h-full bg-secondary absolute top-0 left-0 object-cover"
           />
         </div>

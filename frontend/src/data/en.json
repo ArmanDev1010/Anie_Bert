@@ -94,5 +94,13 @@
     {
       "service": "commercial"
     }
-  ]
+  ],
+  "team": {
+    "1": {
+      "name": "Ani Sahakyan",
+      "role": "Founder",
+      "order": 1,
+      "social_media_link": "https://www.instagram.com/ani_bert/"
+    }
+  }
 }

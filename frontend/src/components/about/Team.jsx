@@ -1,55 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { useQuery, gql } from "@apollo/client";
-import { useTranslation } from "react-i18next";
+import useLocaleData from "../useLocaleData";
 
-const TEAM = gql`
-  query GetTeam($locale: I18NLocaleCode) {
-    teams(sort: "order", locale: $locale) {
-      documentId
-      name
-      role
-      social_media_link
-      photo {
-        url
-      }
-    }
-    fallback: teams(sort: "order", locale: "en") {
-      documentId
-      name
-      role
-      social_media_link
-      photo {
-        url
-      }
-    }
-  }
-`;
+import { useTranslation } from "react-i18next";
 
 const Team = () => {
   const { t, i18n } = useTranslation();
 
-  const { loading, error, data } = useQuery(TEAM, {
-    variables: {
-      locale: i18n.language === "am" ? "hy" : i18n.language,
-    },
+  const { data: currentLocaleData, error: currentLocaleError } = useLocaleData(
+    i18n.language
+  );
+  const { data: englishLocaleData } = useLocaleData("en");
+
+  if (currentLocaleError) return <p>Error loading data for current locale</p>;
+  if (!currentLocaleData && !englishLocaleData) return <p></p>;
+
+  const teams = [];
+  const currentLocaleTeam = currentLocaleData?.team || {};
+  const englishLocaleTeam = englishLocaleData?.team || {};
+
+  Object.keys(englishLocaleTeam).forEach((name) => {
+    const team = {
+      ...englishLocaleTeam[name],
+      ...(currentLocaleTeam[name] || {}),
+    };
+
+    teams.push(team);
   });
 
-  if (loading) return <p></p>;
-  if (error) return <p>error</p>;
+  Object.keys(currentLocaleTeam).forEach((name) => {
+    if (!englishLocaleTeam[name] && currentLocaleTeam[name]) {
+      teams.push(currentLocaleTeam[name]);
+    }
+  });
 
-  const team = [...(data.teams || []), ...(data.fallback || [])].reduce(
-    (acc, current) => {
-      if (!acc.find((team_) => team_.documentId === current.documentId)) {
-        acc.push(current);
-      }
-      return acc;
-    },
-    []
-  );
-
-  if (!team.length) {
+  if (!teams.length) {
     return <p>No data available for this service.</p>;
   }
 
@@ -65,14 +51,14 @@ const Team = () => {
           </p>
         </div>
         <ul className="grid grid-cols-3 gap-7 max-_1080:grid-cols-2 max-_700:grid-cols-1">
-          {team.map((text, key) => (
+          {teams.map((text, key) => (
             <li key={key} className="group relative pb-2">
               <Link to={text.social_media_link}>
                 <div
                   className="gray_filter h-[30vw] relative wrap overflow-hidden mb-5 bg-cover bg-center bg-no-repeat group-hover:rounded-[20px] transition-[cubic-bezier(.165,.84,.44,1)] duration-[0.6s]
                   max-_1080:h-[50vw] max-_700:h-[70vw] max-_550:h-[80vw]"
                   style={{
-                    backgroundImage: `url(http://localhost:1337/${text.photo.url})`,
+                    backgroundImage: `url(/assets/team/1.jpg)`,
                   }}
                 ></div>
                 <div className="">

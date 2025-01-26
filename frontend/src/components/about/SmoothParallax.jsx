@@ -53,8 +53,8 @@ const SmoothParallax = () => {
       >
         <Column images={[images[0], images[1], images[2]]} y={y} />
         <Column images={[images[3], images[4], images[5]]} y={y2} />
-        <Column images={[images[6], images[7], images[8]]} y={y3} />
-        <Column images={[images[9], images[10], images[11]]} y={y4} />
+        <Column images={[images[5], images[1], images[2]]} y={y3} />
+        <Column images={[images[2], images[5], images[8]]} y={y4} />
       </div>
       <h1
         className="font-articulat text-white text-[6vw] z-[3] text-center whitespace-nowrap pointer-events-none uppercase 

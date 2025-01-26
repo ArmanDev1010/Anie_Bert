@@ -38,7 +38,7 @@ const ParallaxScroll = ({ service, service_page, images }) => {
           y: lg,
         },
         {
-          src: "8",
+          src: "5",
           y: md,
         },
       ];

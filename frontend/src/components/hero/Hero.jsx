@@ -16,7 +16,6 @@ const Hero = () => {
 
   const heroes = [];
 
-  // Add projects from the current locale first
   if (currentLocaleData?.projects) {
     heroes.push(
       ...Object.values(currentLocaleData.projects)
@@ -28,13 +27,12 @@ const Hero = () => {
     );
   }
 
-  // Then add English projects not already in the heroes array
   if (englishLocaleData?.projects) {
     Object.values(englishLocaleData.projects)
       .filter(
         (project) =>
           project.is_hero && !heroes.some((h) => h.name === project.name)
-      ) // Check for uniqueness by name
+      )
       .forEach((project) => {
         heroes.push({
           ...project,
