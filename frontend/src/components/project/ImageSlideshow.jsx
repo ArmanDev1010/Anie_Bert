@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const ImageSlideshow = ({ main_image, images, defaultImageIndex, element }) => {
+const ImageSlideshow = ({
+  name,
+  main_image,
+  images,
+  defaultImageIndex,
+  element,
+}) => {
   const [activeIndex, setActiveIndex] = useState(defaultImageIndex);
   const containerRef = useRef(null);
 
@@ -13,7 +19,7 @@ const ImageSlideshow = ({ main_image, images, defaultImageIndex, element }) => {
       const normalizedX = x / width;
 
       // Update the slide based on cursor position
-      const newIndex = Math.floor(normalizedX * images.length);
+      const newIndex = Math.floor(normalizedX * (images.length + 1));
       if (newIndex !== activeIndex) {
         setActiveIndex(newIndex);
       }
@@ -26,7 +32,7 @@ const ImageSlideshow = ({ main_image, images, defaultImageIndex, element }) => {
       const x = e.touches[0].clientX - left;
       const normalizedX = x / width;
 
-      const newIndex = Math.floor(normalizedX * images.length);
+      const newIndex = Math.floor(normalizedX * (images.length + 1));
       if (newIndex !== activeIndex) {
         setActiveIndex(newIndex);
       }
@@ -70,7 +76,7 @@ const ImageSlideshow = ({ main_image, images, defaultImageIndex, element }) => {
             backdropFilter: "blur(4px)",
           }}
         >
-          {images.map((_, index) => (
+          {[main_image, ...images].map((_, index) => (
             <span
               key={index}
               className={`${
@@ -90,7 +96,9 @@ const ImageSlideshow = ({ main_image, images, defaultImageIndex, element }) => {
           src={image}
           alt={`Slide ${index}`}
           style={{
-            backgroundImage: `url(http://localhost:1337/${image.image.url})`,
+            backgroundImage: `url(/assets/projects/${name}/${
+              index == 0 ? "main_image" : `images/${image.image}`
+            }.jpg)`,
             opacity: index === activeIndex ? 1 : 0,
             transition: "opacity 0.1s ease-in-out",
             position: "absolute",

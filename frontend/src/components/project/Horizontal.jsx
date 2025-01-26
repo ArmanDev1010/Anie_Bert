@@ -30,13 +30,14 @@ const Horizontal = ({ text }) => {
   };
 
   return (
-    <Link to={`/${i18n.language}/project/${text.documentId}`}>
+    <Link to={`/${i18n.language}/project/${text.name}`}>
       <div className="relative group z-[2] bg-red-500 w-full _1600:h-[501px] h-[401px] overflow-hidden max-_400:h-[351px]">
         <div className="absolute z-[3] flex gap-[1rem] top-[1rem] left-[1rem] text-sm font-[600] max-_550:text-xs">
           {["type", "year", "area"].map((type) => renderInfo(type, text, t))}
         </div>
         <div className="relative z-[2] bg-gray-500 w-full h-full mb-[0.7rem]">
           <ImageSlideshow
+            name={text.name}
             main_image={text}
             images={text.images.slice(0, 5)}
             defaultImageIndex={0}
