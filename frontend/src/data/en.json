@@ -14,16 +14,40 @@
       "show_inside_home": true,
       "images": [
         {
-          "category": "bedroom",
+          "category": "master bedroom",
           "image": "1"
         },
         {
-          "category": "bedroom",
+          "category": "master bedroom",
           "image": "2"
         },
         {
-          "category": "bedroom",
+          "category": "kids bedroom",
           "image": "3"
+        },
+        {
+          "category": "kids bedroom",
+          "image": "4"
+        },
+        {
+          "category": "kids bedroom",
+          "image": "5"
+        },
+        {
+          "category": "kids bedroom",
+          "image": "6"
+        },
+        {
+          "category": "bathroom",
+          "image": "7"
+        },
+        {
+          "category": "bathroom",
+          "image": "8"
+        },
+        {
+          "category": "bathroom",
+          "image": "9"
         }
       ]
     },

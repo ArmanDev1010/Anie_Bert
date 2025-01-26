@@ -84,9 +84,11 @@
       "category": {
         "all": "All",
         "bedroom": "Bedroom",
-        "living_room": "Living Room",
+        "living room": "Living Room",
         "kitchen": "Kithen",
-        "bathroom": "Bathroom"
+        "bathroom": "Bathroom",
+        "kids bedroom": "Kids Room",
+        "master bedroom": "Master Bedroom"
       }
     }
   },

@@ -86,7 +86,9 @@
         "bedroom": "Спальня",
         "living_room": "Гостиная",
         "kitchen": "Кухня",
-        "bathroom": "Ванная"
+        "bathroom": "Ванная",
+        "kids bedroom": "Детская Комната",
+        "master bedroom": "Главная спальня"
       }
     }
   },

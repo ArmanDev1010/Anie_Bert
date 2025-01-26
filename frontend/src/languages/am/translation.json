@@ -88,7 +88,9 @@
         "bedroom": "Ննջասենյակ",
         "living_room": "Հյուրասենյակ",
         "kitchen": "Խոհանոց",
-        "bathroom": "Սանհանգույց"
+        "bathroom": "Սանհանգույց",
+        "kids bedroom": "Մանկական սենյակ",
+        "master bedroom": "Գլխավոր Ննջասենյակ"
       }
     }
   },

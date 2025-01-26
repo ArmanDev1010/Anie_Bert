@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { useQuery, gql } from "@apollo/client";
+import useLocaleData from "../components/useLocaleData";
+
 import { Contact, Navbar } from "../components";
 
 import { motion } from "framer-motion";
@@ -10,47 +11,6 @@ import { useTranslation } from "react-i18next";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { TfiRulerAlt2 } from "react-icons/tfi";
-
-const PROJECT = gql`
-  query GetProject($documentId: ID!, $locale: I18NLocaleCode) {
-    hero(documentId: $documentId, locale: $locale) {
-      project_address
-      paragraph
-      type
-      documentId
-      location
-      year
-      area
-      image {
-        url
-      }
-      images {
-        image {
-          url
-        }
-        category
-      }
-    }
-    fallback: hero(documentId: $documentId, locale: "en") {
-      project_address
-      paragraph
-      type
-      documentId
-      location
-      year
-      area
-      image {
-        url
-      }
-      images {
-        image {
-          url
-        }
-        category
-      }
-    }
-  }
-`;
 
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -69,28 +29,38 @@ const item = {
 const Project = () => {
   const { i18n } = useTranslation();
 
-  const { documentId } = useParams();
-  const { loading, error, data } = useQuery(PROJECT, {
-    variables: {
-      documentId: documentId,
-      locale: i18n.language === "am" ? "hy" : i18n.language,
-    },
-  });
+  const { name } = useParams();
 
-  if (loading) return <p></p>;
-  if (error) return <p>error</p>;
+  const { data: currentLocaleData, error: currentLocaleError } = useLocaleData(
+    i18n.language
+  );
+  const { data: englishLocaleData } = useLocaleData("en");
 
-  let project = data.hero || data.fallback;
+  if (currentLocaleError) return <p>Error loading data for current locale</p>;
+  if (!currentLocaleData && !englishLocaleData) return <p></p>;
+
+  let project = {
+    ...(englishLocaleData?.projects || {})[name],
+    ...(currentLocaleData?.projects || {})[name],
+  };
 
   if (!project) {
-    return <p>No data available for this service.</p>;
+    return <p>No data available for this project.</p>;
   }
 
   return (
     <div className="relative bg-white text-black">
       <Navbar />
-      <TopSection data={project} />
-      <Images data={project} images={project.images} />
+      <TopSection name={name} data={project} />
+      <Images
+        name={name}
+        data={project}
+        images={
+          project?.images?.length > 0
+            ? project.images
+            : englishLocaleData?.projects[name]?.images || []
+        }
+      />
       <div
         className="absolute top-0 left-0 w-full h-screen bg-cover bg-no-repeat opacity-10"
         style={{ backgroundImage: "url(/src/assets/line-grid.png)" }}
@@ -100,7 +70,7 @@ const Project = () => {
   );
 };
 
-const TopSection = ({ data }) => {
+const TopSection = ({ name, data }) => {
   const renderInfo = (type, text) => {
     const IconComponent = {
       location: IoLocationSharp,
@@ -135,7 +105,7 @@ const TopSection = ({ data }) => {
       max-_700:h-screen max-_700:min-h-[524px] max-_700:p-[107px_0_42px_0] max-_700:flex max-_700:justify-end
       before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[linear-gradient(180deg,rgba(0,0,0,.34)_0,rgba(0,0,0,.6))] before:z-[-1]"
       style={{
-        backgroundImage: `url(http://localhost:1337/${data.image.url})`,
+        backgroundImage: `url(/assets/projects/${name}/main_image.jpg)`,
       }}
     >
       <div
@@ -194,7 +164,7 @@ const TopSection = ({ data }) => {
   );
 };
 
-const Images = ({ images }) => {
+const Images = ({ name, images }) => {
   const { t } = useTranslation();
 
   const [selectedFilters, setSelectedFilters] = useState(["all"]);
@@ -207,7 +177,7 @@ const Images = ({ images }) => {
         index === self.findIndex((t) => t.category === value.category)
     );
     setItems(filtered_arr.map((a) => a.category));
-  }, []);
+  }, [images]);
 
   let filters = items;
 
@@ -221,7 +191,7 @@ const Images = ({ images }) => {
 
   useEffect(() => {
     filterItems();
-  }, [selectedFilters]);
+  }, [images, selectedFilters]);
 
   const filterItems = () => {
     if (selectedFilters.length > 0 && selectedFilters[0] !== "all") {
@@ -246,8 +216,8 @@ const Images = ({ images }) => {
             key={key}
             className={`group text-lg border border-gray-500 py-2 px-5 capitalize transition duration-[0.2s] hover:opacity-70 
               max-_900:text-base max-_550:text-[15px] max-_550:px-4 max-_550:py-[6px] ${
-              selectedFilters?.includes(text) ? "bg-thirdly text-white" : ""
-            }`}
+                selectedFilters?.includes(text) ? "bg-thirdly text-white" : ""
+              }`}
           >
             {t(`projects.page.category.${text}`)}
           </button>
@@ -269,12 +239,12 @@ const Images = ({ images }) => {
         }}
         className="grid grid-cols-2 gap-3 max-_700:grid-cols-1"
       >
-        {filteredItems.map((text, key) => (
+        {filteredItems?.map((text, key) => (
           <li
             className="bg-gray-500 w-full aspect-[16/16] bg-center bg-cover bg-no-repeat"
             key={key}
             style={{
-              backgroundImage: `url(http://localhost:1337/${text.image.url})`,
+              backgroundImage: `url(/assets/projects/${name}/images/${text.image}.jpg)`,
             }}
           ></li>
         ))}
