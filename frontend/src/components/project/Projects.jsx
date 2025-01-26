@@ -26,23 +26,35 @@ const Projects = () => {
   }, [window.innerWidth]);
 
   const { data: currentLocaleData, error: currentLocaleError } = useLocaleData(
-    i18n.language === "am" ? "hy" : i18n.language
+    i18n.language
   );
   const { data: englishLocaleData } = useLocaleData("en");
 
   if (currentLocaleError) return <p>Error loading data for current locale</p>;
   if (!currentLocaleData && !englishLocaleData) return <p></p>;
 
-  const projects = {
-    ...(currentLocaleData?.projects || {}),
-    ...(englishLocaleData?.projects || {}),
-  };
+  const projects = [];
+  const currentLocaleProjects = currentLocaleData?.projects || {};
+  const englishLocaleProjects = englishLocaleData?.projects || {};
 
-  const filteredProjects = Object.values(projects).filter(
-    (project) => project.show_inside_home
-  );
+  // Add projects from the current locale first
+  Object.values(currentLocaleProjects).forEach((project) => {
+    if (project.show_inside_home) {
+      projects.push(project);
+    }
+  });
 
-  if (!filteredProjects.length) {
+  // Then add English projects not already in the projects array
+  Object.values(englishLocaleProjects).forEach((project) => {
+    if (
+      project.show_inside_home &&
+      !projects.some((p) => p.name === project.name)
+    ) {
+      projects.push(project);
+    }
+  });
+
+  if (!projects.length) {
     return <p>No data available for this service.</p>;
   }
 
@@ -78,7 +90,7 @@ const Projects = () => {
           {t("projects.component.title")}
         </motion.p>
       </div>
-      <Project data={filteredProjects} isDesktop={isDesktop} />
+      <Project data={projects} isDesktop={isDesktop} />
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-no-repeat opacity-20"
         style={{ backgroundImage: "url(/assets/patterns/line-grid.png)" }}

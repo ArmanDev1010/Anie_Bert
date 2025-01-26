@@ -12,7 +12,7 @@ const Horizontal = ({ text }) => {
       year: text.year,
       area: text.area,
     }[type];
-    if (value !== null) {
+    if (value !== undefined) {
       return (
         <div
           key={type}

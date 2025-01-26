@@ -1,8 +1,6 @@
 import React from "react";
 import { ContactInfo, Navbar, SwiperSlides } from "../index";
-
 import { useTranslation } from "react-i18next";
-
 import useLocaleData from "../useLocaleData";
 
 const Hero = () => {
@@ -18,6 +16,7 @@ const Hero = () => {
 
   const heroes = [];
 
+  // Add projects from the current locale first
   if (currentLocaleData?.projects) {
     heroes.push(
       ...Object.values(currentLocaleData.projects)
@@ -29,16 +28,18 @@ const Hero = () => {
     );
   }
 
+  // Then add English projects not already in the heroes array
   if (englishLocaleData?.projects) {
     Object.values(englishLocaleData.projects)
-      .filter((project) => project.is_hero)
+      .filter(
+        (project) =>
+          project.is_hero && !heroes.some((h) => h.name === project.name)
+      ) // Check for uniqueness by name
       .forEach((project) => {
-        if (!heroes.some((hero) => hero.documentId === project.project_order)) {
-          heroes.push({
-            ...project,
-            image: { url: project.image },
-          });
-        }
+        heroes.push({
+          ...project,
+          image: { url: project.image },
+        });
       });
   }
 

@@ -15,7 +15,6 @@ const SwiperSlides = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperLength, setSwiperLength] = useState(null);
   const [progress, setProgress] = useState(null);
-  const [activeId, setActiveId] = useState(null);
 
   const progressCircle = useRef(null);
   const sliderRef = useRef(null);
@@ -32,12 +31,6 @@ const SwiperSlides = ({ data }) => {
     setSwiperLength(swiper?.slides.length);
     setActiveIndex(swiper?.realIndex || 0);
   }, []);
-
-  useEffect(() => {
-    if (data && data.length > activeIndex) {
-      setActiveId(data[activeIndex].documentId);
-    }
-  }, [activeIndex, data]);
 
   const handleNext = useCallback(() => {
     if (sliderRef.current) {
@@ -152,7 +145,7 @@ const SwiperSlides = ({ data }) => {
             </motion.div>
           </div>
           <Link
-            to={`/${i18n.language}/project/${data[activeIndex].name}`}
+            to={`/${i18n.language}/project/${data[activeIndex]?.name}`}
             className="w-fit pointer-events-auto"
           >
             <p
