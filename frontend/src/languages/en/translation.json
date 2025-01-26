@@ -110,7 +110,7 @@
       "types": {
         "interior": "Interior Design",
         "architecture": "Architecture",
-        "commercial": "Commerial"
+        "commercial": "Commercial"
       },
       "interior": {
         "top_text": {

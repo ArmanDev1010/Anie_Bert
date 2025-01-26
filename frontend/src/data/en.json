@@ -86,13 +86,16 @@
   },
   "services": [
     {
-      "service": "interior"
+      "service": "interior",
+      "order": 1
     },
     {
-      "service": "architecture"
+      "service": "architecture",
+      "order": 2
     },
     {
-      "service": "commercial"
+      "service": "commercial",
+      "order": 3
     }
   ],
   "team": {

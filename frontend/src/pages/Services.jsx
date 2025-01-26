@@ -4,21 +4,24 @@ import { Navbar } from "../components";
 import Lenis from "@studio-freight/lenis";
 import { Link } from "react-router-dom";
 
-import { useQuery, gql } from "@apollo/client";
+import useLocaleData from "../components/useLocaleData";
+
 import { useTranslation } from "react-i18next";
 
-const SERVICES = gql`
-  query GetServices {
-    services(sort: "order") {
-      service
-      main_image {
-        url
-      }
-    }
-  }
-`;
+// const SERVICES = gql`
+//   query GetServices {
+//     services(sort: "order") {
+//       service
+//       main_image {
+//         url
+//       }
+//     }
+//   }
+// `;
 
 const Services = () => {
+  const { i18n } = useTranslation();
+
   const scrollContainerRef = useRef(null);
   const lenisRef = useRef(null);
   const [activeSection, setActiveSection] = useState(0);
@@ -88,10 +91,37 @@ const Services = () => {
     };
   });
 
-  const { loading, error, data } = useQuery(SERVICES);
+  const { data: currentLocaleData, error: currentLocaleError } = useLocaleData(
+    i18n.language
+  );
+  const { data: englishLocaleData } = useLocaleData("en");
 
-  if (loading) return <p></p>;
-  if (error) return <p>error</p>;
+  if (currentLocaleError) return <p>Error loading data for current locale</p>;
+  if (!currentLocaleData && !englishLocaleData) return <p></p>;
+
+  const services = [];
+  const currentLocaleServices = currentLocaleData?.services || {};
+  const englishLocaleServices = englishLocaleData?.services || {};
+
+  Object.keys(englishLocaleServices).forEach((service_) => {
+    const service = {
+      ...englishLocaleServices[service_],
+      ...(currentLocaleServices[service_] || {}),
+    };
+    services.push(service);
+  });
+
+  Object.keys(currentLocaleServices).forEach((service) => {
+    if (!englishLocaleServices[service] && currentLocaleServices[service]) {
+      services.push(currentLocaleServices[service]);
+    }
+  });
+
+  services.sort((a, b) => a.order - b.order);
+
+  if (!services.length) {
+    return <p>No data available for this service.</p>;
+  }
 
   return (
     <>
@@ -100,9 +130,9 @@ const Services = () => {
         className="relative bg-white text-black h-screen overflow-y-scroll snap-y snap-mandatory"
         ref={scrollContainerRef}
       >
-        <FixedTitle services={data.services} activeSection={activeSection} />
+        <FixedTitle services={services} activeSection={activeSection} />
         <div className="">
-          {data.services?.map((text, key) => (
+          {services.map((text, key) => (
             <div
               className="h-screen snap-start relative w-full bg-white text-white"
               key={key}
@@ -112,7 +142,7 @@ const Services = () => {
                 after:content-[''] after:absolute after:top-0 after:left-0 after:w-[101%] after:h-[101%]
         after:bg-[linear-gradient(0deg,rgba(0,0,0,.63)_0,rgba(0,0,0,.24))] after:z-[-1]"
                 style={{
-                  backgroundImage: `url(http://localhost:1337/${text?.main_image?.url})`,
+                  backgroundImage: `url(/assets/services/${text.service}.jpg)`,
                 }}
               ></div>
             </div>
