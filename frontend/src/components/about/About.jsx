@@ -1,41 +1,25 @@
 import React from "react";
-import { useQuery, gql } from "@apollo/client";
 import { useTranslation } from "react-i18next";
-
-const ABOUT = gql`
-  query GetAbout($locale: I18NLocaleCode) {
-    about(locale: $locale) {
-      paragraph
-      image {
-        url
-      }
-    }
-    fallback: about(locale: "en") {
-      paragraph
-      image {
-        url
-      }
-    }
-  }
-`;
+import useLocaleData from "../useLocaleData";
 
 const About = () => {
   const { t, i18n } = useTranslation();
 
-  const { loading, error, data } = useQuery(ABOUT, {
-    variables: {
-      locale: i18n.language === "am" ? "hy" : i18n.language,
-    },
-  });
+  const { data: currentLocaleData, error: currentLocaleError } = useLocaleData(
+    i18n.language
+  );
 
-  if (loading) return <p></p>;
-  if (error) return <p>error</p>;
+  const { data: englishLocaleData } = useLocaleData("en");
 
-  let about = data.about || data.fallback;
+  if (currentLocaleError) return <p>Error loading data for current locale</p>;
+  if (!currentLocaleData && !englishLocaleData) return <p></p>;
+
+  let about = currentLocaleData?.about || englishLocaleData?.about;
 
   if (!about) {
     return <p>No data available for this service.</p>;
   }
+
   return (
     <div
       className="flex flex-col items-end pb-[5vw] pr-[10vw] mt-[70px] 
@@ -51,7 +35,7 @@ const About = () => {
         max-_550:after:pt-[120%]"
         >
           <img
-            src={`http://localhost:1337/${about.image.url}`}
+            src={`/assets/founder.jpg`}
             className="block w-full h-full bg-secondary absolute top-0 left-0 object-cover"
           />
         </div>
