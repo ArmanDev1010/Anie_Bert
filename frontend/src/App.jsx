@@ -88,7 +88,7 @@ const App = () => {
           <Route exact path="/:lang/home" element={<Home />} />
           <Route exact path="/:lang/projects" element={<Projects />} />
           <Route exact path="/:lang/about" element={<About />} />
-          <Route path="/:lang/project/:documentId" element={<Project />} />
+          <Route path="/:lang/project/:name" element={<Project />} />
           <Route exact path="/:lang/contacts" element={<ContactPage />} />
           <Route exact path="/:lang/services" element={<Services />} />
           <Route exact path="/:lang/services/:service" element={<Service />} />

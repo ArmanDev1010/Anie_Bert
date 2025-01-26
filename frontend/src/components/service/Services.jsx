@@ -2,16 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
-import { useQuery, gql } from "@apollo/client";
+import useLocaleData from "../useLocaleData";
 import { useTranslation } from "react-i18next";
-
-const SERVICES = gql`
-  query GetServices {
-    services(sort: "order") {
-      service
-    }
-  }
-`;
 
 const services = [
   {
@@ -100,10 +92,16 @@ const Services = () => {
     setModal({ active, index });
   };
 
-  const { loading, error, data } = useQuery(SERVICES);
+  const { data: currentLocaleData, error: currentLocaleError } = useLocaleData(
+    i18n.language
+  );
+  const { data: englishLocaleData } = useLocaleData("en");
 
-  if (loading) return <p></p>;
-  if (error) return <p>error</p>;
+  if (currentLocaleError) return <p>Error loading data for current locale</p>;
+  if (!currentLocaleData && !englishLocaleData) return <p></p>;
+
+  const servicesList =
+    currentLocaleData?.services || englishLocaleData?.services || [];
 
   return (
     <div
@@ -114,7 +112,7 @@ const Services = () => {
       }}
     >
       <div className="w-full flex flex-col items-center justify-center mb-[130px] max-_1280:mb-[100px] max-_700:mb-[85px]">
-        {data.services?.map((service, index) => {
+        {servicesList.map((service, index) => {
           return (
             <Link
               to={`/${i18n.language}/services/${service.service}`}
@@ -173,7 +171,7 @@ const Services = () => {
             style={{ top: index * -100 + "%" }}
             className="h-full w-full relative transition-top duration-[0.5s] ease-[cubic-bezier(0.76,0,0.24,1)]"
           >
-            {data.services?.map((service, index) => {
+            {servicesList.map((service, index) => {
               const { color } = services[index];
               return (
                 <div
@@ -182,7 +180,7 @@ const Services = () => {
                   key={`modal_${index}`}
                 >
                   <img
-                    src={`/assets/swiper/${index + 1}.jpg`}
+                    src={`/assets/about_images/${index + 4}.jpg`}
                     width={300}
                     height={0}
                     alt="image"

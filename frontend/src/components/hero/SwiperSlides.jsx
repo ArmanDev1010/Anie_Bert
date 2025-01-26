@@ -152,7 +152,7 @@ const SwiperSlides = ({ data }) => {
             </motion.div>
           </div>
           <Link
-            to={`/${i18n.language}/project/${activeId}`}
+            to={`/${i18n.language}/project/${data[activeIndex].name}`}
             className="w-fit pointer-events-auto"
           >
             <p
@@ -171,6 +171,7 @@ const SwiperSlides = ({ data }) => {
             </p>
           </Link>
         </div>
+
         <div
           className="absolute right-[216px] top-1/2 -translate-y-1/2 z-[10] flex items-center gap-4 font-semibold pointer-events-none
         max-_1440:right-[150px] max-_1080:right-[80px] max-_900:left-[48px] max-_900:top-[calc(50%-160px)] max-_900:text-[14px]"

@@ -27,9 +27,9 @@
         }
       }
     },
-    "zover": {
-      "name": "zover",
-      "project_address": "Zover Aragatsotn",
+    "alikhanyan": {
+      "name": "alikhanyan",
+      "project_address": "Alikhanyan 5",
       "type": "interior",
       "paragraph": "This project reveals the very essence of luxury. We filled it with individual design and ergonomic solutions, in a perfect combination of aesthetics and functionality. Each room has its unique details, palette, and mood. A dining table made of natural oak with an antique vibe, a kitchen island reminiscent of modern art, accent finishes with a liquid metal effect — everything here attracts the eye and makes the interior aesthetic and memorable.",
       "location": "Yerevan, Armenia",
@@ -57,5 +57,16 @@
   },
   "about": {
     "paragraph": "I enjoy working on projects that go beyond just aesthetics. Every day, people worldwide face challenges, and we perceive them as professional ones and an important inspiration for work. They motivate us to create spaces that are both functional and stylish. Interiors and architecture have remained relevant for years and suit not only the current but also the future needs of our clients."
-  }
+  },
+  "services": [
+    {
+      "service": "interior"
+    },
+    {
+      "service": "architecture"
+    },
+    {
+      "service": "commercial"
+    }
+  ]
 }

@@ -10,59 +10,11 @@ import "swiper/css/navigation";
 
 import { Autoplay } from "swiper/modules";
 
-import { useQuery, gql } from "@apollo/client";
 import { Link } from "react-router-dom";
 
 import Horizontal from "./Horizontal";
 
-const PROJECTS = gql`
-  query GetProjects($locale: I18NLocaleCode) {
-    heroes(
-      filters: { show_inside_home: { eq: true } }
-      sort: "project_order"
-      locale: $locale
-    ) {
-      documentId
-      project_address
-      type
-      year
-      area
-      image {
-        url
-      }
-      project_thumbnail {
-        url
-      }
-      images {
-        image {
-          url
-        }
-      }
-    }
-    fallback: heroes(
-      filters: { show_inside_home: { eq: true } }
-      sort: "project_order"
-      locale: "en"
-    ) {
-      documentId
-      project_address
-      type
-      year
-      area
-      image {
-        url
-      }
-      project_thumbnail {
-        url
-      }
-      images {
-        image {
-          url
-        }
-      }
-    }
-  }
-`;
+import useLocaleData from "../useLocaleData";
 
 const Projects = () => {
   const { t, i18n } = useTranslation();
@@ -73,26 +25,24 @@ const Projects = () => {
     window.addEventListener("resize", () => setIsDesktop(window.innerWidth));
   }, [window.innerWidth]);
 
-  const { loading, error, data } = useQuery(PROJECTS, {
-    variables: {
-      locale: i18n.language === "am" ? "hy" : i18n.language,
-    },
-  });
+  const { data: currentLocaleData, error: currentLocaleError } = useLocaleData(
+    i18n.language === "am" ? "hy" : i18n.language
+  );
+  const { data: englishLocaleData } = useLocaleData("en");
 
-  if (loading) return <p></p>;
-  if (error) return <p>error</p>;
+  if (currentLocaleError) return <p>Error loading data for current locale</p>;
+  if (!currentLocaleData && !englishLocaleData) return <p></p>;
 
-  const projects = [...(data.heroes || []), ...(data.fallback || [])].reduce(
-    (acc, current) => {
-      if (!acc.find((hero) => hero.documentId === current.documentId)) {
-        acc.push(current);
-      }
-      return acc;
-    },
-    []
+  const projects = {
+    ...(currentLocaleData?.projects || {}),
+    ...(englishLocaleData?.projects || {}),
+  };
+
+  const filteredProjects = Object.values(projects).filter(
+    (project) => project.show_inside_home
   );
 
-  if (!projects.length) {
+  if (!filteredProjects.length) {
     return <p>No data available for this service.</p>;
   }
 
@@ -128,7 +78,7 @@ const Projects = () => {
           {t("projects.component.title")}
         </motion.p>
       </div>
-      <Project data={projects} isDesktop={isDesktop} />
+      <Project data={filteredProjects} isDesktop={isDesktop} />
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-no-repeat opacity-20"
         style={{ backgroundImage: "url(/assets/patterns/line-grid.png)" }}
@@ -159,7 +109,7 @@ const Project = ({ data, isDesktop }) => {
               <Horizontal text={text} key={key} />
             )
           )}
-          <OtherProjets />
+          <OtherProjets data={data} />
         </motion.ul>
       </div>
     </div>
@@ -170,17 +120,13 @@ const Vertical = ({ text }) => {
   const { i18n } = useTranslation();
 
   return (
-    <Link to={`/${i18n.language}/project/${text.documentId}`}>
+    <Link to={`/${i18n.language}/project/${text.name}`}>
       <div
         className="group relative z-[2] overflow-hidden text-white transition-[tranform] duartion-[0.3s] bg-cover bg-center bg-no-repeat
         w-[650px] h-[550px] max-_1600:w-[600px] max-_1600:h-[500px]
         after:content-[''] after:absolute after:top-0 after:left-0 after:w-[101%] after:h-[101%] after:bg-[linear-gradient(0deg,rgba(0,0,0,.63)_0,rgba(0,0,0,.24))] after:z-[-1]"
         style={{
-          backgroundImage: `url(http://localhost:1337/${
-            text.project_thumbnail?.url
-              ? text.project_thumbnail?.url
-              : text.image?.url
-          })`,
+          backgroundImage: `url(/assets/projects/${text.name}/thumbnail.jpg)`,
         }}
       >
         <div
@@ -199,7 +145,7 @@ const Vertical = ({ text }) => {
   );
 };
 
-const OtherProjets = () => {
+const OtherProjets = ({ data }) => {
   const { t, i18n } = useTranslation();
 
   return (
@@ -230,12 +176,12 @@ const OtherProjets = () => {
           modules={[Autoplay]}
           className="absolute top-0 left-0 w-full h-full"
         >
-          {["1", "2", "3", "4"].map((text, key) => (
+          {data.map((text, key) => (
             <SwiperSlide key={key}>
               <div
                 className="bg-[#080808] w-full h-full bg-cover bg-center bg-no-repeat cursor-pointer"
                 style={{
-                  backgroundImage: `url(/assets/swiper/${text}.jpg)`,
+                  backgroundImage: `url(/assets/projects/${text.name}/main_image.jpg)`,
                 }}
               >
                 <div className="absolute top-0 left-0 w-full h-full bg-black to-transparent opacity-60"></div>
