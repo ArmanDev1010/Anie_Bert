@@ -8,7 +8,9 @@ import useLocaleData from "../useLocaleData";
 const Hero = () => {
   const { i18n } = useTranslation();
 
-  const { data: currentLocaleData, error: currentLocaleError } = useLocaleData(i18n.language);
+  const { data: currentLocaleData, error: currentLocaleError } = useLocaleData(
+    i18n.language
+  );
   const { data: englishLocaleData } = useLocaleData("en");
 
   if (currentLocaleError) return <p>Error loading data for current locale</p>;
@@ -17,22 +19,24 @@ const Hero = () => {
   const heroes = [];
 
   if (currentLocaleData?.projects) {
-    heroes.push(...Object.values(currentLocaleData.projects)
-      .filter(project => project.is_hero)
-      .map(project => ({
-        ...project,
-        image: { url: project.image }
-      })));
+    heroes.push(
+      ...Object.values(currentLocaleData.projects)
+        .filter((project) => project.is_hero)
+        .map((project) => ({
+          ...project,
+          image: { url: project.image },
+        }))
+    );
   }
 
   if (englishLocaleData?.projects) {
     Object.values(englishLocaleData.projects)
-      .filter(project => project.is_hero)
-      .forEach(project => {
-        if (!heroes.some(hero => hero.documentId === project.project_order)) {
+      .filter((project) => project.is_hero)
+      .forEach((project) => {
+        if (!heroes.some((hero) => hero.documentId === project.project_order)) {
           heroes.push({
             ...project,
-            image: { url: project.image }
+            image: { url: project.image },
           });
         }
       });

@@ -12,11 +12,11 @@ const Home = () => {
   return (
     <div className="relative bg-white text-black">
       <Hero />
-      {/* <Masterpiece />
+      <Masterpiece />
       <About />
       <Services />
       <Projects />
-      <Contact /> */}
+      <Contact />
     </div>
   );
 };

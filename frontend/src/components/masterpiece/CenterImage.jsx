@@ -39,7 +39,7 @@ const CenterImage = ({ SECTION_HEIGHT, data }) => {
         clipPath,
         backgroundSize,
         opacity,
-        backgroundImage: `url(http://localhost:1337/${data})`,
+        backgroundImage: `url(/assets/about_images/main.jpg)`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}

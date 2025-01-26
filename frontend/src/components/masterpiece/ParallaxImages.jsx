@@ -27,29 +27,25 @@ const ParallaxImages = ({ data }) => {
           start: calculateStartEnd(-200),
           end: 200,
           style: "w-1/3",
-          url: data[0].url,
         },
         {
           start: calculateStartEnd(200),
           end: -250,
           style: "mx-auto w-2/4",
-          url: data[1].url,
         },
         {
           start: calculateStartEnd(-200),
           end: 200,
           style: "ml-auto w-1/3",
-          url: data[2].url,
         },
         {
           start: calculateStartEnd(-100),
           end: -500,
           style: "ml-24 w-5/12",
-          url: data[3].url,
         },
       ].map((text, key) => (
         <ParallaxImg
-          src={`http://localhost:1337/${text.url}`}
+          src={`/assets/about_images/${key + 1}.jpg`}
           key={key}
           start={text.start}
           end={text.end}
