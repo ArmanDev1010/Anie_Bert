@@ -1,66 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Contact, ImageSlideshow, Horizontal } from "../components";
+import { Navbar, Contact, Horizontal } from "../components";
 import { motion } from "framer-motion";
-import { useQuery, gql } from "@apollo/client";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const PROJECTS = gql`
-  query GetProjects($locale: I18NLocaleCode) {
-    heroes(locale: $locale) {
-      documentId
-      project_address
-      image {
-        url
-      }
-      type
-      year
-      area
-      images {
-        image {
-          url
-        }
-      }
-    }
-    fallback: heroes(locale: "en") {
-      documentId
-      project_address
-      image {
-        url
-      }
-      type
-      year
-      area
-      images {
-        image {
-          url
-        }
-      }
-    }
-  }
-`;
+import useLocaleData from "../components/useLocaleData";
 
 const Projects = () => {
   const { i18n } = useTranslation();
 
-  const { loading, error, data } = useQuery(PROJECTS, {
-    variables: {
-      locale: i18n.language === "am" ? "hy" : i18n.language,
-    },
+  const { data: currentLocaleData, error: currentLocaleError } = useLocaleData(
+    i18n.language
+  );
+  const { data: englishLocaleData } = useLocaleData("en");
+
+  if (currentLocaleError) return <p>Error loading data for current locale</p>;
+  if (!currentLocaleData && !englishLocaleData) return <p></p>;
+
+  const projects = [];
+  const currentLocaleProjects = currentLocaleData?.projects || {};
+  const englishLocaleProjects = englishLocaleData?.projects || {};
+
+  // Add projects from the current locale first
+  Object.values(currentLocaleProjects).forEach((project) => {
+    if (project.show_inside_home) {
+      projects.push(project);
+    }
   });
 
-  if (loading) return <p></p>;
-  if (error) return <p>error</p>;
-
-  const projects = [...(data.heroes || []), ...(data.fallback || [])].reduce(
-    (acc, current) => {
-      if (!acc.find((hero) => hero.documentId === current.documentId)) {
-        acc.push(current);
-      }
-      return acc;
-    },
-    []
-  );
+  // Then add English projects not already in the projects array
+  Object.values(englishLocaleProjects).forEach((project) => {
+    if (
+      project.show_inside_home &&
+      !projects.some((p) => p.name === project.name)
+    ) {
+      projects.push(project);
+    }
+  });
 
   if (!projects.length) {
     return <p>No data available for this service.</p>;
