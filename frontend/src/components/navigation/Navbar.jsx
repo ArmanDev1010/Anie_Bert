@@ -53,7 +53,7 @@ const Navbar = ({ invert_colors, fixed_active }) => {
           {["white", "black"].map((color, index) => (
             <img
               key={index}
-              src={`/src/assets/logos/${color}_logo_text.png`}
+              src={`/assets/logos/${color}_logo_text.png`}
               alt="logo"
               className={`w-[210px] ${
                 color === "black" ? "hidden" : ""

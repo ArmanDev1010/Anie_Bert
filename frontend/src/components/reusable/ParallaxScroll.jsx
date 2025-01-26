@@ -66,7 +66,7 @@ const ParallaxScroll = ({ service, service_page, images }) => {
                   backgroundImage: `url(${
                     service_page
                       ? `http://localhost:1337/${src}`
-                      : `/src/assets/about_images/${src}.jpg`
+                      : `/assets/about_images/${src}.jpg`
                   })`,
                 }}
               ></div>

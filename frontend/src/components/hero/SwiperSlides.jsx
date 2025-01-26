@@ -55,6 +55,10 @@ const SwiperSlides = ({ data }) => {
     }
   }, [activeIndex]);
 
+  const getNextHero = (currentIndex) => {
+    return data[currentIndex < data.length - 1 ? currentIndex + 1 : 0];
+  };
+
   return (
     <div className="absolute z-[3] top-0 left-0 w-full h-full">
       <Swiper
@@ -72,20 +76,22 @@ const SwiperSlides = ({ data }) => {
         className="MySwiper relative w-full h-full"
       >
         {data.map((hero, index) => {
-          const nextHero = data[index < data.length - 1 ? index + 1 : 0];
+          const nextHero = getNextHero(index);
           return (
-            <SwiperSlide key={hero.documentId}>
+            <SwiperSlide key={index}>
               <div
                 className="w-[85%] h-full bg-cover bg-center bg-no-repeat max-_1080:w-full"
                 style={{
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost:1337/${hero.image.url})`,
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                  url(/assets/projects/${hero.name}/main_image.jpg)`,
                 }}
               />
               <div
                 className="group cursor-pointer absolute z-[1] top-0 right-0 w-[15%] h-full bg-cover bg-no-repeat bg-center 
                 max-_1080:hidden"
                 style={{
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(http://localhost:1337/${nextHero.image.url})`,
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                  url(/assets/projects/${nextHero.name}/main_image.jpg)`,
                 }}
                 onClick={handleNext}
               >

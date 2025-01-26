@@ -22,7 +22,7 @@ const Description = () => {
   const { t } = useTranslation();
 
   const phrases = ["", "", "", "", ""].map((text, key) => {
-    return t(`about.page.description.${key + 1}`);
+    return t(`about.page.descriptions.${key + 1}`);
   });
 
   const phrase = t("about.page.description");

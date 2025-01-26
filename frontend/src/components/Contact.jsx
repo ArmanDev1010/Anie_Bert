@@ -156,7 +156,7 @@ const Contact = ({ is_contact_page }) => {
         <div
           className="absolute top-0 left-0 w-full h-full pointer-events-none bg-cover bg-no-repeat opacity-20 z-[0]"
           style={{
-            backgroundImage: `url(/src/assets/patterns/${
+            backgroundImage: `url(/assets/patterns/${
               is_contact_page ? "grid-crosshairs_white" : "grid-crosshairs"
             }.png)`,
           }}

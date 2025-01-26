@@ -90,7 +90,7 @@ const Column = ({ images, y }) => {
             <div
               className="w-full h-full bg-cover bg-center bg-no-repeat bg-white"
               style={{
-                backgroundImage: `url(/src/assets/about_images/${src})`,
+                backgroundImage: `url(/assets/about_images/${src})`,
               }}
             />
           </div>

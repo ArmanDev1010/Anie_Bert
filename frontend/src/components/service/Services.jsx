@@ -182,7 +182,7 @@ const Services = () => {
                   key={`modal_${index}`}
                 >
                   <img
-                    src={`/src/assets/swiper/${index + 1}.jpg`}
+                    src={`/assets/swiper/${index + 1}.jpg`}
                     width={300}
                     height={0}
                     alt="image"

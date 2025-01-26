@@ -131,7 +131,7 @@ const Projects = () => {
       <Project data={projects} isDesktop={isDesktop} />
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-no-repeat opacity-20"
-        style={{ backgroundImage: "url(/src/assets/patterns/line-grid.png)" }}
+        style={{ backgroundImage: "url(/assets/patterns/line-grid.png)" }}
       ></div>
     </div>
   );
@@ -235,7 +235,7 @@ const OtherProjets = () => {
               <div
                 className="bg-[#080808] w-full h-full bg-cover bg-center bg-no-repeat cursor-pointer"
                 style={{
-                  backgroundImage: `url(/src/assets/swiper/${text}.jpg)`,
+                  backgroundImage: `url(/assets/swiper/${text}.jpg)`,
                 }}
               >
                 <div className="absolute top-0 left-0 w-full h-full bg-black to-transparent opacity-60"></div>

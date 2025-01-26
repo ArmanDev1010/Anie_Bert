@@ -49,6 +49,13 @@
     },
     "page": {
       "description": "Anie Bert is an architecture and interior design studio founded by Anie Bert in 2021. Completing over 15+ residential and commercial projects, the studio focuses on creating functional and aesthetically pleasing spaces.",
+      "descriptions": {
+        "1": "Anie Bert is an architecture and interior",
+        "2": "design studio founded by Anie Bert in 2021",
+        "3": "Completing 15+ residential and commercial projects",
+        "4": "The studio focuses on creating functional",
+        "5": "aesthetically pleasing spaces."
+      },
       "team": {
         "title": "The Team",
         "paragraph": "Our team consists of gifted professionals who release all projects as their personal creative achievements with the best results"

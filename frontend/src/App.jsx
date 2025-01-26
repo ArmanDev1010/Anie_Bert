@@ -13,8 +13,6 @@ import { initReactI18next } from "react-i18next";
 
 import { translationAM, translationEN, translationRU } from "./languages";
 
-import { MyContext } from "./context/MyContext";
-
 import {
   Home,
   Project,
@@ -83,24 +81,19 @@ const App = () => {
       } bg-[#080808] text-white`}
     >
       <CursorFollow />
-      <MyContext.Provider value={{}}>
-        <ApolloProvider client={client}>
-          <Routes>
-            <Route path="/:lang/" element={<Navigate to="/:lang/" replace />} />
-            <Route exact path="/:lang/home" element={<Home />} />
-            <Route exact path="/:lang/projects" element={<Projects />} />
-            <Route exact path="/:lang/about" element={<About />} />
-            <Route path="/:lang/project/:documentId" element={<Project />} />
-            <Route exact path="/:lang/contacts" element={<ContactPage />} />
-            <Route exact path="/:lang/services" element={<Services />} />
-            <Route
-              exact
-              path="/:lang/services/:service"
-              element={<Service />}
-            />
-          </Routes>
-        </ApolloProvider>
-      </MyContext.Provider>
+
+      <ApolloProvider client={client}>
+        <Routes>
+          <Route path="/:lang/" element={<Navigate to="/:lang/" replace />} />
+          <Route exact path="/:lang/home" element={<Home />} />
+          <Route exact path="/:lang/projects" element={<Projects />} />
+          <Route exact path="/:lang/about" element={<About />} />
+          <Route path="/:lang/project/:documentId" element={<Project />} />
+          <Route exact path="/:lang/contacts" element={<ContactPage />} />
+          <Route exact path="/:lang/services" element={<Services />} />
+          <Route exact path="/:lang/services/:service" element={<Service />} />
+        </Routes>
+      </ApolloProvider>
     </div>
   );
 };

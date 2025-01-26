@@ -87,7 +87,7 @@ const Team = () => {
       <div
         className="absolute top-0 left-0 w-full h-full pointer-events-none bg-cover bg-no-repeat opacity-20 z-[0]"
         style={{
-          backgroundImage: "url(/src/assets/patterns/line-grid_white.png)",
+          backgroundImage: "url(/assets/patterns/line-grid_white.png)",
         }}
       ></div>
     </div>
