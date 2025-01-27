@@ -109,7 +109,7 @@ const Expertise = ({ data, showModal, close, open }) => {
       </p>
       <div className="flex flex-col items-end mb-[50px] max-_550:mb-[30px]">
         <ul className="w-[70%] pointer-events-none max-_700:w-[80%] max-_550:w-full">
-          {data.map((text, key) => (
+          {data?.map((text, key) => (
             <li
               key={key}
               className="py-4 border-t-[1px] border-t-black flex first:border-t-0 text-lg max-_900:text-base max-_550:text-[15px] max-_400:text-sm"

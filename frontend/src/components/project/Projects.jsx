@@ -160,6 +160,8 @@ const Vertical = ({ text }) => {
 const OtherProjets = ({ data }) => {
   const { t, i18n } = useTranslation();
 
+  const data_sliced = data.slice(0, 5);
+
   return (
     <Link to={`/${i18n.language}/projects`}>
       <div
@@ -188,7 +190,7 @@ const OtherProjets = ({ data }) => {
           modules={[Autoplay]}
           className="absolute top-0 left-0 w-full h-full"
         >
-          {data.map((text, key) => (
+          {data_sliced.map((text, key) => (
             <SwiperSlide key={key}>
               <div
                 className="bg-[#080808] w-full h-full bg-cover bg-center bg-no-repeat cursor-pointer"
