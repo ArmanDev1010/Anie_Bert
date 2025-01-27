@@ -5,24 +5,17 @@ function useLocaleData(locale) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const loadData = async () => {
       try {
-        const response = await fetch(`/src/data/${locale}.json`);
-        if (response.ok) {
-          const jsonData = await response.json();
-          setData(jsonData);
-        } else {
-          console.warn(
-            `Failed to fetch data for locale ${locale}, status: ${response.status}`
-          );
-          setData({});
-        }
+        const module = await import(`../data/${locale}.json`);
+        setData(module.default);
       } catch (e) {
         setError(e);
+        console.error(`Failed to load data for locale ${locale}: `, e);
+        setData({});
       }
     };
-
-    fetchData();
+    loadData();
   }, [locale]);
 
   return { data, error };
