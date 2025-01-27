@@ -15,31 +15,24 @@ const Hero = () => {
   if (!currentLocaleData && !englishLocaleData) return <p></p>;
 
   const heroes = [];
+  const currentLocaleProjects = currentLocaleData?.projects || {};
+  const englishLocaleProjects = englishLocaleData?.projects || {};
 
-  if (currentLocaleData?.projects) {
-    heroes.push(
-      ...Object.values(currentLocaleData.projects)
-        .filter((project) => project.is_hero)
-        .map((project) => ({
-          ...project,
-          image: { url: project.image },
-        }))
-    );
-  }
+  Object.keys(englishLocaleProjects).forEach((name) => {
+    const project = {
+      ...englishLocaleProjects[name],
+      ...(currentLocaleProjects[name] || {}),
+    };
+    if (project.is_hero) {
+      heroes.push(project);
+    }
+  });
 
-  if (englishLocaleData?.projects) {
-    Object.values(englishLocaleData.projects)
-      .filter(
-        (project) =>
-          project.is_hero && !heroes.some((h) => h.name === project.name)
-      )
-      .forEach((project) => {
-        heroes.push({
-          ...project,
-          image: { url: project.image },
-        });
-      });
-  }
+  Object.keys(currentLocaleProjects).forEach((name) => {
+    if (!englishLocaleProjects[name] && currentLocaleProjects[name]) {
+      heroes.push(currentLocaleProjects[name]);
+    }
+  });
 
   heroes.sort((a, b) => a.hero_order - b.hero_order);
 

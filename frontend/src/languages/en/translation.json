@@ -88,7 +88,11 @@
         "kitchen": "Kithen",
         "bathroom": "Bathroom",
         "kids bedroom": "Kids Room",
-        "master bedroom": "Master Bedroom"
+        "master bedroom": "Master Bedroom",
+        "kitchen area": "Kitchen Area",
+        "small restroom": "Small Restroom",
+        "basements bathroom": "Basements Bathroom",
+        "dining kitchen area": "Dining / Kitchen Area"
       }
     }
   },

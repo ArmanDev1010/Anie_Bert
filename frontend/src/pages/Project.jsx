@@ -84,7 +84,7 @@ const TopSection = ({ name, data }) => {
       area: text.area,
     }[type];
 
-    if (value !== null) {
+    if (value !== undefined) {
       return (
         <motion.li
           key={type}
@@ -211,16 +211,19 @@ const Images = ({ name, images }) => {
     <div className="relative z-[1] px-[64px] mb-[50px] max-_900:px-[5%]">
       <div className="flex gap-5 mb-10 flex-wrap">
         {["all", ...filters].map((text, key) => (
-          <button
-            onClick={() => handleFilterButtonClick(text)}
-            key={key}
-            className={`group text-lg border border-gray-500 py-2 px-5 capitalize transition duration-[0.2s] hover:opacity-70 
+          <div key={key}>
+            {text !== "" ? (
+              <button
+                onClick={() => handleFilterButtonClick(text)}
+                className={`group text-lg border border-gray-500 py-2 px-5 capitalize transition duration-[0.2s] hover:opacity-70 
               max-_900:text-base max-_550:text-[15px] max-_550:px-4 max-_550:py-[6px] ${
                 selectedFilters?.includes(text) ? "bg-thirdly text-white" : ""
               }`}
-          >
-            {t(`projects.page.category.${text}`)}
-          </button>
+              >
+                {t(`projects.page.category.${text}`)}
+              </button>
+            ) : null}
+          </div>
         ))}
       </div>
       <motion.ul

@@ -37,20 +37,19 @@ const Projects = () => {
   const currentLocaleProjects = currentLocaleData?.projects || {};
   const englishLocaleProjects = englishLocaleData?.projects || {};
 
-  // Add projects from the current locale first
-  Object.values(currentLocaleProjects).forEach((project) => {
+  Object.keys(englishLocaleProjects).forEach((name) => {
+    const project = {
+      ...englishLocaleProjects[name],
+      ...(currentLocaleProjects[name] || {}),
+    };
     if (project.show_inside_home) {
       projects.push(project);
     }
   });
 
-  // Then add English projects not already in the projects array
-  Object.values(englishLocaleProjects).forEach((project) => {
-    if (
-      project.show_inside_home &&
-      !projects.some((p) => p.name === project.name)
-    ) {
-      projects.push(project);
+  Object.keys(currentLocaleProjects).forEach((name) => {
+    if (!englishLocaleProjects[name] && currentLocaleProjects[name]) {
+      projects.push(currentLocaleProjects[name]);
     }
   });
 

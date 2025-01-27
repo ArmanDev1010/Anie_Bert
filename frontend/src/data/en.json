@@ -62,7 +62,28 @@
       "hero_order": 1,
       "project_order": 4,
       "show_inside_home": true,
-      "images": []
+      "images": [
+        {
+          "category": "kitchen area",
+          "image": "1"
+        },
+        {
+          "category": "kitchen area",
+          "image": "2"
+        },
+        {
+          "category": "kitchen area",
+          "image": "3"
+        },
+        {
+          "category": "kitchen area",
+          "image": "4"
+        },
+        {
+          "category": "kitchen area",
+          "image": "5"
+        }
+      ]
     },
     "mesropmashtoc": {
       "name": "mesropmashtoc",
@@ -75,8 +96,50 @@
       "show_inside_home": true,
       "images": [
         {
-          "category": "bedroom",
+          "category": "",
           "image": "1"
+        }
+      ]
+    },
+    "luyser": {
+      "name": "luyser",
+      "project_address": "Luyser 2",
+      "type": "interior",
+      "paragraph": "This project reveals the very essence of luxury. We filled it with individual design and ergonomic solutions, in a perfect combination of aesthetics and functionality. Each room has its unique details, palette, and mood. A dining table made of natural oak with an antique vibe, a kitchen island reminiscent of modern art, accent finishes with a liquid metal effect — everything here attracts the eye and makes the interior aesthetic and memorable.",
+      "location": "Yerevan, Armenia",
+      "year": "2024",
+      "is_hero": true,
+      "hero_order": 1,
+      "project_order": 4,
+      "show_inside_home": true,
+      "images": [
+        {
+          "category": "small restroom",
+          "image": "1"
+        },
+        {
+          "category": "kids bedroom",
+          "image": "2"
+        },
+        {
+          "category": "kids bedroom",
+          "image": "3"
+        },
+        {
+          "category": "kids bedroom",
+          "image": "4"
+        },
+        {
+          "category": "kids bedroom",
+          "image": "5"
+        },
+        {
+          "category": "kids bedroom",
+          "image": "6"
+        },
+        {
+          "category": "small restroom",
+          "image": "7"
         }
       ]
     }
