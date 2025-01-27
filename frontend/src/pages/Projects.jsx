@@ -26,17 +26,12 @@ const Projects = () => {
       ...englishLocaleProjects[name],
       ...(currentLocaleProjects[name] || {}),
     };
-    if (project.show_inside_home) {
-      projects.push(project);
-    }
+    projects.push(project);
   });
 
   // Add any additional projects from the current locale that aren't in English
   Object.keys(currentLocaleProjects).forEach((name) => {
-    if (
-      !englishLocaleProjects[name] &&
-      currentLocaleProjects[name].show_inside_home
-    ) {
+    if (!englishLocaleProjects[name] && currentLocaleProjects[name]) {
       projects.push(currentLocaleProjects[name]);
     }
   });

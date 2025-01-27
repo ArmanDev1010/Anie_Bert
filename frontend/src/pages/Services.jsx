@@ -8,17 +8,6 @@ import useLocaleData from "../components/useLocaleData";
 
 import { useTranslation } from "react-i18next";
 
-// const SERVICES = gql`
-//   query GetServices {
-//     services(sort: "order") {
-//       service
-//       main_image {
-//         url
-//       }
-//     }
-//   }
-// `;
-
 const Services = () => {
   const { i18n } = useTranslation();
 
@@ -142,7 +131,7 @@ const Services = () => {
                 after:content-[''] after:absolute after:top-0 after:left-0 after:w-[101%] after:h-[101%]
         after:bg-[linear-gradient(0deg,rgba(0,0,0,.63)_0,rgba(0,0,0,.24))] after:z-[-1]"
                 style={{
-                  backgroundImage: `url(/assets/services/${text.service}.jpg)`,
+                  backgroundImage: `url(/assets/services/${text.service}/main.jpg)`,
                 }}
               ></div>
             </div>

@@ -84,20 +84,41 @@
   "about": {
     "paragraph": "I enjoy working on projects that go beyond just aesthetics. Every day, people worldwide face challenges, and we perceive them as professional ones and an important inspiration for work. They motivate us to create spaces that are both functional and stylish. Interiors and architecture have remained relevant for years and suit not only the current but also the future needs of our clients."
   },
-  "services": [
-    {
+  "services": {
+    "interior": {
       "service": "interior",
-      "order": 1
+      "order": 1,
+      "expertise": [
+        "Concept Mood Boards",
+        "Finish Boards",
+        "FF&E Specifications",
+        "Finish, Lighting, Furniture Plans",
+        "Specialty Lighting Design"
+      ]
     },
-    {
+    "architecture": {
       "service": "architecture",
-      "order": 2
+      "order": 2,
+      "expertise": [
+        "Concept + Schematic Design",
+        "Building Design",
+        "Space Planning + Layout",
+        "Programming",
+        "Design Development"
+      ]
     },
-    {
+    "commercial": {
       "service": "commercial",
-      "order": 3
+      "order": 3,
+      "expertise": [
+        "Office Layout Planning",
+        "Retail Space Design",
+        "Hospitality Interior Styling",
+        "Corporate Branding Spaces",
+        "Eco-Friendly Design Solutions"
+      ]
     }
-  ],
+  },
   "team": {
     "1": {
       "name": "Ani Sahakyan",

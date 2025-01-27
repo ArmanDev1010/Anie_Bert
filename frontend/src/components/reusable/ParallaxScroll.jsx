@@ -2,8 +2,18 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-const ParallaxScroll = ({ service, service_page, images }) => {
+const ParallaxScroll = ({ service, service_page }) => {
   const { t } = useTranslation();
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  const numbers = shuffleArray([1, 2, 3, 4, 5, 6]);
 
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -13,47 +23,25 @@ const ParallaxScroll = ({ service, service_page, images }) => {
   const md = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const lg = useTransform(scrollYProgress, [0, 1], [0, -250]);
 
-  const images_array = service_page
-    ? [
-        {
-          src: images && images[0]?.url,
-          y: 0,
-        },
-        {
-          src: images && images[1]?.url,
-          y: lg,
-        },
-        {
-          src: images && images[2]?.url,
-          y: md,
-        },
-      ]
-    : [
-        {
-          src: "1",
-          y: 0,
-        },
-        {
-          src: "4",
-          y: lg,
-        },
-        {
-          src: "5",
-          y: md,
-        },
-      ];
+  const images_array = [
+    {
+      y: 0,
+    },
+    {
+      y: lg,
+    },
+    {
+      y: md,
+    },
+  ];
 
   return (
     <div
       ref={container}
       className="parallax_scroll relative mt-[10vh] min-h-[75vh] max-_700:mt-0 max-_550:min-h-[55vh]"
     >
-      <div
-        className={`flex w-full justify-center relative mt-[5vh] ${
-          service_page && "service_page"
-        }`}
-      >
-        {images_array.map(({ src, y }, key) => {
+      <div className="flex w-full justify-center relative mt-[5vh]">
+        {images_array.map(({ y }, key) => {
           return (
             <motion.div
               style={{ y }}
@@ -63,11 +51,7 @@ const ParallaxScroll = ({ service, service_page, images }) => {
               <div
                 className="w-full h-full bg-cover bg-center bg-no-repeat bg-secondary"
                 style={{
-                  backgroundImage: `url(${
-                    service_page
-                      ? `http://localhost:1337/${src}`
-                      : `/assets/about_images/${src}.jpg`
-                  })`,
+                  backgroundImage: `url(/assets/about_images/${numbers[key]}.jpg)`,
                 }}
               ></div>
             </motion.div>

@@ -1,40 +1,46 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useQuery, gql } from "@apollo/client";
+import useLocaleData from "../useLocaleData";
 import { Horizontal } from "../index";
 import { useTranslation } from "react-i18next";
 
-const PROJECTS = gql`
-  query GetProjects($service: String!) {
-    heroes(filters: { type: { eq: $service } }) {
-      project_address
-      documentId
-      image {
-        url
-      }
-      type
-      year
-      area
-      images {
-        image {
-          url
-        }
-      }
-    }
-  }
-`;
-
 const Works = ({ service }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const { loading, error, data } = useQuery(PROJECTS, {
-    variables: { service: service.toLowerCase() },
+  const { data: currentLocaleData, error: currentLocaleError } = useLocaleData(
+    i18n.language
+  );
+  const { data: englishLocaleData } = useLocaleData("en");
+
+  if (currentLocaleError) return <p>Error loading data for current locale</p>;
+  if (!currentLocaleData && !englishLocaleData) return <p></p>;
+
+  const projects = [];
+  const currentLocaleProjects = currentLocaleData?.projects || {};
+  const englishLocaleProjects = englishLocaleData?.projects || {};
+
+  Object.keys(englishLocaleProjects).forEach((name) => {
+    const project = {
+      ...englishLocaleProjects[name],
+      ...(currentLocaleProjects[name] || {}),
+    };
+    if (project.type == service) {
+      projects.push(project);
+    }
   });
 
-  if (loading) return <p></p>;
-  if (error) return <p>error</p>;
+  Object.keys(currentLocaleProjects).forEach((name) => {
+    if (
+      !englishLocaleProjects[name] &&
+      currentLocaleProjects[name].type == service
+    ) {
+      projects.push(currentLocaleProjects[name]);
+    }
+  });
 
-  const projects = data.heroes;
+  if (!projects.length) {
+    return <p></p>;
+  }
 
   return (
     <div className="">

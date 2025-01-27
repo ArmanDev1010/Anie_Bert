@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import useLocaleData from "../useLocaleData";
 import { useTranslation } from "react-i18next";
 
-const services = [
+const services_ = [
   {
     color: "#000000",
   },
@@ -100,8 +100,29 @@ const Services = () => {
   if (currentLocaleError) return <p>Error loading data for current locale</p>;
   if (!currentLocaleData && !englishLocaleData) return <p></p>;
 
-  const servicesList =
-    currentLocaleData?.services || englishLocaleData?.services || [];
+  const services = [];
+  const currentLocaleServices = currentLocaleData?.services || {};
+  const englishLocaleServices = englishLocaleData?.services || {};
+
+  Object.keys(englishLocaleServices).forEach((service_) => {
+    const service = {
+      ...englishLocaleServices[service_],
+      ...(currentLocaleServices[service_] || {}),
+    };
+    services.push(service);
+  });
+
+  Object.keys(currentLocaleServices).forEach((service) => {
+    if (!englishLocaleServices[service] && currentLocaleServices[service]) {
+      services.push(currentLocaleServices[service]);
+    }
+  });
+
+  services.sort((a, b) => a.order - b.order);
+
+  if (!services.length) {
+    return <p>No data available for this service.</p>;
+  }
 
   return (
     <div
@@ -112,7 +133,7 @@ const Services = () => {
       }}
     >
       <div className="w-full flex flex-col items-center justify-center mb-[130px] max-_1280:mb-[100px] max-_700:mb-[85px]">
-        {servicesList.map((service, index) => {
+        {services.map((service, index) => {
           return (
             <Link
               to={`/${i18n.language}/services/${service.service}`}
@@ -171,8 +192,8 @@ const Services = () => {
             style={{ top: index * -100 + "%" }}
             className="h-full w-full relative transition-top duration-[0.5s] ease-[cubic-bezier(0.76,0,0.24,1)]"
           >
-            {servicesList.map((service, index) => {
-              const { color } = services[index];
+            {services.map((service, index) => {
+              const { color } = services_[index];
               return (
                 <div
                   className="h-full w-full flex items-center justify-center"

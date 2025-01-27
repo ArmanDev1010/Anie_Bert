@@ -1,43 +1,16 @@
 import React, { useState } from "react";
 import { Contact, Navbar, ParallaxScroll, Works } from "../components";
 
-import { useQuery, gql } from "@apollo/client";
+import useLocaleData from "../components/useLocaleData";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { Modal } from "../components/index";
 import { AnimatePresence } from "framer-motion";
 
-const SERVICE = gql`
-  query GetServices($service: String!, $locale: I18NLocaleCode) {
-    services(filters: { service: { eq: $service } }, locale: $locale) {
-      expertise {
-        text
-      }
-      service
-      text_images {
-        url
-      }
-      parallax_images {
-        url
-      }
-    }
-    fallback: services(filters: { service: { eq: $service } }, locale: "en") {
-      expertise {
-        text
-      }
-      text_images {
-        url
-      }
-      parallax_images {
-        url
-      }
-    }
-  }
-`;
-
 const Service = () => {
   const { i18n } = useTranslation();
+  const { service } = useParams();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -50,21 +23,21 @@ const Service = () => {
     document.body.style.overflow = "visible";
   }
 
-  const { service } = useParams();
-  const { loading, error, data } = useQuery(SERVICE, {
-    variables: {
-      service: service,
-      locale: i18n.language === "am" ? "hy" : i18n.language,
-    },
-  });
+  const { data: currentLocaleData, error: currentLocaleError } = useLocaleData(
+    i18n.language
+  );
+  const { data: englishLocaleData } = useLocaleData("en");
 
-  if (loading) return <p></p>;
-  if (error) return <p>error</p>;
+  if (currentLocaleError) return <p>Error loading data for current locale</p>;
+  if (!currentLocaleData && !englishLocaleData) return <p></p>;
 
-  let serviceData = data.services[0] || data.fallback[0];
+  let data = {
+    ...(englishLocaleData?.services || {})[service],
+    ...(currentLocaleData?.services || {})[service],
+  };
 
-  if (!serviceData) {
-    return <p>No data available for this service.</p>;
+  if (!data) {
+    return <p>No data available for this project.</p>;
   }
 
   return (
@@ -73,15 +46,10 @@ const Service = () => {
         <Navbar invert_colors={true} />
         <div className="w-full h-[120px] mb-[30px]"></div>
         <div className="relative">
-          <Text serviceData={serviceData} service={service} />
-
-          <ParallaxScroll
-            service={service}
-            service_page={true}
-            images={serviceData?.parallax_images}
-          />
+          <Text service={service} />
+          <ParallaxScroll service={service} service_page={true} />
           <Expertise
-            data={serviceData?.expertise}
+            data={data.expertise}
             showModal={showModal}
             close={close}
             open={open}
@@ -97,8 +65,18 @@ const Service = () => {
   );
 };
 
-const Text = ({ serviceData, service }) => {
+const Text = ({ service }) => {
   const { t, i18n } = useTranslation();
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+  }
+
+  const numbers = shuffleArray([1, 2, 3, 4, 5, 6]);
 
   return (
     <div
@@ -111,7 +89,7 @@ const Text = ({ serviceData, service }) => {
           <span>
             {t(`services.page.${service.toLowerCase()}.top_text.${key + 1}`)}
           </span>
-          <HoverImage src={serviceData?.text_images[key]?.url} />
+          <HoverImage src={numbers[key]} />
         </span>
       ))}
     </div>
@@ -131,15 +109,13 @@ const Expertise = ({ data, showModal, close, open }) => {
       </p>
       <div className="flex flex-col items-end mb-[50px] max-_550:mb-[30px]">
         <ul className="w-[70%] pointer-events-none max-_700:w-[80%] max-_550:w-full">
-          {data?.map((text, key) => (
+          {data.map((text, key) => (
             <li
               key={key}
               className="py-4 border-t-[1px] border-t-black flex first:border-t-0 text-lg max-_900:text-base max-_550:text-[15px] max-_400:text-sm"
             >
               <span>0{key + 1}</span>
-              <span className="ml-16 max-_550:ml-12 max-_400:ml-6">
-                {text.text}
-              </span>
+              <span className="ml-16 max-_550:ml-12 max-_400:ml-6">{text}</span>
             </li>
           ))}
         </ul>
@@ -182,7 +158,9 @@ const HoverImage = ({ src }) => {
       >
         <div
           className="w-full h-full bg-secondary bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(http://localhost:1337/${src})` }}
+          style={{
+            backgroundImage: `url(/assets/about_images/${src}.jpg)`,
+          }}
         ></div>
       </div>
     </div>
